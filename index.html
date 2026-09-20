@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04050B">
+<meta name="description" content="Navro’z — Python, AI va ma’lumotlar bilan real muammolarga ishlaydigan yechimlar. Quyosh tizimi bo’ylab portfolio.">
+<title>Navro’z Orbitasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="space" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="cur-dot" id="cdot"></div>
+<div class="cur-ring" id="cring"><span id="clabel"></span></div>
+<div id="prog"></div>
+
+<!-- ================= NAV ================= -->
+<nav class="top" id="nav">
+  <div class="navin">
+    <a href="#top" class="logo" id="logo" data-cursor="Warp"><span class="mark"><b></b><i></i></span><span class="t">NAVRO’Z</span></a>
+    <ul class="links" id="links">
+      <li><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a></li>
+      <li><a href="#demo" data-i18n="nav.demo">Demo</a></li>
+      <li><a href="#konikmalar" data-i18n="nav.skills">Ko’nikmalar</a></li>
+      <li><a href="#jarayon" data-i18n="nav.process">Jarayon</a></li>
+      <li><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></li>
+    </ul>
+    <div class="nright">
+      <div class="lang" id="lang" role="group" aria-label="Til / Language">
+        <span class="thumb"></span>
+        <button type="button" data-lang="uz" aria-pressed="true">UZ</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#aloqa" class="btn pri sm mag"><span data-i18n="nav.cta">Bog’lanish</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HUD -->
+<aside class="hud" id="hud" aria-label="Sectors"><div class="hudrail"><span class="fill" id="hudFill"></span><ol id="hudList"></ol></div><div class="readout" id="readout"></div></aside>
+<button class="hchip" id="hchip" type="button"><i></i><b id="hcName">Yer</b><span id="hcAu">1.00 AU</span></button>
+<div class="arrive" id="arrive" aria-live="polite"><small id="arSmall"></small><strong id="arName"></strong><p id="arFact"></p></div>
+
+<!-- ================= HERO (Yer) ================= -->
+<main class="wrap" id="top">
+  <section class="hero inner">
+    <div class="hgrid">
+      <div>
+        <button class="status" id="statusBtn" data-cursor="Salom"><b></b><span data-i18n="hero.status">Yangi loyihalar uchun ochiq · 2026</span></button>
+        <h1 class="name" id="name" aria-label="Navro’z">Navro’z</h1>
+        <p class="tagline"><span data-i18n="hero.build">Men quraman:</span> <span class="typed" id="typed"></span><span class="caret"></span></p>
+        <p class="lead" data-i18n="hero.lead">Python, AI va ma’lumotlar bilan real muammolarga sodda, ishlaydigan yechimlar yarataman.</p>
+        <div class="cta">
+          <a href="#loyihalar" class="btn pri mag"><span data-i18n="hero.cta1">Sayohatni boshlash</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="btn ghost mag" data-open-chat><span data-i18n="hero.cta2">AI bilan suhbat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></button>
+        </div>
+        <div class="hstats">
+          <div><strong data-count="9">9</strong><span data-i18n="hero.s1">loyiha orbitada</span></div>
+          <div><strong data-count="9">9</strong><span data-i18n="hero.s2">texnologiya yo’nalishi</span></div>
+          <div><strong data-count="4">4</strong><span data-i18n="hero.s3">bosqichli ish usuli</span></div>
+        </div>
+        <a href="#loyihalar" class="scrollcue"><i></i><span data-i18n="hero.scroll">Pastga — Quyosh tizimi bo’ylab</span></a>
+      </div>
+      <div class="orbit" id="orbit">
+        <div class="ring" style="width:48%;height:48%"></div>
+        <div class="ring" style="width:72%;height:72%"></div>
+        <div class="ring" style="width:96%;height:96%"></div>
+        <button class="core" id="core" data-cursor="Warp" aria-label="Warp"><span class="sunb"></span><span>N</span></button>
+        <div class="orbit-hint" data-i18n="hero.hint">Sayyorani bosing — loyiha ochiladi</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="marq" aria-hidden="true"><div class="mtrack" id="marq"></div></div>
+
+<main class="wrap">
+  <!-- ================= PROJECTS (Mars) ================= -->
+  <section id="loyihalar" class="sec inner">
+    <div class="phead rv">
+      <div>
+        <span class="eyebrow" data-sector="1"></span>
+        <h2 class="h2" data-i18n-html="proj.title">G’oyadan <em>demogacha</em></h2>
+        <p class="lead" data-i18n="proj.lead"></p>
+      </div>
+      <div class="chips" id="chips" role="tablist"></div>
+    </div>
+    <div class="viewport" id="viewport" tabindex="0" aria-roledescription="carousel">
+      <div class="track" id="track"></div>
+    </div>
+    <div class="sctl">
+      <div class="counter"><b id="cur">01</b> / <span id="tot">09</span><div class="bar"><i id="abar"></i></div></div>
+      <div class="dots" id="dots"></div>
+      <div class="arrows">
+        <button class="arw prev mag" id="prev" data-i18n-aria="aria.menuPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="arw next mag" id="next" data-i18n-aria="aria.menuNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEMO (Asteroidlar) ================= -->
+  <section id="demo" class="sec inner">
+    <div class="demo">
+      <div class="rv">
+        <span class="eyebrow" data-sector="2"></span>
+        <h2 class="h2" data-i18n-html="demo.title">Bugun qanday <em>ritmdasiz?</em></h2>
+        <p class="lead" data-i18n="demo.lead"></p>
+        <div class="cta" style="margin-top:24px">
+          <button class="btn ghost mag" data-project="ritm"><span data-i18n="demo.about">Loyiha haqida</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+        </div>
+      </div>
+      <div class="device rv" id="device">
+        <div class="top"><span>KUN RITMI</span><span data-i18n="demo.live">JONLI DEMO</span></div>
+        <p class="q" data-i18n="demo.q">Bugun qanday ritmdasiz?</p>
+        <div class="moods" id="moods"></div>
+        <ul class="steps" id="steps"></ul>
+        <div class="rprog"><span id="rtxt"></span><div class="bar"><i id="rbar"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS (Yupiter) ================= -->
+  <section id="konikmalar" class="sec inner">
+    <div class="rv">
+      <span class="eyebrow" data-sector="3"></span>
+      <h2 class="h2" data-i18n-html="skills.title">Nima bilan <em>quraman</em></h2>
+      <p class="lead" data-i18n="skills.lead"></p>
+    </div>
+    <div class="skills" id="skills"></div>
+  </section>
+
+  <!-- ================= PROCESS (Saturn) ================= -->
+  <section id="jarayon" class="sec inner">
+    <div class="rv">
+      <span class="eyebrow" data-sector="4"></span>
+      <h2 class="h2" data-i18n-html="proc.title">Taxmin emas — <em>natija</em></h2>
+      <p class="lead" data-i18n="proc.lead"></p>
+    </div>
+    <div class="proc rv">
+      <div class="pline" id="pline"><div class="pfill" id="pfill"></div><div class="comet" id="comet"></div></div>
+      <div class="pdetail" id="pdetail"></div>
+    </div>
+  </section>
+
+  <!-- ================= PRINCIPLES (Neptun) ================= -->
+  <section id="tamoyillar" class="sec inner">
+    <div class="quote rv">
+      <span class="eyebrow" data-sector="5" style="justify-content:center"></span>
+      <span class="qm" aria-hidden="true">“</span>
+      <p class="qtext" id="qtext"></p>
+      <p class="qsub" id="qsub"></p>
+      <div class="qctl">
+        <button class="arw prev mag" id="qprev" data-i18n-aria="aria.menuPrev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <div class="dots" id="qdots"></div>
+        <button class="arw next mag" id="qnext" data-i18n-aria="aria.menuNext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT (Geliopauza) ================= -->
+  <section id="aloqa" class="sec inner">
+    <div class="contact">
+      <div class="rv">
+        <span class="eyebrow" data-sector="6"></span>
+        <h2 class="h2" data-i18n-html="contact.title">Keling, birga <em>uchiramiz</em></h2>
+        <p class="lead" data-i18n="contact.lead"></p>
+        <button class="bigmail" id="copyMail" data-cursor="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span>n03027825@gmail.com</span></button>
+        <div class="signal"><i><b></b><b></b><b></b><b></b></i><span data-i18n="contact.signal">Signal to’g’ridan-to’g’ri Telegram’ga boradi</span></div>
+      </div>
+      <div class="form rv" id="formBox">
+        <form id="cform" novalidate>
+          <div class="fgrid">
+            <div class="field"><input id="fname" name="fname" placeholder=" " autocomplete="name"><label for="fname" data-i18n="f.name">Ismingiz</label></div>
+            <div class="field"><input id="femail" name="femail" type="email" inputmode="email" placeholder=" " autocomplete="email"><label for="femail" data-i18n="f.email">Email</label></div>
+            <div class="field"><input id="ftg" name="ftg" placeholder=" " autocomplete="off" autocapitalize="off" spellcheck="false"><label for="ftg" data-i18n="f.tg">Telegram (ixtiyoriy)</label></div>
+            <div class="hp" aria-hidden="true"><label for="fhp">Website</label><input id="fhp" name="fhp" tabindex="-1" autocomplete="off"></div>
+            <div class="field"><textarea id="fmsg" name="fmsg" placeholder=" "></textarea><label for="fmsg" data-i18n="f.msg">Xabaringiz</label></div>
+            <button class="btn pri mag" type="submit"><span data-i18n="f.send">Signal yuborish</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <span data-i18n="foot.motto">Kichik qadamlar + doimiylik = katta natija</span>
+    <div class="flinks"><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a><a href="#demo" data-i18n="nav.demo">Demo</a><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></div>
+    <button class="rocket" data-jump><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 10L14 16h-4l-2.5-4C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M9.5 16 8 20l2-1 2 2 2-2 2 1-1.5-4"/></svg><span data-i18n="foot.top">Yerga qaytish</span></button>
+  </div>
+</footer>
+
+<!-- HYPERJUMP -->
+<div id="jump" aria-hidden="true">
+  <div class="jtunnel"></div>
+  <svg class="jrocket" viewBox="0 0 64 64"><g class="flame"><path d="M26 44 32 62 38 44Z" fill="#FFB547"/><path d="M29 44 32 55 35 44Z" fill="#fff6d8"/></g><path d="M32 4c8 7 11 17 10 30l-4 10H26l-4-10C21 21 24 11 32 4z" fill="#EEEDFB"/><circle cx="32" cy="22" r="5" fill="#6CE4F0" stroke="#04050B" stroke-width="2"/><path d="M22 34 14 46l10-3M42 34l8 12-10-3" fill="#FF5D8F"/></svg>
+  <div class="jring"></div><div class="jring"></div><div class="jring"></div>
+  <div class="jflash"></div>
+  <div class="jtext"><small data-i18n="jump.small">Giper-sakrash</small><strong data-i18n="jump.big">Yerga qaytish</strong></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="back" data-close></div>
+  <div class="mcard" id="mcard"></div>
+</div>
+
+<!-- CHAT -->
+<button class="fab" id="fab" type="button" data-cursor="AI"><span class="tip" data-i18n="chat.drag">Sudrang yoki bosing</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></button>
+<div class="chat" id="chat" hidden role="dialog" aria-labelledby="chatTitle">
+  <div class="handle" id="chatHandle"></div>
+  <header><span class="av"></span><div><b id="chatTitle" data-i18n="chat.title">Orbita AI</b><small data-i18n="chat.sub">Demo rejim</small></div><button class="x" id="chatX" data-i18n-aria="m.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></header>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="sugg" id="sugg"></div>
+  <form id="chatForm"><input id="chatIn" autocomplete="off" data-i18n-ph="chat.ph" data-i18n-aria="chat.ph"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button></form>
+</div>
+
+<!-- MOBILE DOCK -->
+<nav class="dock" id="dock" aria-label="Menu">
+  <button type="button" data-go="top" data-jump-dock><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg><span data-i18n="dock.home">Yer</span><i class="pip"></i></button>
+  <button type="button" data-go="loyihalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/></svg><span data-i18n="dock.projects">Loyihalar</span><i class="pip"></i></button>
+  <button type="button" class="ai" id="dockAi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><span data-i18n="dock.ai">AI</span></button>
+  <button type="button" data-go="demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg><span data-i18n="dock.demo">Demo</span><i class="pip"></i></button>
+  <button type="button" data-go="aloqa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span data-i18n="dock.contact">Aloqa</span><i class="pip"></i></button>
+</nav>
+<div class="toasts" id="toasts"></div>
+
+<script src="data.js"></script>
+<script src="space.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
