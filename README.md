@@ -63,3 +63,13 @@ Keyin **Deployments → Redeploy**.
 ## 🔗 Loyiha havolalari
 - `data.js` → `NV.PROJECTS` → har bir loyihada `link:'https://...'`. Havola bo'lmasa — "Tez orada" chiqadi.
 - `link:'#demo'` — sahifa ichidagi bo'limga olib boradi.
+
+## 🪐 NOVA: 3D Quyosh tizimi
+- `nova.js` / `nova.css` — Three.js bilan haqiqiy 3D Quyosh tizimi (13 sayyora = 13 loyiha), so'zma-so'z ochiladigan sarlavhalar, sektor skaneri, kartalardagi yorug'lik.
+- WebGL bo'lmasa yoki "kam harakat" rejimi yoqilgan bo'lsa, avvalgi 2D orbita ko'rinadi.
+
+## 🤖 Telegram bot (`api/bot.js`)
+- /start — menyu: sayt, akademiya, loyihalar, o'yinlar, kurslar.
+- Mehmon botga yozsa — xabar Navro'zga keladi; Navro'z unga **Reply** qilsa — javob mehmonga boradi.
+- Kerak: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (Vercel → Environment Variables).
+- Webhookni ulash (bir marta): `https://SAYT/api/bot?setup=<TELEGRAM_WEBHOOK_SECRET>`

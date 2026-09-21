@@ -1,0 +1,49 @@
+/* =========================================================
+   nova.css — 3D Quyosh tizimi, kinematografik sarlavhalar,
+   sektor skaneri, spotlight. plus.css dan keyin yuklanadi.
+   ========================================================= */
+
+/* ---------- 3D HERO ---------- */
+#orbit.gl .planet,#orbit.gl .ring,#orbit.gl .core{display:none}
+#orbit.gl{overflow:visible}
+@media (min-width:901px){#orbit.gl{width:min(720px,122%);margin-left:-8%;margin-right:-14%}}
+.nv-gl{position:absolute;inset:-6%;width:112%;height:112%;display:block;cursor:grab;touch-action:pan-y;animation:nvIn 1.6s var(--ease) both;-webkit-mask:radial-gradient(closest-side,#000 78%,transparent);mask:radial-gradient(closest-side,#000 78%,transparent)}
+@keyframes nvIn{from{opacity:0;transform:scale(.7) rotate(-8deg);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.nv-tip{position:absolute;left:0;top:0;z-index:5;pointer-events:none;display:flex;flex-direction:column;gap:2px;padding:10px 14px;margin:-86px 0 0 18px;border-radius:14px;background:rgba(6,8,20,.86);border:1px solid var(--line2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap;opacity:0;scale:.85;transition:opacity .25s,scale .35s var(--spring);box-shadow:0 20px 40px -20px #000}
+.nv-tip.on{opacity:1;scale:1}
+.nv-tip b{font:700 15px var(--disp)}
+.nv-tip small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.nv-tip em{font:600 11px var(--mono);font-style:normal;color:var(--ice);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.nv-badge{position:absolute;right:6%;top:4%;z-index:4;font:600 10.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ice);padding:6px 11px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ice) 40%,transparent);background:rgba(6,8,20,.6);pointer-events:none;animation:nvBlink 3s ease-in-out infinite}
+@keyframes nvBlink{50%{opacity:.45}}
+
+/* ---------- HOLOGRAFIK ISM ---------- */
+.nv h1.name .ch:not(.alt){background:linear-gradient(105deg,var(--text) 38%,#fff3c9 47%,#6CE4F0 52%,var(--text) 61%);background-size:320% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:drop 1s var(--spring) both,nvHolo 6s linear 1.4s infinite}
+.nv h1.name .ch:not(.alt):hover{background:var(--sun);-webkit-background-clip:text;background-clip:text}
+@keyframes nvHolo{from{background-position:100% 0}to{background-position:-220% 0}}
+
+/* ---------- SO'ZMA-SO'Z SARLAVHALAR ---------- */
+.nv-w{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.06em .04em .12em;margin:-.06em -.04em -.12em}
+.nv-w>span{display:inline-block;transform:translateY(112%) rotate(7deg);transform-origin:0 100%;transition:transform 1s var(--spring) calc(var(--i,0)*70ms)}
+.in .nv-w>span{transform:none}
+
+/* ---------- KUCHLIROQ PAYDO BO'LISH ---------- */
+html.nv.js .rv{transition:transform 1.1s var(--ease),opacity 1s var(--ease)}
+html.nv.js .rv:not(.in){transform:perspective(1200px) translateY(70px) rotateX(12deg) scale(.95);opacity:0}
+
+/* ---------- SEKTOR SKANERI ---------- */
+.nv-scan{position:fixed;left:0;right:0;top:0;height:3px;z-index:70;pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent,var(--ice),#fff,var(--sun),transparent);box-shadow:0 0 30px 6px rgba(108,228,240,.45)}
+.nv-scan.go{animation:nvScan 1.1s var(--ease)}
+@keyframes nvScan{0%{opacity:1;transform:translateY(0) scaleX(.2)}40%{opacity:1;transform:translateY(45vh) scaleX(1)}100%{opacity:0;transform:translateY(100vh) scaleX(1)}}
+
+/* ---------- SPOTLIGHT ---------- */
+.trk::after,.slide.act::after,.form,.ac-cta,.device,.quiz{--mx:-500px;--my:-500px}
+.trk::after,.slide.act::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(255,255,255,.09),transparent 45%);z-index:1}
+.form,.device,.quiz{background-image:radial-gradient(500px circle at var(--mx) var(--my),rgba(108,228,240,.07),transparent 45%)}
+
+@media (max-width:900px){
+  .nv-gl{inset:-2%;width:104%;height:104%}
+  .nv-tip{margin-top:-78px}
+  .nv-badge{right:3%;top:2%}
+}
+@media (prefers-reduced-motion:reduce){.nv-w>span{transform:none!important;transition:none}.nv-scan{display:none}}
