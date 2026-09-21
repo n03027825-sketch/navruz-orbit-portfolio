@@ -10,8 +10,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="plus.css">
+<script>try{if(sessionStorage.getItem("nvIntro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("no-intro")}catch(e){}</script>
 </head>
 <body>
+<div id="intro" aria-hidden="true">
+  <div class="in-stars"></div><div class="in-top"></div><div class="in-bot"></div><div class="in-seam"></div><div class="in-ring"></div>
+  <div class="in-core"><div class="in-brand" data-i18n="in.brand">Navro’z · Orbita</div><div class="in-count" id="inCount">3</div><div class="in-label" data-i18n="in.label">Uchirishga tayyorgarlik</div></div>
+  <svg class="in-rocket" viewBox="0 0 70 70" fill="none"><path class="flame" d="M29 48c0 9 6 18 6 18s6-9 6-18z" fill="#FFB547"/><path d="M35 4c9 8 13 20 13 32v12H22V36c0-12 4-24 13-32z" fill="#EEEDFB"/><circle cx="35" cy="26" r="5" fill="#6CE4F0"/><path d="M22 38l-9 10h9zM48 38l9 10h-9z" fill="#FF5D8F"/></svg>
+  <button type="button" class="in-skip" id="inSkip" data-i18n="in.skip">O’tkazib yuborish</button>
+</div>
 <canvas id="space" aria-hidden="true"></canvas>
 <div class="vignette" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -26,6 +34,7 @@
     <a href="#top" class="logo" id="logo" data-cursor="Warp"><span class="mark"><b></b><i></i></span><span class="t">NAVRO’Z</span></a>
     <ul class="links" id="links">
       <li><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a></li>
+      <li><a href="#akademiya" data-i18n="nav.academy">Akademiya</a></li>
       <li><a href="#demo" data-i18n="nav.demo">Demo</a></li>
       <li><a href="#konikmalar" data-i18n="nav.skills">Ko’nikmalar</a></li>
       <li><a href="#jarayon" data-i18n="nav.process">Jarayon</a></li>
@@ -61,7 +70,7 @@
           <button class="btn ghost mag" data-open-chat><span data-i18n="hero.cta2">AI bilan suhbat</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></button>
         </div>
         <div class="hstats">
-          <div><strong data-count="9">9</strong><span data-i18n="hero.s1">loyiha orbitada</span></div>
+          <div><strong data-count="13">13</strong><span data-i18n="hero.s1">loyiha orbitada</span></div>
           <div><strong data-count="9">9</strong><span data-i18n="hero.s2">texnologiya yo’nalishi</span></div>
           <div><strong data-count="4">4</strong><span data-i18n="hero.s3">bosqichli ish usuli</span></div>
         </div>
@@ -192,7 +201,7 @@
 <footer>
   <div class="fin">
     <span data-i18n="foot.motto">Kichik qadamlar + doimiylik = katta natija</span>
-    <div class="flinks"><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a><a href="#demo" data-i18n="nav.demo">Demo</a><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></div>
+    <div class="flinks"><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a><a href="#akademiya" data-i18n="nav.academy">Akademiya</a><a href="#demo" data-i18n="nav.demo">Demo</a><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></div>
     <button class="rocket" data-jump><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 10L14 16h-4l-2.5-4C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M9.5 16 8 20l2-1 2 2 2-2 2 1-1.5-4"/></svg><span data-i18n="foot.top">Yerga qaytish</span></button>
   </div>
 </footer>
@@ -227,7 +236,7 @@
   <button type="button" data-go="top" data-jump-dock><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg><span data-i18n="dock.home">Yer</span><i class="pip"></i></button>
   <button type="button" data-go="loyihalar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/></svg><span data-i18n="dock.projects">Loyihalar</span><i class="pip"></i></button>
   <button type="button" class="ai" id="dockAi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><span data-i18n="dock.ai">AI</span></button>
-  <button type="button" data-go="demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg><span data-i18n="dock.demo">Demo</span><i class="pip"></i></button>
+  <button type="button" data-go="akademiya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span data-i18n="dock.academy">Akademiya</span><i class="pip"></i></button>
   <button type="button" data-go="aloqa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg><span data-i18n="dock.contact">Aloqa</span><i class="pip"></i></button>
 </nav>
 <div class="toasts" id="toasts"></div>
@@ -235,5 +244,6 @@
 <script src="data.js"></script>
 <script src="space.js"></script>
 <script src="app.js"></script>
+<script src="plus.js"></script>
 </body>
 </html>

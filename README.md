@@ -54,3 +54,12 @@ Keyin **Deployments → Redeploy**.
 - Odam ko'rmaydigan "tuzoq" maydon — botlar to'ldirsa, xabar jim tashlab yuboriladi.
 - Barcha maydonlar serverda qayta tekshiriladi, matn HTML'dan tozalanadi.
 - Server ishlamasa, forma avtomatik zaxiraga o'tadi: xabar nusxalanadi + "Email'da ochish" tugmasi.
+
+## 🎓 Orbita Akademiya (kurslar)
+- Darslar `plus.js` → `TRACKS` ichida. Har bir dars: `h` (sarlavha), `p` (tushuntirish), `tip`, `code`, `out` (natija), `q` (savol), `o` (variantlar), `a` (to'g'ri javob raqami).
+- `plus.css` — Akademiya, kurs pleyeri va 3-2-1 uchish introsi dizayni.
+- O'quvchi progressi brauzerda (`localStorage`, kalit `nv-ac`) saqlanadi.
+
+## 🔗 Loyiha havolalari
+- `data.js` → `NV.PROJECTS` → har bir loyihada `link:'https://...'`. Havola bo'lmasa — "Tez orada" chiqadi.
+- `link:'#demo'` — sahifa ichidagi bo'limga olib boradi.

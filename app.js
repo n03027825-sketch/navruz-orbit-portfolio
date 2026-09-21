@@ -178,12 +178,13 @@ function renderChips(){
   $$('#chips .chip').forEach(c=>c.addEventListener('click',()=>{cat=c.dataset.cat;list=cat==='all'?NV.PROJECTS.slice():NV.PROJECTS.filter(p=>p.cats.includes(cat));idx=0;renderChips();renderSlides()}));
 }
 const art=p=>`<div class="globe">${I[p.icon]}</div><div class="oring"></div>`;
+const linkBtn=(p,cls)=>!p.link?`<span class="${cls} soon" aria-disabled="true">${t('proj.soon')}</span>`:p.link[0]==='#'?`<a class="${cls} go" href="${p.link}" data-inlink>${t('proj.try')} ${I.bolt}</a>`:`<a class="${cls} go" href="${esc(p.link)}" target="_blank" rel="noopener">${t('proj.open')} ${I.arrow}</a>`;
 function renderSlides(keep){
   if(!keep)idx=0;track.style.transition='none';
   track.innerHTML=list.map((p,i)=>`<article class="slide dyn" data-i="${i}" style="--c1:${p.c1};--c2:${p.c2}" aria-label="${esc(tx(p.name))}">
     <div class="art"><span class="num">${String(NV.PROJECTS.indexOf(p)+1).padStart(2,'0')} / ${String(NV.PROJECTS.length).padStart(2,'0')}</span><span class="pill">${esc(tx(p.status))}</span>${art(p)}</div>
     <div class="sbody"><h3>${esc(tx(p.name))}</h3><p>${esc(tx(p.short))}</p><div class="tags">${p.tags.map(s=>`<span>${esc(s)}</span>`).join('')}</div>
-    <div class="srow"><button class="more" type="button" data-open="${p.id}">${t('proj.more')} ${I.arrow}</button><button class="more alt" type="button" data-ask="${p.id}">${t('proj.ask')} ${I.chat}</button></div></div></article>`).join('');
+    <div class="srow">${linkBtn(p,'more')}<button class="more alt" type="button" data-open="${p.id}">${t('proj.more')} ${I.plus}</button><button class="more alt" type="button" data-ask="${p.id}">${t('proj.ask')} ${I.chat}</button></div></div></article>`).join('');
   $('#dots').innerHTML=list.map((p,i)=>`<button type="button" aria-label="${esc(tx(p.name))}"></button>`).join('');
   $$('#dots button').forEach((d,i)=>d.addEventListener('click',()=>go(i)));
   $('#tot').textContent=String(list.length).padStart(2,'0');
@@ -194,7 +195,7 @@ function go(i){
   const n=list.length;if(!n)return;idx=(i+n)%n;const sl=$$('.slide');
   const w=sl[0].offsetWidth,gap=parseFloat(getComputedStyle(track).gap)||26;off=vp.clientWidth/2-(idx*(w+gap)+w/2);
   track.style.transform=`translateX(${off}px)`;
-  sl.forEach((s,k)=>{s.classList.toggle('act',k===idx);s.setAttribute('aria-hidden',k!==idx);s.querySelectorAll('button').forEach(b=>b.tabIndex=k===idx?0:-1)});
+  sl.forEach((s,k)=>{s.classList.toggle('act',k===idx);s.setAttribute('aria-hidden',k!==idx);s.querySelectorAll('button,a').forEach(b=>b.tabIndex=k===idx?0:-1)});
   $$('#dots button').forEach((d,k)=>d.classList.toggle('on',k===idx));
   $('#cur').textContent=String(idx+1).padStart(2,'0');auto();
 }
@@ -215,9 +216,10 @@ function endDrag(e,cancel){
 vp.addEventListener('pointerup',e=>endDrag(e,false));vp.addEventListener('pointercancel',e=>endDrag(e,true));
 // click works for mouse, touch, keyboard (Enter/Space) and screen readers
 track.addEventListener('click',e=>{
-  if(swiped){swiped=false;return}
+  const ln=e.target.closest('a');
+  if(swiped){swiped=false;if(ln)e.preventDefault();return}
   const op=e.target.closest('[data-open]'),ak=e.target.closest('[data-ask]'),sl=e.target.closest('.slide');
-  if(sl&&+sl.dataset.i!==idx){go(+sl.dataset.i);return}
+  if(sl&&+sl.dataset.i!==idx){if(ln)e.preventDefault();go(+sl.dataset.i);return}
   if(op){openModal(op.dataset.open);return}
   if(ak){const n=tx(byId(ak.dataset.ask).name);openChat();ask(L==='uz'?n+' nima?':'What is '+n+'?')}
 });
@@ -234,7 +236,7 @@ function openModal(id,silent){
   <div class="facts"><div><small>${t('m.status')}</small><b>${esc(tx(p.status))}</b></div><div><small>${t('m.area')}</small><b>${esc(tx(p.area))}</b></div><div><small>${t('m.stack')}</small><b>${p.tags.map(esc).join(' · ')}</b></div></div>
   <h6>${t('m.feats')}</h6><ul class="feats">${tx(p.feats).map((f,i)=>`<li style="animation-delay:${i*.05}s">${I.check}<span>${esc(f)}</span></li>`).join('')}</ul>
   <div class="next"><b>${t('m.nextstep')}</b> ${esc(tx(p.next))}</div>
-  <div class="mact"><button class="btn pri" type="button" id="mnext">${t('m.next')} ${I.next}</button><button class="btn ghost" type="button" id="mask">${t('m.ask')} ${I.chat}</button><a class="btn ghost" href="#aloqa" id="mcontact">${t('m.collab')} ${I.mail}</a></div></div>`;
+  <div class="mact">${p.link?linkBtn(p,'btn pri'):''}<button class="btn ${p.link?'ghost':'pri'}" type="button" id="mnext">${t('m.next')} ${I.next}</button><button class="btn ghost" type="button" id="mask">${t('m.ask')} ${I.chat}</button><a class="btn ghost" href="#aloqa" id="mcontact">${t('m.collab')} ${I.mail}</a></div></div>`;
   if(modal.hidden){modal.hidden=false;document.body.style.overflow='hidden'}
   mcard.scrollTop=0;mcard.style.transform='';
   $('#mnext').onclick=()=>{const i=NV.PROJECTS.findIndex(x=>x.id===curP);openModal(NV.PROJECTS[(i+1)%NV.PROJECTS.length].id,true)};
@@ -418,7 +420,7 @@ function renderSugg(){$('#sugg').innerHTML=NV.CHAT_SUGG[L].map(s=>`<button type=
 async function askAI(q){
   const s=q.toLowerCase().replace(/[’'‘`]/g,'');const U=L==='uz';
   for(const p of NV.PROJECTS){if(p.key.some(k=>s.includes(k.replace(/[’'‘`]/g,'')))){return {text:`${tx(p.name)} — ${tx(p.short)} ${U?'Holati':'Status'}: ${tx(p.status)}.`,open:p.id}}}
-  if(/loyiha|proyekt|project|nima qil|what.*(do|build)/.test(s))return U?'Orbitada 9 ta loyiha bor: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi va 3D o’yin. Birortasining nomini yozing — batafsil aytaman.':'There are 9 projects in orbit: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi and a 3D game. Type any name for details.';
+  if(/loyiha|proyekt|project|nima qil|what.*(do|build)/.test(s))return U?'Orbitada 13 ta loyiha bor: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi, 3D o’yin hamda CITY RUSH 3D, NEON RUSH, Chaqqon! va Karvon o’yinlari. Birortasining nomini yozing — batafsil aytaman.':'There are 13 projects in orbit: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi, a 3D game, plus the games CITY RUSH 3D, NEON RUSH, Chaqqon! and Karvon. Type any name for details.';
   if(/texno|stack|tech|python|skill|konikma|til/.test(s))return U?'Asosiy til — Python. Yana: Pandas, AI/LLM va NLP, JavaScript/HTML/CSS, Git & GitHub, API, Telegram botlar, avtomatlashtirish va backend.':'Main language: Python. Plus Pandas, AI/LLM & NLP, JavaScript/HTML/CSS, Git & GitHub, APIs, Telegram bots, automation and backend.';
   if(/boglan|aloqa|email|pochta|contact|touch|reach/.test(s)){setTimeout(()=>{toggleChat(false);goTo('aloqa')},1300);return (U?'Email: ':'Email: ')+MAIL+(U?'. Sizni aloqa bo’limiga olib o’tyapman.':'. Taking you to the contact section.')}
   if(/salom|assalom|\bhi\b|hello|hey/.test(s))return U?'Va alaykum assalom! Loyihalar, texnologiyalar yoki hamkorlik haqida so’rang.':'Hello! Ask me about projects, tech or working together.';
@@ -436,6 +438,10 @@ $('#dockAi').addEventListener('click',()=>toggleChat(chat.hidden));
 /* ================= KEYBOARD ================= */
 addEventListener('keydown',e=>{if(e.key==='Escape'){if(!modal.hidden)closeModal();else if(!chat.hidden)toggleChat(false)}});
 
+/* in-page project links (e.g. live demo) */
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-inlink]');if(!a)return;e.preventDefault();closeModal();goTo(a.getAttribute('href').slice(1))});
+
 /* ================= START ================= */
+NV.ui={burst,toast,magnet,openModal,closeModal,goTo,t,esc,icons:I};
 renderAll();
 })();

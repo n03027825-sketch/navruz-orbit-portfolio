@@ -134,7 +134,7 @@ NV.SECTORS = [
     fact:{uz:'Quyosh shamoli tugaydigan chegara. Voyager 1 uni 2012-yilda kesib o’tgan.',en:'Where the solar wind ends. Voyager 1 crossed it in 2012.'}}
 ];
 
-NV.CATS = [['all',{uz:'Hammasi',en:'All'}],['ai',{uz:'AI',en:'AI'}],['biznes',{uz:'Biznes',en:'Business'}],['talim',{uz:'Ta’lim',en:'Education'}],['samaradorlik',{uz:'Samaradorlik',en:'Productivity'}],['ijtimoiy',{uz:'Ijtimoiy',en:'Social'}]];
+NV.CATS = [['all',{uz:'Hammasi',en:'All'}],['ai',{uz:'AI',en:'AI'}],['biznes',{uz:'Biznes',en:'Business'}],['talim',{uz:'Ta’lim',en:'Education'}],['samaradorlik',{uz:'Samaradorlik',en:'Productivity'}],['ijtimoiy',{uz:'Ijtimoiy',en:'Social'}],['oyin',{uz:'O’yinlar',en:'Games'}]];
 
 NV.PROJECTS = [
  {id:'bm',icon:'brain',c1:'#6CE4F0',c2:'#1f6f8a',cats:['ai','biznes'],key:['business','memory'],
@@ -148,7 +148,7 @@ NV.PROJECTS = [
          en:['Sales, expenses and customers in one place','AI recommendations — the business “memory”','A simple interface built for small shops','Decisions based on data, not guesses']},
   next:{uz:'Real do’kon ma’lumotlari bilan demo sinovi.',en:'Pilot the demo with a real shop’s data.'},
   tags:['Python','AI','Analytics']},
- {id:'yolchi',icon:'route',c1:'#FFB547',c2:'#8a4a00',cats:['ijtimoiy'],key:['yolchi','yo’lchi',"yo'lchi"],
+ {id:'yolchi',link:'https://claude.ai/artifact/8zMnySHrDV91cCVsphx7cr',icon:'route',c1:'#FFB547',c2:'#8a4a00',cats:['ijtimoiy'],key:['yolchi','yo’lchi',"yo'lchi"],
   name:{uz:'Yo’lchi',en:'Yo’lchi'},
   status:{uz:'Konsepsiya',en:'Concept'}, area:{uz:'Ijtimoiy startup',en:'Social startup'},
   short:{uz:'Xorijda ish izlayotgan o’zbeklarni vositachilar firibgarligidan himoya qiluvchi axborot xizmati.',
@@ -159,7 +159,7 @@ NV.PROJECTS = [
          en:['Licence checker','Real-cost calculator','Step-by-step route for each country','Red-flag checklist','Language prep: EPS-TOPIK, work-patent exam','Anonymous reports routed to the Migration Agency']},
   next:{uz:'Uch tilli (UZ · RU · EN) sayt va litsenziya bazasi.',en:'Trilingual (UZ · RU · EN) site and licence database.'},
   tags:['Web','UZ · RU · EN','Social impact']},
- {id:'yozai',icon:'pen',c1:'#FF5D8F',c2:'#7a1638',cats:['ai','talim'],key:['yozai','yoz ai'],
+ {id:'yozai',link:'https://claude.ai/artifact/8FBqdvWQikbSaWaD3E5LEG',icon:'pen',c1:'#FF5D8F',c2:'#7a1638',cats:['ai','talim'],key:['yozai','yoz ai'],
   name:{uz:'YozAI',en:'YozAI'},
   status:{uz:'Ishlab chiqilmoqda',en:'In development'}, area:{uz:'AI · Ta’lim',en:'AI · Education'},
   short:{uz:'A2–B1 darajadagi o’quvchilar uchun 4 haftalik AI ingliz tili yozish dasturi — izohlar o’zbek tilida.',
@@ -192,7 +192,7 @@ NV.PROJECTS = [
          en:['Scheduled tasks','Focus timer','Browser-generated focus sounds','Weekly view','Streaks and coins','Reward shop']},
   next:{uz:'Haqiqiy foydalanuvchilar bilan sinov va statistikani o’lchash.',en:'Test with real users and measure the stats.'},
   tags:['JavaScript','UX','Gamification']},
- {id:'oqim',icon:'wave',c1:'#5CF2B5',c2:'#0e6a4a',cats:['biznes','talim'],key:['oqim'],
+ {id:'oqim',link:'https://claude.ai/artifact/DwVT1kkDfyyqEStYNdkRL4',icon:'wave',c1:'#5CF2B5',c2:'#0e6a4a',cats:['biznes','talim'],key:['oqim'],
   name:{uz:'Oqim',en:'Oqim'},
   status:{uz:'Lokal ishlab chiqish',en:'Local development'}, area:{uz:'Biznes · Ta’lim',en:'Business · Education'},
   short:{uz:'O’quv markazlari uchun admin panel: o’quvchilar, guruhlar va oylik to’lovlar nazorati.',
@@ -214,7 +214,7 @@ NV.PROJECTS = [
          en:['CSV data cleaning','KPI calculation','Visualisation','From analysis to business conclusions']},
   next:{uz:'Business Memory bilan birlashtirish.',en:'Merge into Business Memory.'},
   tags:['Pandas','Data cleaning','Data viz']},
- {id:'ritm',icon:'pulse',c1:'#FF8A5C',c2:'#8a2d10',cats:['samaradorlik'],key:['ritm','rhythm'],
+ {id:'ritm',link:'#demo',icon:'pulse',c1:'#FF8A5C',c2:'#8a2d10',cats:['samaradorlik'],key:['ritm','rhythm'],
   name:{uz:'Kun Ritmi',en:'Kun Ritmi'},
   status:{uz:'Jonli demo',en:'Live demo'}, area:{uz:'Samaradorlik',en:'Productivity'},
   short:{uz:'Holatingizni tanlang — ilova unga mos uchta aniq qadam beradi. Saytda jonli demo bor.',
@@ -225,7 +225,7 @@ NV.PROJECTS = [
          en:['4 rhythm states','3 concrete steps for each','Progress counter','Lightweight and instant']},
   next:{uz:'Kunlik tarixni saqlash va haftalik hisobot.',en:'Save daily history and add a weekly report.'},
   tags:['JavaScript','UX','Minimal']},
- {id:'game',icon:'game',c1:'#E25CFF',c2:'#5a1470',cats:[],key:['o‘yin','oyin','game','godot','3d'],
+ {id:'game',icon:'game',c1:'#E25CFF',c2:'#5a1470',cats:['oyin'],key:['o‘yin','oyin','game','godot','3d'],
   name:{uz:'3D o’yin',en:'3D game'},
   status:{uz:'Jarayonda',en:'In progress'}, area:{uz:'GameDev',en:'GameDev'},
   short:{uz:'Godot 4’da realistik ko’rinishdagi 3D o’yin — keyinchalik Play Market, App Store va brauzerda.',
@@ -235,7 +235,51 @@ NV.PROJECTS = [
   feats:{uz:['Godot 4 dvigateli','Realistik 3D muhit','Mobil va web’ga chiqarish rejasi','Universitet portfoliosi uchun asosiy loyiha'],
          en:['Godot 4 engine','Realistic 3D world','Planned mobile and web release','Flagship project for my university portfolio']},
   next:{uz:'O’ynaladigan birinchi daraja.',en:'A first playable level.'},
-  tags:['Godot 4','3D','GameDev']}
+  tags:['Godot 4','3D','GameDev']},
+ {id:'city',link:'https://claude.ai/artifact/BeWANnmN36rLd5NUsqZv6Z',icon:'rocket',c1:'#FFB547',c2:'#7a3d00',cats:['oyin'],key:['city','rush','shahar'],
+  name:{uz:'CITY RUSH 3D',en:'CITY RUSH 3D'},
+  status:{uz:'O’ynaladigan prototip',en:'Playable prototype'}, area:{uz:'GameDev · Brauzer',en:'GameDev · Browser'},
+  short:{uz:'Brauzerda ishlaydigan 3D shahar poygasi — to’siqlardan qochib, tezlikni oshirib boring.',
+         en:'A 3D city runner that plays right in the browser — dodge obstacles and keep the speed up.'},
+  desc:{uz:'CITY RUSH 3D — hech narsa o’rnatmasdan brauzerda ochiladigan 3D o’yin prototipi. Maqsad: tez yuklanadigan, telefonda ham, kompyuterda ham o’ynaladigan dinamik o’yin tajribasini sinab ko’rish. Bu katta Godot loyihasi oldidan 3D harakat, kamera va boshqaruvni mashq qilish maydoni.',
+        en:'CITY RUSH 3D is a 3D game prototype that opens in the browser with nothing to install. The goal is to test a fast-loading, dynamic game feel that works on both phone and desktop — a practice ground for 3D movement, camera and controls ahead of the bigger Godot project.'},
+  feats:{uz:['Brauzerda 3D grafika','Klaviatura va sensorli boshqaruv','Tezlashib boruvchi daraja','O’rnatishsiz — havola orqali o’ynash'],
+         en:['3D graphics in the browser','Keyboard and touch controls','Speed that ramps up','No install — play from a link']},
+  next:{uz:'Rekordlar jadvali va yangi xaritalar.',en:'A leaderboard and new maps.'},
+  tags:['JavaScript','3D','Game']},
+ {id:'neon',link:'https://claude.ai/artifact/Y2Li52VAixRgSvtUdyt25o',icon:'bolt',c1:'#5CF2FF',c2:'#0b4a70',cats:['oyin'],key:['neon'],
+  name:{uz:'NEON RUSH',en:'NEON RUSH'},
+  status:{uz:'O’ynaladigan prototip',en:'Playable prototype'}, area:{uz:'GameDev · Arkada',en:'GameDev · Arcade'},
+  short:{uz:'Neon uslubidagi tezkor arkada o’yini — reaksiya va ritm sinovi.',
+         en:'A fast neon-style arcade game that tests your reflexes and rhythm.'},
+  desc:{uz:'NEON RUSH — yorqin neon uslubidagi arkada o’yini. Qisqa, tez va yana bir marta o’ynagingiz keladigan sessiyalar uchun qurilgan. Loyiha orqali o’yin sikli, ochko tizimi va vizual effektlar ustida ishlandi.',
+        en:'NEON RUSH is an arcade game in a bright neon style, built for short, fast, “one more try” sessions. The project was a way to work on the game loop, scoring and visual effects.'},
+  feats:{uz:['Neon vizual uslub','Tezkor arkada sikli','Ochko va rekord','Telefon va kompyuterda ishlaydi'],
+         en:['Neon visual style','Fast arcade loop','Score and best score','Works on phone and desktop']},
+  next:{uz:'Ovoz effektlari va qiyinlik darajalari.',en:'Sound effects and difficulty levels.'},
+  tags:['JavaScript','Canvas','Arcade']},
+ {id:'chaqqon',link:'https://claude.ai/artifact/5iwXZeGpfuY3MAxp88wkpn',icon:'star',c1:'#FF5D8F',c2:'#7a1638',cats:['oyin','talim'],key:['chaqqon','mini'],
+  name:{uz:'Chaqqon!',en:'Chaqqon!'},
+  status:{uz:'O’ynaladigan prototip',en:'Playable prototype'}, area:{uz:'O’zbekona mini-o’yinlar',en:'Uzbek mini-games'},
+  short:{uz:'O’zbekona ruhdagi qisqa mini-o’yinlar to’plami — tezkorlik va diqqat uchun.',
+         en:'A collection of short mini-games with an Uzbek flavour — for speed and focus.'},
+  desc:{uz:'Chaqqon! — o’zbek madaniyatidan ilhomlangan mini-o’yinlar to’plami. Har bir o’yin bir necha soniyalik, lekin diqqat va chaqqonlikni sinaydi. Maqsad — mahalliy ruhdagi, oila bilan birga o’ynasa bo’ladigan yengil o’yinlar.',
+        en:'Chaqqon! (“Quick!”) is a set of mini-games inspired by Uzbek culture. Each game lasts only seconds but tests attention and quickness. The aim is light games with a local feel that a whole family can play.'},
+  feats:{uz:['Bir nechta mini-o’yin','O’zbekona mavzular','Qisqa, tez sessiyalar','O’zbek tilidagi interfeys'],
+         en:['Several mini-games','Uzbek themes','Short, quick sessions','Uzbek-language interface']},
+  next:{uz:'Yangi mini-o’yinlar va do’stlar bilan bellashuv.',en:'More mini-games and challenges with friends.'},
+  tags:['JavaScript','Casual','UZ']},
+ {id:'karvon',link:'https://claude.ai/artifact/6bBer5Q7Y3ApJ3vabuej1Y',icon:'route',c1:'#E0A96D',c2:'#6a4012',cats:['oyin','talim'],key:['karvon','ipak','silk'],
+  name:{uz:'Karvon — Ipak yo’li',en:'Karvon — Silk Road'},
+  status:{uz:'O’ynaladigan prototip',en:'Playable prototype'}, area:{uz:'Strategiya · Tarix',en:'Strategy · History'},
+  short:{uz:'Buyuk Ipak yo’li bo’ylab karvon boshqaradigan savdo-strategiya o’yini.',
+         en:'A trading strategy game where you lead a caravan along the Great Silk Road.'},
+  desc:{uz:'Karvon — Ipak yo’li shaharlari orasida savdo qiladigan strategiya o’yini. Qayerda arzon olib, qayerda qimmat sotishni o’ylab, karvoningizni o’stirasiz. O’yin orqali tarix va oddiy iqtisod tushunchalari qiziqarli tarzda o’rganiladi.',
+        en:'Karvon is a strategy game about trading between Silk Road cities. You grow your caravan by deciding where to buy cheap and where to sell high — learning a bit of history and simple economics along the way.'},
+  feats:{uz:['Ipak yo’li shaharlari','Savdo va narxlar','Karvonni rivojlantirish','Tarix + iqtisod o’yin orqali'],
+         en:['Silk Road cities','Trading and prices','Grow your caravan','History and economics through play']},
+  next:{uz:'Tasodifiy voqealar va saqlash tizimi.',en:'Random events and save games.'},
+  tags:['JavaScript','Strategy','History']}
 ];
 
 NV.MOODS = [
@@ -278,3 +322,6 @@ NV.CHAT_SUGG = {
   uz:['Qanday loyihalar bor?','Qaysi texnologiyalar?','Yo’lchi nima?','Qanday bog’lanaman?'],
   en:['What projects are there?','Which technologies?','What is Yo’lchi?','How do I get in touch?']
 };
+
+Object.assign(NV.DICT.uz,{'proj.open':'Ochish','proj.try':'Jonli demo','proj.soon':'Tez orada'});
+Object.assign(NV.DICT.en,{'proj.open':'Open','proj.try':'Live demo','proj.soon':'Coming soon'});
