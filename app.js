@@ -108,7 +108,7 @@ const nav=$('#nav'),prog=$('#prog');
 function onScroll(){const h=document.documentElement,max=h.scrollHeight-h.clientHeight;prog.style.transform=`scaleX(${max>0?h.scrollTop/max:0})`;nav.classList.toggle('solid',h.scrollTop>30);$('#hchip').classList.toggle('show',h.scrollTop>innerHeight*.5)}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#links a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-['loyihalar','demo','konikmalar','jarayon','aloqa'].forEach(id=>spy.observe(document.getElementById(id)));
+['loyihalar','tolov','konikmalar','jarayon','aloqa'].forEach(id=>spy.observe(document.getElementById(id)));
 function goTo(id){const el=document.getElementById(id);if(!el)return;el.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})}
 $('#logo').addEventListener('click',e=>{if(scrollY>innerHeight){e.preventDefault();hyperjump(e.currentTarget)}else NV.Space.warp(900)});
 $('#core').addEventListener('click',()=>{NV.Space.warp(1400);toast(t('toast.warp'),'bolt')});
@@ -130,7 +130,7 @@ function updateReadout(force){
   $('#hudFill').style.height=`calc(${(p.i+p.f)/(NV.SECTORS.length-1)} * (100% - 12px))`;
   $('#hcName').textContent=tx(s.name);$('#hcAu').textContent=fmtAU(p.au)+' AU';$('#hchip').style.setProperty('--c',s.c);
   // dock state
-  const map={0:'top',1:'loyihalar',2:'demo',6:'aloqa'};
+  const map={0:'top',1:'loyihalar',2:'akademiya',6:'aloqa'};
   $$('#dock [data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===map[p.i]));
 }
 (function hudLoop(){updateReadout();requestAnimationFrame(hudLoop)})();
@@ -417,7 +417,24 @@ function renderSugg(){$('#sugg').innerHTML=NV.CHAT_SUGG[L].map(s=>`<button type=
      const r = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q,lang:L})});
      return (await r.json()).answer;
    API kalitini HECH QACHON shu faylga yozmang — faqat serverda saqlang. */
+const AIH=[];
 async function askAI(q){
+  // 1) server AI (/api/ai): OPENAI_API_KEY bo'lsa GPT, bo'lmasa 72 darslik bazadan javob
+  try{
+    const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),15000);
+    const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q,history:AIH.slice(-8)}),signal:ctl.signal});clearTimeout(tm);
+    if(r.ok){const j=await r.json();
+      const local=await askLocal(q);const loc=typeof local==='string'?{text:local}:local;
+      // loyiha haqidagi savolga mahalliy javob aniqroq (missiya faylini ochadi)
+      if(loc.open)return loc;
+      if(j.mode==='baza'&&!(j.actions||[]).some(a=>a.type==='lesson'))return loc;
+      AIH.push({role:'user',content:q},{role:'assistant',content:j.answer||''});
+      return {text:j.answer,acts:j.actions||[]};
+    }
+  }catch(e){}
+  return askLocal(q);
+}
+async function askLocal(q){
   const s=q.toLowerCase().replace(/[’'‘`]/g,'');const U=L==='uz';
   for(const p of NV.PROJECTS){if(p.key.some(k=>s.includes(k.replace(/[’'‘`]/g,'')))){return {text:`${tx(p.name)} — ${tx(p.short)} ${U?'Holati':'Status'}: ${tx(p.status)}.`,open:p.id}}}
   if(/loyiha|proyekt|project|nima qil|what.*(do|build)/.test(s))return U?'Orbitada 13 ta loyiha bor: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi, 3D o’yin hamda CITY RUSH 3D, NEON RUSH, Chaqqon! va Karvon o’yinlari. Birortasining nomini yozing — batafsil aytaman.':'There are 13 projects in orbit: Business Memory, Yo’lchi, YozAI, Navruz Universal AI, KUNIM, Oqim, Sales Insight Lab, Kun Ritmi, a 3D game, plus the games CITY RUSH 3D, NEON RUSH, Chaqqon! and Karvon. Type any name for details.';
@@ -426,9 +443,10 @@ async function askAI(q){
   if(/salom|assalom|\bhi\b|hello|hey/.test(s))return U?'Va alaykum assalom! Loyihalar, texnologiyalar yoki hamkorlik haqida so’rang.':'Hello! Ask me about projects, tech or working together.';
   if(/kim|haqida|about|who|navro|navruz/.test(s))return U?'Navro’z — Python, AI va ma’lumotlar bilan real muammolarga sodda, ishlaydigan yechimlar quradigan dasturchi. Shiori: “G’oyadan demogacha”.':'Navro’z builds simple, working solutions to real problems with Python, AI and data. Motto: “From idea to demo”.';
   if(/yer|earth|mars|saturn|jupiter|yupiter|neptun|sayyora|planet|kosmos|space/.test(s))return U?'Bu sayt — Quyosh tizimi bo’ylab sayohat: Yer (1 AU) dan geliopauzagacha (~120 AU). Chapdagi yoki tepadagi paneldan masofa va yorug’lik yo’lini kuzating.':'This site is a journey across the Solar System — from Earth (1 AU) to the heliopause (~120 AU). Watch the distance and light-travel time in the HUD.';
-  return U?'Bu savolga haqiqiy AI ulanganda aniqroq javob beraman. Hozircha loyihalar, texnologiyalar yoki aloqa haqida so’rang.':'I’ll answer that properly once the real AI is connected. For now, ask about projects, tech or contact.';
+  return U?'Bu savol bo’yicha aniq javob topmadim. Loyihalar, texnologiyalar, kurslar (masalan “SQL JOIN nima?”) yoki aloqa haqida so’rang — yoki Orbita Akademiya’dagi AI ustozga yozing: /akademiya/':'I couldn’t find a precise answer. Ask about projects, tech, courses (e.g. “What is SQL JOIN?”) or contact — or try the AI tutor in Orbita Academy: /akademiya/';
 }
-async function ask(q){if(!q||!q.trim())return;if(chat.hidden)toggleChat(true);add(q,'me');const ty=document.createElement('div');ty.className='msg bot typing';ty.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;const a=await askAI(q);setTimeout(()=>{ty.remove();typeof a==='string'?bot(a):bot(a.text,a.open)},650+Math.random()*450)}
+async function ask(q){if(!q||!q.trim())return;if(chat.hidden)toggleChat(true);add(q,'me');const ty=document.createElement('div');ty.className='msg bot typing';ty.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(ty);msgs.scrollTop=msgs.scrollHeight;const a=await askAI(q);setTimeout(()=>{ty.remove();typeof a==='string'?bot(a):(bot(a.text,a.open),a.acts&&aiActs(a.acts))},350+Math.random()*300)}
+function aiActs(acts){acts.slice(0,3).forEach(x=>{const b=document.createElement('a');b.className='more';b.style.cssText='--c1:var(--ice);align-self:flex-start;animation:msgIn .4s var(--spring)';const href=x.type==='lesson'?`/akademiya/#/dars/${x.course}/${x.n+1}`:x.type==='course'?`/akademiya/#/kurs/${x.course}`:x.type==='page'?`/akademiya/#/${x.page}`:x.url;b.href=href;if(x.type==='url'){b.target='_blank';b.rel='noopener'}b.innerHTML=esc(x.label||'Ochish')+' '+I.arrow;msgs.appendChild(b)});msgs.scrollTop=msgs.scrollHeight}
 $('#chatForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#chatIn').value;$('#chatIn').value='';ask(v)});
 
 /* ================= MOBILE DOCK ================= */

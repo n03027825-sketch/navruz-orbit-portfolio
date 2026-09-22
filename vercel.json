@@ -1,0 +1,30 @@
+{
+  "functions": {
+    "api/ai.js": {
+      "includeFiles": "api/_courses/**"
+    },
+    "api/akademiya.js": {
+      "includeFiles": "api/_courses/**"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ]
+}

@@ -16,8 +16,8 @@ NV.CONFIG = {
 
 NV.DICT = {
   uz: {
-    'nav.projects':'Loyihalar','nav.demo':'Demo','nav.skills':'Ko’nikmalar','nav.process':'Jarayon','nav.contact':'Aloqa','nav.cta':'Bog’lanish',
-    'dock.home':'Yer','dock.projects':'Loyihalar','dock.demo':'Demo','dock.ai':'AI','dock.contact':'Aloqa',
+    'nav.projects':'Loyihalar','nav.demo':'To’lov','nav.skills':'Ko’nikmalar','nav.process':'Jarayon','nav.contact':'Aloqa','nav.cta':'Bog’lanish',
+    'dock.home':'Yer','dock.projects':'Loyihalar','dock.demo':'To’lov','dock.ai':'AI','dock.contact':'Aloqa',
     'hero.status':'Yangi loyihalar uchun ochiq · 2026',
     'hero.build':'Men quraman:',
     'hero.lead':'Python, AI va ma’lumotlar bilan real muammolarga sodda, ishlaydigan yechimlar yarataman. Kichik biznesdan tortib mehnat muhojirlarigacha — har bir loyiha bitta savoldan boshlanadi: bu kimga va qanday yordam beradi?',
@@ -54,7 +54,7 @@ NV.DICT = {
     'm.next':'Keyingi loyiha','m.ask':'AI’dan so’rash','m.collab':'Hamkorlik','m.close':'Yopish',
     'm.status':'Holat','m.area':'Yo’nalish','m.stack':'Texnologiyalar','m.feats':'Asosiy imkoniyatlar','m.nextstep':'Keyingi qadam:',
     'm.collabMsg':'Salom! {p} loyihasi bo’yicha gaplashmoqchi edim.',
-    'chat.title':'Orbita AI','chat.sub':'Demo rejim · haqiqiy AI tez orada ulanadi','chat.ph':'Savol yozing…','chat.open':'AI yordamchi','chat.drag':'Sudrang yoki bosing',
+    'chat.title':'Orbita AI','chat.sub':'AI ustoz · loyihalar va 72 dars bazasi','chat.ph':'Savol yozing…','chat.open':'AI yordamchi','chat.drag':'Sudrang yoki bosing',
     'chat.hello':'Salom! Men Orbita AI. Navro’zning loyihalari, texnologiyalari yoki hamkorlik haqida so’rang.',
     'hud.from':'Quyoshdan','hud.light':'Yorug’lik yo’li',
     'arrive':'Yetib keldik',
@@ -63,8 +63,8 @@ NV.DICT = {
     'aria.menuPrev':'Oldingi','aria.menuNext':'Keyingi'
   },
   en: {
-    'nav.projects':'Projects','nav.demo':'Demo','nav.skills':'Skills','nav.process':'Process','nav.contact':'Contact','nav.cta':'Let’s talk',
-    'dock.home':'Earth','dock.projects':'Projects','dock.demo':'Demo','dock.ai':'AI','dock.contact':'Contact',
+    'nav.projects':'Projects','nav.demo':'Payment','nav.skills':'Skills','nav.process':'Process','nav.contact':'Contact','nav.cta':'Let’s talk',
+    'dock.home':'Earth','dock.projects':'Projects','dock.demo':'Payment','dock.ai':'AI','dock.contact':'Contact',
     'hero.status':'Open to new projects · 2026',
     'hero.build':'I build:',
     'hero.lead':'I build simple, working solutions to real problems with Python, AI and data. From small businesses to labour migrants — every project starts with one question: who is this for, and how does it help?',
@@ -101,7 +101,7 @@ NV.DICT = {
     'm.next':'Next project','m.ask':'Ask AI','m.collab':'Collaborate','m.close':'Close',
     'm.status':'Status','m.area':'Area','m.stack':'Stack','m.feats':'Key features','m.nextstep':'Next step:',
     'm.collabMsg':'Hi! I’d like to talk about the {p} project.',
-    'chat.title':'Orbit AI','chat.sub':'Demo mode · real AI coming soon','chat.ph':'Ask something…','chat.open':'AI assistant','chat.drag':'Drag or tap',
+    'chat.title':'Orbit AI','chat.sub':'AI tutor · projects + 72-lesson base','chat.ph':'Ask something…','chat.open':'AI assistant','chat.drag':'Drag or tap',
     'chat.hello':'Hi! I’m Orbit AI. Ask me about Navro’z’s projects, tech stack or working together.',
     'hud.from':'From the Sun','hud.light':'Light travel',
     'arrive':'Arrived at',
@@ -122,7 +122,7 @@ NV.SECTORS = [
     fact:{uz:'Hayot borligi ma’lum bo’lgan yagona sayyora.',en:'The only world known to host life.'}},
   {id:'loyihalar',  au:1.52,  c:'#FF7A45', name:{uz:'Mars',en:'Mars'},
     fact:{uz:'Olimp tog’i — Quyosh tizimidagi eng baland vulqon shu yerda.',en:'Home of Olympus Mons, the tallest volcano in the Solar System.'}},
-  {id:'demo',       au:2.7,   c:'#C9B79C', name:{uz:'Asteroidlar kamari',en:'Asteroid belt'},
+  {id:'tolov',      au:2.7,   c:'#C9B79C', name:{uz:'Asteroidlar kamari',en:'Asteroid belt'},
     fact:{uz:'Eng katta obyekti — mitti sayyora Tserera.',en:'Its largest object is the dwarf planet Ceres.'}},
   {id:'konikmalar', au:5.20,  c:'#E0A96D', name:{uz:'Yupiter',en:'Jupiter'},
     fact:{uz:'Buyuk Qizil Dog’ — Yerdan ham kengroq bo’ron.',en:'The Great Red Spot is a storm wider than Earth.'}},
@@ -298,7 +298,12 @@ NV.SKILLS = [
  ['plug','API',{uz:'Qurish va ulash',en:'Building & integrating'},{uz:'OpenAI API’ni xavfsiz backend orqali ulash — kalit hech qachon brauzerga chiqmaydi.',en:'Connecting the OpenAI API through a secure backend — the key never reaches the browser.'}],
  ['send',{uz:'Telegram botlar',en:'Telegram bots'},{uz:'Foydalanuvchi turgan joyda',en:'Where users already are'},{uz:'O’zbekistonda odamlar Telegram’da — shuning uchun mahsulot ham u yerga boradi.',en:'In Uzbekistan people live in Telegram — so the product goes there too.'}],
  ['gear',{uz:'Avtomatlashtirish',en:'Automation'},{uz:'CSV/Excel va data pipeline',en:'CSV/Excel & data pipelines'},{uz:'Takrorlanadigan qo’l ishini skriptga topshirish — tejalgan vaqt o’lchanadi.',en:'Handing repetitive manual work to scripts — and measuring the time saved.'}],
- ['server','Backend',{uz:'Server mantiq',en:'Server logic'},{uz:'Ma’lumot saqlash, xavfsizlik va API — ko’rinmaydigan, lekin hammasini ushlab turadigan qism.',en:'Storage, security and APIs — the invisible part that holds everything together.'}]
+ ['server','Backend',{uz:'Server mantiq',en:'Server logic'},{uz:'Ma’lumot saqlash, xavfsizlik va API — ko’rinmaydigan, lekin hammasini ushlab turadigan qism.',en:'Storage, security and APIs — the invisible part that holds everything together.'}],
+ ['table','SQL',{uz:'Ma’lumotlar bazasi',en:'Databases'},{uz:'SELECT, JOIN, GROUP BY — biznes savoliga bazadan to’g’ridan-to’g’ri javob olish.',en:'SELECT, JOIN, GROUP BY — answering business questions straight from the database.'}],
+ ['brain','Machine Learning',{uz:'Bashorat modellari',en:'Predictive models'},{uz:'scikit-learn bilan regressiya va klassifikatsiya: ma’lumotdan o’rganib, kelajakni taxmin qiladigan model.',en:'Regression and classification with scikit-learn: models that learn from data to predict.'}],
+ ['gear',{uz:'Algoritmlar',en:'Algorithms'},{uz:'Big-O va ma’lumot tuzilmalari',en:'Big-O & data structures'},{uz:'Qidiruv, saralash, stek, navbat, graf — kodni tez va tejamkor qilish uchun.',en:'Search, sorting, stacks, queues, graphs — to make code fast and efficient.'}],
+ ['plug',{uz:'To’lov integratsiyasi',en:'Payment integration'},{uz:'Payme · Click · Visa',en:'Payme · Click · Visa'},{uz:'Orbita Akademiya’da Payme Merchant API, Click SHOP API va karta to’lovini server tomonda xavfsiz tekshirish.',en:'Payme Merchant API, Click SHOP API and card payments verified server-side in Orbita Academy.'}],
+ ['code',{uz:'O’quv platforma',en:'Learning platform'},{uz:'Video-dars, test, sertifikat',en:'Video lessons, tests, certificates'},{uz:'Ovozli animatsion darslar, testlar, yakuniy imtihon va tekshiriladigan sertifikat — hammasi o’zim qurgan tizimda.',en:'Narrated animated lessons, quizzes, a final exam and verifiable certificates — all on a system I built.'}]
 ];
 
 NV.PROCESS = [
@@ -319,9 +324,27 @@ NV.QUOTES = [
 NV.MARQ = ['Python','Pandas','AI / LLM','NLP','JavaScript','HTML & CSS','Git & GitHub','API','Telegram','Automation','Backend','Godot 4'];
 
 NV.CHAT_SUGG = {
-  uz:['Qanday loyihalar bor?','Qaysi texnologiyalar?','Yo’lchi nima?','Qanday bog’lanaman?'],
-  en:['What projects are there?','Which technologies?','What is Yo’lchi?','How do I get in touch?']
+  uz:['Qanday loyihalar bor?','Qaysi kurs bepul?','for sikli nima?','Qanday bog’lanaman?'],
+  en:['What projects are there?','Which course is free?','What is a for loop?','How do I get in touch?']
 };
 
 Object.assign(NV.DICT.uz,{'proj.open':'Ochish','proj.try':'Jonli demo','proj.soon':'Tez orada'});
 Object.assign(NV.DICT.en,{'proj.open':'Open','proj.try':'Live demo','proj.soon':'Coming soon'});
+
+/* ---- To'lov bo'limi (sektor 2) ---- */
+Object.assign(NV.DICT.uz,{
+ 'pay.title':'O’qing, <em>bir marta to’lang</em>',
+ 'pay.lead':'Orbita Akademiya: 12 kurs, 72 ta ovozli video-dars, har darsda test va oxirida tekshiriladigan sertifikat. Python asoslari to’liq bepul, har bir pullik kursning 1-darsi ham bepul. Narx kursning murakkabligiga qarab belgilangan.',
+ 'pay.t1':'Bepul','pay.d1':'Dasturlashni noldan boshlash uchun.','pay.f1a':'Python asoslari — 6 dars','pay.f1b':'Har pullik kursning 1-darsi','pay.f1c':'AI ustoz va sertifikat','pay.b1':'Bepul boshlash',
+ 'pay.t2':'Boshlang’ich','pay.k':'ming so’m','pay.d2':'Tushunishga oson, tez natija beradigan kurslar.','pay.f2':'Imtihon + sertifikat','pay.b2':'Kurslarni ko’rish',
+ 'pay.t3':'Kuchli daraja','pay.d3':'Chuqur, amaliy va murakkab yo’nalishlar.','pay.f3a':'Algoritmlar · Backend API','pay.f3b':'Machine Learning','pay.b3':'Narxlar va to’lov',
+ 'pay.safe':'To’lov Payme, Click yoki Visa/Mastercard orqali. Karta ma’lumotlari saytimizga kelmaydi — to’lov tizimining himoyalangan sahifasida kiritiladi. Bir marta to’laysiz, kurs butunlay ochiladi.'
+});
+Object.assign(NV.DICT.en,{
+ 'pay.title':'Learn, <em>pay once</em>',
+ 'pay.lead':'Orbita Academy: 12 courses, 72 narrated video lessons, a quiz in every lesson and a verifiable certificate at the end. Python basics is fully free, and lesson 1 of every paid course is free too. Prices follow course difficulty.',
+ 'pay.t1':'Free','pay.d1':'To start programming from zero.','pay.f1a':'Python basics — 6 lessons','pay.f1b':'Lesson 1 of every paid course','pay.f1c':'AI tutor and certificate','pay.b1':'Start free',
+ 'pay.t2':'Starter','pay.k':'thousand UZS','pay.d2':'Easy-to-grasp courses with quick results.','pay.f2':'Exam + certificate','pay.b2':'See courses',
+ 'pay.t3':'Advanced','pay.d3':'Deep, practical and demanding tracks.','pay.f3a':'Algorithms · Backend API','pay.f3b':'Machine Learning','pay.b3':'Pricing & payment',
+ 'pay.safe':'Pay with Payme, Click or Visa/Mastercard. Card details never reach our site — they are entered on the payment provider’s secure page. Pay once and the whole course is yours.'
+});

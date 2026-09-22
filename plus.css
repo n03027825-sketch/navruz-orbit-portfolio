@@ -171,3 +171,23 @@
   .les-p{font-size:15px}
 }
 @media (prefers-reduced-motion:reduce){#intro{display:none}}
+
+/* ---------- TO'LOV bo'limi ---------- */
+.pay-head{max-width:760px}
+.pay-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
+.pay-card{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px 24px;border-radius:26px;border:1px solid var(--line);background:radial-gradient(ellipse at 100% 0,color-mix(in srgb,var(--pc) 16%,transparent),transparent 60%),var(--panel);overflow:hidden}
+.pay-card.hot{border-color:color-mix(in srgb,var(--pc) 55%,transparent);box-shadow:0 20px 60px -30px var(--pc)}
+.pay-tag{align-self:flex-start;font:600 11.5px/1 var(--mono,monospace);letter-spacing:.12em;text-transform:uppercase;color:var(--pc);padding:7px 10px;border-radius:99px;border:1px solid color-mix(in srgb,var(--pc) 40%,transparent)}
+.pay-price{font:800 clamp(30px,3.4vw,42px)/1 var(--disp);letter-spacing:-.02em}
+.pay-price small{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
+.pay-card p{margin:0;color:var(--muted);font-size:14.5px}
+.pay-card ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14.5px}
+.pay-card li{display:flex;gap:9px;align-items:flex-start}
+.pay-card li::before{content:"";flex:none;width:7px;height:7px;margin-top:7px;border-radius:50%;background:var(--pc)}
+.pay-card .btn{margin-top:auto;align-self:flex-start}
+.pay-methods{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;padding:18px 22px;border-radius:22px;border:1px dashed var(--line);background:rgba(255,255,255,.02)}
+.pay-methods .pm{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px}
+.pay-methods .lg{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;font:800 10.5px/1.05 var(--disp);text-align:center;color:#fff}
+.lg.payme{background:#00CCCC;color:#083B3B}.lg.click{background:#0A6CFF}.lg.visa{background:#1A1F71;letter-spacing:.04em}
+.pay-methods p{flex:1 1 320px;margin:0;color:var(--muted);font-size:13.5px}
+@media (max-width:900px){.pay-grid{grid-template-columns:1fr}}

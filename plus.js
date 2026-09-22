@@ -207,7 +207,7 @@ function mountAcademy(){
   sec.innerHTML=`<div class="ac-head rv"><div><span class="eyebrow" data-i18n="ac.k"></span><h2 class="h2" data-i18n-html="ac.title"></h2><p class="lead" data-i18n="ac.lead"></p></div>
   <div class="ac-meter"><div><strong>${TRACKS.length}</strong><span data-i18n="ac.m1"></span></div><div><strong>${LESSONS}</strong><span data-i18n="ac.m2"></span></div><div><strong>${LESSONS}</strong><span data-i18n="ac.m3"></span></div></div></div>
   <div class="tracks" id="tracks"></div>
-  <div class="ac-cta rv"><div><h4 data-i18n="ac.ctaT"></h4><p data-i18n="ac.ctaP"></p></div><button class="btn pri" type="button" id="acJoin"><span data-i18n="ac.ctaB"></span>${IC.send}</button></div>`;
+  <div class="ac-cta rv"><div><h4 data-i18n="ac.ctaT"></h4><p data-i18n="ac.ctaP"></p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn pri" href="/akademiya/">${L()==='uz'?'Orbita Akademiya — 12 kurs':'Orbita Academy — 12 courses'}${IC.send}</a><button class="btn ghost" type="button" id="acJoin"><span data-i18n="ac.ctaB"></span></button></div></div>`;
   const after=$('#loyihalar');after.parentNode.insertBefore(sec,after.nextSibling);
   $('#acJoin').addEventListener('click',()=>toContact(t('cp.msg',{t:L()==='uz'?'Akademiya':'Academy'})));
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});

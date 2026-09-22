@@ -36,7 +36,7 @@
     <ul class="links" id="links">
       <li><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a></li>
       <li><a href="#akademiya" data-i18n="nav.academy">Akademiya</a></li>
-      <li><a href="#demo" data-i18n="nav.demo">Demo</a></li>
+      <li><a href="#tolov" data-i18n="nav.demo">To’lov</a></li>
       <li><a href="#konikmalar" data-i18n="nav.skills">Ko’nikmalar</a></li>
       <li><a href="#jarayon" data-i18n="nav.process">Jarayon</a></li>
       <li><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></li>
@@ -72,7 +72,7 @@
         </div>
         <div class="hstats">
           <div><strong data-count="13">13</strong><span data-i18n="hero.s1">loyiha orbitada</span></div>
-          <div><strong data-count="9">9</strong><span data-i18n="hero.s2">texnologiya yo’nalishi</span></div>
+          <div><strong data-count="14">14</strong><span data-i18n="hero.s2">texnologiya yo’nalishi</span></div>
           <div><strong data-count="4">4</strong><span data-i18n="hero.s3">bosqichli ish usuli</span></div>
         </div>
         <a href="#loyihalar" class="scrollcue"><i></i><span data-i18n="hero.scroll">Pastga — Quyosh tizimi bo’ylab</span></a>
@@ -114,25 +114,43 @@
     </div>
   </section>
 
-  <!-- ================= DEMO (Asteroidlar) ================= -->
-  <section id="demo" class="sec inner">
-    <div class="demo">
-      <div class="rv">
-        <span class="eyebrow" data-sector="2"></span>
-        <h2 class="h2" data-i18n-html="demo.title">Bugun qanday <em>ritmdasiz?</em></h2>
-        <p class="lead" data-i18n="demo.lead"></p>
-        <div class="cta" style="margin-top:24px">
-          <button class="btn ghost mag" data-project="ritm"><span data-i18n="demo.about">Loyiha haqida</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
-        </div>
-      </div>
-      <div class="device rv" id="device">
-        <div class="top"><span>KUN RITMI</span><span data-i18n="demo.live">JONLI DEMO</span></div>
-        <p class="q" data-i18n="demo.q">Bugun qanday ritmdasiz?</p>
-        <div class="moods" id="moods"></div>
-        <ul class="steps" id="steps"></ul>
-        <div class="rprog"><span id="rtxt"></span><div class="bar"><i id="rbar"></i></div></div>
-      </div>
+  <!-- ================= TO'LOV (Asteroidlar kamari) ================= -->
+  <section id="tolov" class="sec inner">
+    <div class="pay-head rv">
+      <span class="eyebrow" data-sector="2"></span>
+      <h2 class="h2" data-i18n-html="pay.title">O‘qing, <em>bir marta to‘lang</em></h2>
+      <p class="lead" data-i18n="pay.lead"></p>
     </div>
+    <div class="pay-grid">
+      <article class="pay-card rv" style="--pc:#7CF0A6">
+        <span class="pay-tag" data-i18n="pay.t1">Bepul</span>
+        <strong class="pay-price">0 <small>so‘m</small></strong>
+        <p data-i18n="pay.d1"></p>
+        <ul><li data-i18n="pay.f1a"></li><li data-i18n="pay.f1b"></li><li data-i18n="pay.f1c"></li></ul>
+        <a class="btn ghost mag" href="/akademiya/#/kurs/python"><span data-i18n="pay.b1">Bepul boshlash</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pay-card rv" style="--pc:#6CE4F0">
+        <span class="pay-tag" data-i18n="pay.t2">Boshlang‘ich</span>
+        <strong class="pay-price">29–69 <small data-i18n="pay.k">ming so‘m</small></strong>
+        <p data-i18n="pay.d2"></p>
+        <ul><li>HTML & CSS · Git · AI prompt</li><li>JavaScript · OOP · SQL</li><li data-i18n="pay.f2"></li></ul>
+        <a class="btn ghost mag" href="/akademiya/#/narxlar"><span data-i18n="pay.b2">Kurslarni ko‘rish</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="pay-card hot rv" style="--pc:#FFB547">
+        <span class="pay-tag" data-i18n="pay.t3">Kuchli daraja</span>
+        <strong class="pay-price">79–149 <small data-i18n="pay.k">ming so‘m</small></strong>
+        <p data-i18n="pay.d3"></p>
+        <ul><li>Telegram bot · Pandas</li><li data-i18n="pay.f3a"></li><li data-i18n="pay.f3b"></li></ul>
+        <a class="btn pri mag" href="/akademiya/#/narxlar"><span data-i18n="pay.b3">Narxlar va to‘lov</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+    <div class="pay-methods rv">
+      <div class="pm"><b class="lg payme">pay<br>me</b><span>Payme</span></div>
+      <div class="pm"><b class="lg click">click</b><span>Click</span></div>
+      <div class="pm"><b class="lg visa">VISA</b><span>Visa / Mastercard</span></div>
+      <p data-i18n="pay.safe"></p>
+    </div>
+    <div hidden aria-hidden="true"><div id="device"><div id="moods"></div><ul id="steps"></ul><span id="rtxt"></span><i id="rbar"></i></div></div>
   </section>
 
   <!-- ================= SKILLS (Yupiter) ================= -->
@@ -202,7 +220,7 @@
 <footer>
   <div class="fin">
     <span data-i18n="foot.motto">Kichik qadamlar + doimiylik = katta natija</span>
-    <div class="flinks"><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a><a href="#akademiya" data-i18n="nav.academy">Akademiya</a><a href="#demo" data-i18n="nav.demo">Demo</a><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></div>
+    <div class="flinks"><a href="#loyihalar" data-i18n="nav.projects">Loyihalar</a><a href="#akademiya" data-i18n="nav.academy">Akademiya</a><a href="#tolov" data-i18n="nav.demo">To’lov</a><a href="/akademiya/">Orbita Akademiya</a><a href="#aloqa" data-i18n="nav.contact">Aloqa</a></div>
     <button class="rocket" data-jump><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 10L14 16h-4l-2.5-4C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M9.5 16 8 20l2-1 2 2 2-2 2 1-1.5-4"/></svg><span data-i18n="foot.top">Yerga qaytish</span></button>
   </div>
 </footer>
@@ -226,7 +244,7 @@
 <button class="fab" id="fab" type="button" data-cursor="AI"><span class="tip" data-i18n="chat.drag">Sudrang yoki bosing</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></button>
 <div class="chat" id="chat" hidden role="dialog" aria-labelledby="chatTitle">
   <div class="handle" id="chatHandle"></div>
-  <header><span class="av"></span><div><b id="chatTitle" data-i18n="chat.title">Orbita AI</b><small data-i18n="chat.sub">Demo rejim</small></div><button class="x" id="chatX" data-i18n-aria="m.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></header>
+  <header><span class="av"></span><div><b id="chatTitle" data-i18n="chat.title">Orbita AI</b><small data-i18n="chat.sub">AI ustoz</small></div><button class="x" id="chatX" data-i18n-aria="m.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></header>
   <div class="msgs" id="msgs" aria-live="polite"></div>
   <div class="sugg" id="sugg"></div>
   <form id="chatForm"><input id="chatIn" autocomplete="off" data-i18n-ph="chat.ph" data-i18n-aria="chat.ph"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button></form>
@@ -243,7 +261,7 @@
 <div class="toasts" id="toasts"></div>
 
 <script src="data.js"></script>
-<script src="space.js"></script>
+<script src="edu-bg.js"></script>
 <script src="app.js"></script>
 <script src="plus.js"></script>
 <script src="nova.js"></script>
