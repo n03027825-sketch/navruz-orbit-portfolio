@@ -206,7 +206,7 @@ function home() {
     <div>
       <span class="kick"><i></i>Orbita Akademiya · 2026</span>
       <h1>Dasturlashni <em>video-dars</em>, test va AI ustoz bilan o‘rganing</h1>
-      <p class="lead">${CAT.length} ta kurs, ${lessons} ta ovozli video-dars, har darsda tushuntirish, kod va test. Oxirida — tekshiriladigan sertifikat. Python asoslari to‘liq bepul, qolgan kurslarning birinchi darsi ham bepul.</p>
+      <p class="lead">${CAT.length} ta kurs, ${lessons} ta video-dars (tanlangan eng yaxshi o‘zbekcha YouTube darslari), har darsda tushuntirish, kod va test. Oxirida — tekshiriladigan sertifikat. Python asoslari to‘liq bepul, qolgan kurslarning birinchi darsi ham bepul.</p>
       <div class="cta"><a class="btn pri" href="#/dars/python/1">${IC.play} Bepul boshlash</a><a class="btn ghost" href="#kurslar">Barcha kurslar</a><button class="btn ghost" type="button" data-ai>${IC.spark} AI ustozdan so‘rash</button></div>
       <div class="stats"><div><b>${CAT.length}</b><span>kurs</span></div><div><b>${lessons}</b><span>video-dars</span></div><div><b>${lessons * 3 + CAT.length * 10}</b><span>test savoli</span></div><div><b>24/7</b><span>AI ustoz</span></div></div>
     </div>
@@ -223,7 +223,7 @@ function home() {
   <section class="sec">
     <div class="sh"><div><span class="eyebrow">Qanday ishlaydi</span><h2>To‘rt qadam — <em>sertifikatgacha</em></h2></div></div>
     <div class="cards4">
-      <div class="card"><div class="n">01</div><h4>Video-dars</h4><p>Animatsiyali slaydlar, ovozli tushuntirish va subtitr. Tezligini o‘zingiz tanlaysiz.</p></div>
+      <div class="card"><div class="n">01</div><h4>Video-dars</h4><p>Har bir dars uchun tanlab olingan o‘zbek tilidagi YouTube darsligi va qisqa animatsion takrorlash.</p></div>
       <div class="card"><div class="n">02</div><h4>Tushuntirish va kod</h4><p>Qisqa matn, tayyor kod namunasi va qo‘shimcha YouTube videolar.</p></div>
       <div class="card"><div class="n">03</div><h4>Test</h4><p>Har darsdan keyin 3 ta savol. 2 tasiga to‘g‘ri javob — dars yakunlandi.</p></div>
       <div class="card"><div class="n">04</div><h4>Imtihon va sertifikat</h4><p>10 savollik yakuniy imtihon, 70% dan yuqori — noyob raqamli sertifikat.</p></div>
@@ -238,7 +238,7 @@ function home() {
   <section class="sec faq">
     <div class="sh"><div><span class="eyebrow">Savollar</span><h2>Ko‘p so‘raladigan <em>savollar</em></h2></div></div>
     <details open><summary>Nimadan boshlasam bo‘ladi?</summary><p>“Python asoslari” kursidan — u butunlay bepul va hech qanday tajriba talab qilmaydi. Keyin sayt yaratish (HTML/CSS) yoki ma’lumot tahliliga o‘tishingiz mumkin.</p></details>
-    <details><summary>Video-darslar qanday ishlaydi?</summary><p>Har bir dars animatsiyali slaydlar va ovozli tushuntirishdan iborat, pastida subtitr chiqadi. Qo‘shimcha ravishda har kursda o‘zbek va ingliz tilidagi eng yaxshi YouTube videolari tanlab qo‘yilgan.</p></details>
+    <details><summary>Video-darslar qanday ishlaydi?</summary><p>Har bir darsning tepasida shu mavzu bo‘yicha tanlab olingan o‘zbekcha YouTube darsligi turadi (ba’zilarida qo‘shimcha video ham bor). Videodan keyin tushuntirish, kod namunasi va test bor; “Animatsiya” bo‘limida esa dars ovozli slaydlarda qisqacha takrorlanadi.</p></details>
     <details><summary>AI ustoz nima qila oladi?</summary><p>Savolingizga kurs materiallari asosida javob beradi, kerakli darsni ochib beradi (“SQL 5-darsni och”), mikrofon orqali ovozli savolni tushunadi va javobni ovozda o‘qib beradi.</p></details>
     <details><summary>Sertifikat haqiqiymi?</summary><p>Har bir sertifikatda noyob raqam bor. Uni istalgan kishi “Sertifikat tekshirish” sahifasida tekshira oladi — ism, kurs, ball va sana ko‘rinadi.</p></details>
     <details><summary>Boshqa qurilmada qanday kiraman?</summary><p>Kabinetingizdagi “Kirish kodi”ni saqlab qo‘ying. Yangi qurilmada “Kirish kodi bilan kirish” orqali barcha natijalaringiz qaytadi.</p></details>
@@ -282,7 +282,7 @@ function coursePage(c) {
       <div id="ytBox" style="margin-top:14px"></div>
     </div>
     <aside class="buy"><div class="eyebrow">${own ? 'Kurs sizda ochiq' : 'Kurs narxi'}</div><div class="big">${own && c.price ? '✓ Ochiq' : som(c.price)}</div>
-      <ul><li>${n} ta video-dars (ovozli)</li><li>Tushuntirish va kod namunalari</li><li>${n * 3} ta test savoli</li><li>Yakuniy imtihon va sertifikat</li><li>AI ustoz yordami</li></ul>
+      <ul><li>${n} ta video-dars (YouTube + animatsiya)</li><li>Tushuntirish va kod namunalari</li><li>${n * 3} ta test savoli</li><li>Yakuniy imtihon va sertifikat</li><li>AI ustoz yordami</li></ul>
       ${own ? `<a class="btn pri" style="width:100%" href="#/dars/${c.id}/${Math.min(n, d + 1)}">${IC.play} ${d ? 'Davom etish' : 'Boshlash'}</a>` : `<button class="btn sun" style="width:100%" id="buyBtn">Kursni ochish — ${som(c.price)}</button><a class="btn ghost" style="width:100%;margin-top:10px" href="#/dars/${c.id}/1">${IC.play} 1-dars bepul</a>`}
       ${crt ? `<a class="btn ghost" style="width:100%;margin-top:10px" href="#/sertifikat/${crt.id}">🏅 Sertifikatim</a>` : ''}
     </aside></section>`;
@@ -313,8 +313,8 @@ async function lessonPage(c, n) {
     <div>
       <a class="back" href="#/kurs/${c.id}">${IC.back} ${esc(c.title)}</a>
       <h2 style="font-size:clamp(22px,3vw,32px);margin:10px 0 14px">${n + 1}-dars. ${esc(L.title)}</h2>
-      <div class="player" id="player"></div>
-      <div class="tabs" id="tabs"><button class="on" data-t="x">📖 Tushuntirish</button><button data-t="code">💻 Kod</button><button data-t="q">✅ Test</button><button data-t="yt">▶ YouTube</button></div>
+      <div class="vbox" id="vbox"></div>
+      <div class="tabs" id="tabs"><button class="on" data-t="x">📖 Tushuntirish</button><button data-t="code">💻 Kod</button><button data-t="q">✅ Test</button><button data-t="anim">🎬 Animatsiya</button></div>
       <div class="pane" id="pane"></div>
       <div class="lnav">${n > 0 ? `<a class="btn ghost" href="#/dars/${c.id}/${n}">${IC.back} Oldingi dars</a>` : '<span></span>'}${n < c.lessons.length - 1 ? `<a class="btn ghost" href="#/dars/${c.id}/${n + 2}">Keyingi dars ${IC.arrow}</a>` : `<a class="btn pri" href="#/imtihon/${c.id}">Yakuniy imtihon 🏁</a>`}</div>
     </div>
@@ -323,19 +323,33 @@ async function lessonPage(c, n) {
       ${c.lessons.map((t, i) => `<a class="lrow ${p[i] ? 'done' : ''}" href="#/dars/${c.id}/${i + 1}" ${i === n ? 'style="border-color:var(--c)"' : ''}><span class="no">${p[i] ? '✓' : i + 1}</span><span class="t"><b style="font-size:13.5px">${esc(t)}</b></span></a>`).join('')}
       <button class="btn ghost" type="button" id="askAi">${IC.spark} Shu dars bo‘yicha savol</button>
     </aside></section>`;
-  player = new Player($('#player'), L.v, c);
+  mountVideo(c, n);
   const pane = $('#pane');
   const tabs = {
-    x: () => { pane.innerHTML = `<div class="prose">${md(L.x)}</div>`; },
+    x: () => { pane.innerHTML = `<div class="prose">${md(L.x)}</div>${L.task ? `<div class="task"><b>🎯 Amaliy vazifa</b><p>${esc(L.task)}</p><small>Vazifani bajarib ko‘ring — bilim amaliyotda mustahkamlanadi. Savol tug‘ilsa, AI ustozdan so‘rang.</small></div>` : ''}`; },
     code: () => { pane.innerHTML = `<div class="code"><button class="btn ghost sm cp" type="button">${IC.copy} Nusxa</button><pre>${hl(L.code, L.lang)}</pre></div><p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">Kodni o‘zingiz yozib, ishga tushirib ko‘ring. Python uchun: <a href="https://www.online-python.com/" target="_blank" rel="noopener" style="color:var(--ice)">online-python.com</a>, SQL uchun: <a href="https://sqliteonline.com/" target="_blank" rel="noopener" style="color:var(--ice)">sqliteonline.com</a>.</p>`;
       $('.cp', pane).addEventListener('click', () => { navigator.clipboard && navigator.clipboard.writeText(L.code).then(() => toast('Kod nusxalandi')); }); },
     q: () => quiz(pane, L, c, n),
-    yt: () => { const v = (c.yt || [])[n % Math.max(1, (c.yt || []).length)]; pane.innerHTML = (v ? `<iframe class="embed" src="https://www.youtube-nocookie.com/embed/${v[0]}?rel=0" title="${esc(v[1])}" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe><p style="margin:10px 0 0;font-weight:700">${esc(v[1])}</p>` : '') + `<p style="margin:12px 0 0"><a class="btn ghost sm" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(c.lessons[n] + ' ' + c.title.split(':')[0] + ' o‘zbek tilida')}">YouTube’da shu mavzu ${IC.arrow}</a></p>`; }
+    anim: () => { pane.innerHTML = `<p style="color:var(--muted);font-size:14px;margin:0 0 12px">Qisqa animatsion takrorlash — darsning asosiy fikrlari ovozli slaydlarda.</p><div class="player" id="player"></div>`;
+      player = new Player($('#player'), L.v, c);
+      player.onEnd = () => { const b = $('#tabs [data-t=q]'); b.click(); pane.scrollIntoView({ behavior: 'smooth', block: 'start' }); }; }
   };
-  $$('#tabs button').forEach(b => b.addEventListener('click', () => { $$('#tabs button').forEach(x => x.classList.toggle('on', x === b)); tabs[b.dataset.t](); }));
+  $$('#tabs button').forEach(b => b.addEventListener('click', () => { if (player) { player.stop(); player = null; } $$('#tabs button').forEach(x => x.classList.toggle('on', x === b)); tabs[b.dataset.t](); }));
   tabs.x();
-  player.onEnd = () => { const b = $('#tabs [data-t=q]'); b.click(); pane.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
   $('#askAi').addEventListener('click', () => AI.open(`“${L.title}” mavzusini oddiyroq tushuntirib ber`));
+}
+function mountVideo(c, n) {
+  const box = $('#vbox'); if (!box) return;
+  const vs = (c.yt || [])[n] || [];
+  if (!vs.length) { box.innerHTML = `<div class="note">Bu darsga video biriktirilmagan — tushuntirish va testdan foydalaning.</div>`; return; }
+  box.innerHTML = `<div class="vframe"><iframe id="ytf" class="embed" src="https://www.youtube-nocookie.com/embed/${vs[0][0]}?rel=0&modestbranding=1" title="${esc(vs[0][1])}" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <div class="vlist">${vs.map((v, i) => `<button type="button" class="vchip${i ? '' : ' on'}" data-v="${v[0]}" data-t="${esc(v[1])}"><b>${i ? 'Qo‘shimcha' : 'Asosiy video'}</b><span>${esc(v[1])}</span></button>`).join('')}
+  <a class="vchip out" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${vs[0][0]}"><b>YouTube’da ochish</b><span>Yangi oynada</span></a></div>`;
+  $$('.vchip[data-v]', box).forEach(b => b.addEventListener('click', () => {
+    $$('.vchip[data-v]', box).forEach(x => x.classList.toggle('on', x === b));
+    $('#ytf').src = `https://www.youtube-nocookie.com/embed/${b.dataset.v}?rel=0&modestbranding=1&autoplay=1`;
+    $('#ytf').title = b.dataset.t;
+  }));
 }
 function quiz(pane, L, c, n) {
   const pick = [];
