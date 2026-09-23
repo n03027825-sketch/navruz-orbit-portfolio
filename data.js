@@ -334,7 +334,7 @@ Object.assign(NV.DICT.en,{'proj.open':'Open','proj.try':'Live demo','proj.soon':
 /* ---- To'lov bo'limi (sektor 2) ---- */
 Object.assign(NV.DICT.uz,{
  'pay.title':'O’qing, <em>bir marta to’lang</em>',
- 'pay.lead':'Orbita Akademiya: 12 kurs, 72 ta ovozli video-dars, har darsda test va oxirida tekshiriladigan sertifikat. Python asoslari to’liq bepul, har bir pullik kursning 1-darsi ham bepul. Narx kursning murakkabligiga qarab belgilangan.',
+ 'pay.lead':'Orbita Akademiya: 12 kurs, 72 ta video-dars (tanlangan o‘zbekcha YouTube darsliklari), har darsda amaliy vazifa, test va oxirida tekshiriladigan sertifikat. Python asoslari to’liq bepul, har bir pullik kursning 1-darsi ham bepul. Narx kursning murakkabligiga qarab belgilangan.',
  'pay.t1':'Bepul','pay.d1':'Dasturlashni noldan boshlash uchun.','pay.f1a':'Python asoslari — 6 dars','pay.f1b':'Har pullik kursning 1-darsi','pay.f1c':'AI ustoz va sertifikat','pay.b1':'Bepul boshlash',
  'pay.t2':'Boshlang’ich','pay.k':'ming so’m','pay.d2':'Tushunishga oson, tez natija beradigan kurslar.','pay.f2':'Imtihon + sertifikat','pay.b2':'Kurslarni ko’rish',
  'pay.t3':'Kuchli daraja','pay.d3':'Chuqur, amaliy va murakkab yo’nalishlar.','pay.f3a':'Algoritmlar · Backend API','pay.f3b':'Machine Learning','pay.b3':'Narxlar va to’lov',
@@ -342,7 +342,7 @@ Object.assign(NV.DICT.uz,{
 });
 Object.assign(NV.DICT.en,{
  'pay.title':'Learn, <em>pay once</em>',
- 'pay.lead':'Orbita Academy: 12 courses, 72 narrated video lessons, a quiz in every lesson and a verifiable certificate at the end. Python basics is fully free, and lesson 1 of every paid course is free too. Prices follow course difficulty.',
+ 'pay.lead':'Orbita Academy: 12 courses, 72 video lessons (hand-picked Uzbek YouTube tutorials), a practice task and quiz in every lesson, and a verifiable certificate at the end. Python basics is fully free, and lesson 1 of every paid course is free too. Prices follow course difficulty.',
  'pay.t1':'Free','pay.d1':'To start programming from zero.','pay.f1a':'Python basics — 6 lessons','pay.f1b':'Lesson 1 of every paid course','pay.f1c':'AI tutor and certificate','pay.b1':'Start free',
  'pay.t2':'Starter','pay.k':'thousand UZS','pay.d2':'Easy-to-grasp courses with quick results.','pay.f2':'Exam + certificate','pay.b2':'See courses',
  'pay.t3':'Advanced','pay.d3':'Deep, practical and demanding tracks.','pay.f3a':'Algorithms · Backend API','pay.f3b':'Machine Learning','pay.b3':'Pricing & payment',
