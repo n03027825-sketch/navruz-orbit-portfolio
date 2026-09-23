@@ -17,9 +17,10 @@ const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){retu
 /* ---------- matnlar ---------- */
 const D={
  uz:{'nav.academy':'Akademiya','dock.academy':'Kurslar',
-  'ac.k':'Orbita Akademiya · bepul mini-darslar','ac.title':'Men <em>o’rgataman</em>',
-  'ac.lead':'O’zim o’rgangan va har kuni ishlatadigan narsalarni sodda qilib ulashaman. Har bir yo’nalish — 3 ta qisqa dars: tushuntirish, kod, natija va test. Progress brauzeringizda saqlanadi.',
-  'ac.m1':'yo’nalish','ac.m2':'dars','ac.m3':'amaliy test',
+  'ac.k':'Orbita Akademiya · video-kurslar','ac.title':'Men <em>o’rgataman</em>',
+  'ac.lead':'O’zim o’rgangan va har kuni ishlatadigan narsalarni sodda qilib ulashaman. Har bir kursda 6 ta dars: video, tushuntirish, amaliy vazifa va test, oxirida — tekshiriladigan sertifikat. Python to‘liq bepul, pullik kurslarning 1-darsi ham bepul.',
+  'ac.m1':'kurs','ac.m2':'video-dars','ac.m3':'soat material',
+  'ac.open':'Kursni ochish','ac.free':'Bepul','ac.sum':'so‘m','ac.hours':'~{h} soat','ac.lv1':'Boshlang’ich','ac.lv2':'O’rta','ac.lv3':'Chuqur',
   'ac.lessons':'{n} dars','ac.min':'~{m} daqiqa','ac.start':'Boshlash','ac.cont':'Davom ettirish','ac.again':'Qayta ko’rish','ac.done':'Tugatildi',
   'ac.ctaT':'Shaxsiy mentorlik yoki guruh darsi kerakmi?','ac.ctaP':'Yozing — darajangizga qarab yo’l xaritasi tuzib beraman. Xabar to’g’ridan-to’g’ri Telegram’imga keladi.','ac.ctaB':'Darsga yozilish',
   'cp.lesson':'Dars {n}','cp.copy':'Nusxa','cp.copied':'Kod nusxalandi','cp.out':'Natija','cp.quiz':'Tekshiruv savoli','cp.ok':'To’g’ri! Dars yakunlandi.','cp.bad':'Unchalik emas — yana bir urinib ko’ring.','cp.next':'Keyingi dars','cp.prev':'Oldingi','cp.finish':'Yakunlash','cp.close':'Yopish','cp.try':'Sinab ko’ring',
@@ -27,9 +28,10 @@ const D={
   'cp.msg':'Salom! «{t}» yo’nalishi bo’yicha dars/mentorlik haqida gaplashmoqchi edim.','toast.lesson':'Dars yakunlandi','proj.open':'Ochish','proj.try':'Jonli demo','proj.soon':'Tez orada',
   'in.brand':'Navro’z Orbitasi','in.label':'Uchishga tayyorgarlik','in.go':'Start','in.skip':'O’tkazib yuborish'},
  en:{'nav.academy':'Academy','dock.academy':'Courses',
-  'ac.k':'Orbit Academy · free mini-lessons','ac.title':'I <em>teach</em>',
-  'ac.lead':'I share what I learned and use every day — made simple. Each track is 3 short lessons: explanation, code, result and a quiz. Your progress is saved in your browser.',
-  'ac.m1':'tracks','ac.m2':'lessons','ac.m3':'hands-on quizzes',
+  'ac.k':'Orbit Academy · video courses','ac.title':'I <em>teach</em>',
+  'ac.lead':'I share what I learned and use every day — made simple. Every course has 6 lessons: video, explanation, a hands-on task and a quiz, ending with a verifiable certificate. Python is free, and the first lesson of every paid course is free too.',
+  'ac.m1':'courses','ac.m2':'video lessons','ac.m3':'hours of material',
+  'ac.open':'Open course','ac.free':'Free','ac.sum':'UZS','ac.hours':'~{h} h','ac.lv1':'Beginner','ac.lv2':'Intermediate','ac.lv3':'Advanced',
   'ac.lessons':'{n} lessons','ac.min':'~{m} min','ac.start':'Start','ac.cont':'Continue','ac.again':'Review','ac.done':'Completed',
   'ac.ctaT':'Need 1-on-1 mentoring or a group class?','ac.ctaP':'Write to me — I’ll build a roadmap for your level. The message goes straight to my Telegram.','ac.ctaB':'Join a class',
   'cp.lesson':'Lesson {n}','cp.copy':'Copy','cp.copied':'Code copied','cp.out':'Output','cp.quiz':'Check question','cp.ok':'Correct! Lesson complete.','cp.bad':'Not quite — give it another try.','cp.next':'Next lesson','cp.prev':'Previous','cp.finish':'Finish','cp.close':'Close','cp.try':'Try it',
@@ -205,7 +207,7 @@ function mountAcademy(){
   if($('#akademiya'))return;
   const sec=document.createElement('section');sec.id='akademiya';sec.className='sec inner';
   sec.innerHTML=`<div class="ac-head rv"><div><span class="eyebrow" data-i18n="ac.k"></span><h2 class="h2" data-i18n-html="ac.title"></h2><p class="lead" data-i18n="ac.lead"></p></div>
-  <div class="ac-meter"><div><strong>${TRACKS.length}</strong><span data-i18n="ac.m1"></span></div><div><strong>${LESSONS}</strong><span data-i18n="ac.m2"></span></div><div><strong>${LESSONS}</strong><span data-i18n="ac.m3"></span></div></div></div>
+  <div class="ac-meter"><div><strong id="acM1">12</strong><span data-i18n="ac.m1"></span></div><div><strong id="acM2">72</strong><span data-i18n="ac.m2"></span></div><div><strong id="acM3">—</strong><span data-i18n="ac.m3"></span></div></div></div>
   <div class="tracks" id="tracks"></div>
   <div class="ac-cta rv"><div><h4 data-i18n="ac.ctaT"></h4><p data-i18n="ac.ctaP"></p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn pri" href="/akademiya/">${L()==='uz'?'Orbita Akademiya — 12 kurs':'Orbita Academy — 12 courses'}${IC.send}</a><button class="btn ghost" type="button" id="acJoin"><span data-i18n="ac.ctaB"></span></button></div></div>`;
   const after=$('#loyihalar');after.parentNode.insertBefore(sec,after.nextSibling);
@@ -216,8 +218,29 @@ function mountAcademy(){
   new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('#links a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#akademiya'))}}),{rootMargin:'-45% 0px -50% 0px'}).observe(sec);
 }
 function ring(pct){const r=22,c=2*Math.PI*r;return `<svg class="t-ring" viewBox="0 0 54 54"><circle class="bg" cx="27" cy="27" r="${r}"/><circle class="fg" cx="27" cy="27" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}"/><text x="27" y="31" text-anchor="middle">${Math.round(pct*100)}%</text></svg>`}
+/* Haqiqiy kurslar: /api/akademiya katalogidan. Olib bo'lmasa — eski mini-darslar ko'rsatiladi. */
+let CAT=null;
+function loadCatalog(){
+  fetch('/api/akademiya?op=catalog').then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+    if(!d||!Array.isArray(d.courses)||!d.courses.length)return;
+    CAT=d.courses;
+    $('#acM1').textContent=CAT.length;
+    $('#acM2').textContent=CAT.reduce((n,c)=>n+c.lessons.length,0);
+    $('#acM3').textContent=CAT.reduce((n,c)=>n+(c.hours||0),0);
+    renderTracks();
+  }).catch(()=>{});
+}
+function renderCatalog(box){
+  box.innerHTML=CAT.map(c=>`<a class="trk dyn" href="/akademiya/#/kurs/${encodeURIComponent(c.id)}" style="--tc:${esc(c.c)}"><div class="t-top"><span class="t-ico"><i></i><b style="font-size:24px;line-height:1">${esc(c.icon)}</b></span><span class="t-price">${c.price?c.price.toLocaleString('ru')+' '+t('ac.sum'):t('ac.free')}</span></div>
+    <h3>${esc(c.title)}</h3><p>${esc(c.sub)}</p>
+    <div class="t-meta"><span class="lv">${t('ac.lv'+(c.level||1))}</span><span>${t('ac.lessons',{n:c.lessons.length})}</span><span>${t('ac.hours',{h:c.hours})}</span></div>
+    <div class="t-go"><b>${t('ac.open')} ${IC.next}</b><small>${c.price?(L()==='uz'?'1-dars bepul':'Lesson 1 free'):''}</small></div></a>`).join('');
+  if(FINE&&!RM)$$('#tracks .trk').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`});el.addEventListener('pointerleave',()=>el.style.transform='')});
+}
 function renderTracks(){
   const box=$('#tracks');if(!box)return;
+  if(CAT)return renderCatalog(box);
+  $('#acM1')&&($('#acM1').textContent=TRACKS.length,$('#acM2').textContent=LESSONS,$('#acM3').textContent='~'+Math.round(TRACKS.reduce((n,x)=>n+x.min,0)/60));
   box.innerHTML=TRACKS.map(tr=>{const d=doneCount(tr),n=tr.lessons.length,pct=d/n;
     const lab=d===0?t('ac.start'):d===n?t('ac.again'):t('ac.cont');
     return `<button type="button" class="trk dyn" data-tr="${tr.id}" style="--tc:${tr.c}"><div class="t-top"><span class="t-ico"><i></i><b>${IC[tr.ic]}</b></span>${ring(pct)}</div>
@@ -314,7 +337,7 @@ new MutationObserver(()=>{textsFor(document);renderTracks();if(cur&&$('#course')
 
 /* ---------- START ---------- */
 intro();
-mountAcademy();textsFor(document);renderTracks();
+mountAcademy();textsFor(document);renderTracks();loadCatalog();
 if(NV.Space&&NV.Space.measure)setTimeout(NV.Space.measure,100);
 NV.Academy={TRACKS,openCourse};
 })();
