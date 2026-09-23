@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const S = require('./store');
 const { CATALOG, byId, PASS } = require('./catalog');
 
-const rid = (n = 12) => crypto.randomBytes(n).toString('base64url').replace(/[-_]/g, '').slice(0, n);
+const rid = (n = 12) => { let s = ''; while (s.length < n) s += crypto.randomBytes(n).toString('base64url').replace(/[-_]/g, ''); return s.slice(0, n); };
 const sha = s => crypto.createHash('sha256').update(String(s)).digest('hex');
 const now = () => Date.now();
 

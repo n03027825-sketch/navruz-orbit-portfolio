@@ -56,9 +56,12 @@ Keyin **Deployments → Redeploy**.
 - Server ishlamasa, forma avtomatik zaxiraga o'tadi: xabar nusxalanadi + "Email'da ochish" tugmasi.
 
 ## 🎓 Orbita Akademiya (kurslar)
-- Darslar `plus.js` → `TRACKS` ichida. Har bir dars: `h` (sarlavha), `p` (tushuntirish), `tip`, `code`, `out` (natija), `q` (savol), `o` (variantlar), `a` (to'g'ri javob raqami).
-- `plus.css` — Akademiya, kurs pleyeri va 3-2-1 uchish introsi dizayni.
-- O'quvchi progressi brauzerda (`localStorage`, kalit `nv-ac`) saqlanadi.
+- Sahifa: `/akademiya/` (`akademiya/index.html`, `app.js`, `style.css`).
+- Kurslar katalogi, narxlar va YouTube videolari: `api/_lib/catalog.js` (narx faqat shu yerdan olinadi).
+- Dars matnlari, amaliy vazifalar (`task`), testlar va yakuniy imtihon: `api/_courses/<kurs>.js`.
+- Backend: `api/akademiya.js` (ro‘yxatdan o‘tish, darslar, progress, imtihon, sertifikat, buyurtma), ma’lumotlar Vercel Blob’da (`BLOB_READ_WRITE_TOKEN`).
+- To‘lov: `api/payme.js`, `api/click.js`, `api/octo.js`; AI ustoz: `api/ai.js` (`OPENAI_API_KEY` ixtiyoriy).
+- Imtihondan yiqilsa, qayta topshirish 3 daqiqadan so‘ng; to‘g‘ri javoblar faqat o‘tgandan keyin ko‘rsatiladi.
 
 ## 🔗 Loyiha havolalari
 - `data.js` → `NV.PROJECTS` → har bir loyihada `link:'https://...'`. Havola bo'lmasa — "Tez orada" chiqadi.
@@ -69,7 +72,7 @@ Keyin **Deployments → Redeploy**.
 - WebGL bo'lmasa yoki "kam harakat" rejimi yoqilgan bo'lsa, avvalgi 2D orbita ko'rinadi.
 
 ## 🤖 Telegram bot (`api/bot.js`)
-- /start — menyu: sayt, akademiya, loyihalar, o'yinlar, kurslar.
+- /start — menyu: sayt, akademiya, loyihalar, o'yinlar, kurslar (kurslar ro‘yxati `catalog.js` dan olinadi).
 - Mehmon botga yozsa — xabar Navro'zga keladi; Navro'z unga **Reply** qilsa — javob mehmonga boradi.
 - Kerak: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` (Vercel → Environment Variables).
 - Webhookni ulash (bir marta): `https://SAYT/api/bot?setup=<TELEGRAM_WEBHOOK_SECRET>`

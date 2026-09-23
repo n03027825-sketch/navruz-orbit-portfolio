@@ -12,9 +12,9 @@ const SITE = 'https://navruz-orbit.vercel.app';
 
 const TXT = {
   uz: {
-    hi: n => `Salom, <b>${n}</b>! 🚀\n\nMen <b>Navro'z Orbitasi</b> botiman. Bu yerda:\n• 🪐 Navro'zning 13 ta loyihasi\n• 🎓 Bepul mini-kurslar: Python, Web, AI, Pandas, Telegram bot\n• 🎮 Brauzerda o'ynaladigan o'yinlar\n\nSavol yoki taklif bo'lsa — shunchaki shu yerga yozing, xabaringiz to'g'ridan-to'g'ri Navro'zga yetadi. ✉️`,
+    hi: n => `Salom, <b>${n}</b>! 🚀\n\nMen <b>Navro'z Orbitasi</b> botiman. Bu yerda:\n• 🪐 Navro'zning 13 ta loyihasi\n• 🎓 Orbita Akademiya: 12 ta kurs, video-darslar, test va sertifikat\n• 🎮 Brauzerda o'ynaladigan o'yinlar\n\nSavol yoki taklif bo'lsa — shunchaki shu yerga yozing, xabaringiz to'g'ridan-to'g'ri Navro'zga yetadi. ✉️`,
     site: '🌐 Saytni ochish', ac: '🎓 Akademiya', pr: '🪐 Loyihalar', gm: "🎮 O'yinlar", wr: "✉️ Navro'zga yozish", cr: '📚 Kurslar ro\'yxati',
-    courses: "🎓 <b>Orbita Akademiya</b> — bepul mini-kurslar.\nHar yo'nalishda 3 ta dars: tushuntirish, kod, natija va test.\n\n",
+    courses: "🎓 <b>Orbita Akademiya</b> — 12 ta kurs, har birida 6 ta dars: video, tushuntirish, amaliy vazifa va test.\nPython bepul, pullik kurslarning 1-darsi ham bepul. Oxirida — sertifikat.\n\n",
     projects: "🪐 <b>Loyihalar</b> (bosing — ochiladi):\n\n",
     games: "🎮 <b>O'yinlar</b> — hech narsa o'rnatmasdan brauzerda:\n\n",
     write: "✍️ Xabaringizni shu yerga yozing — men uni darhol Navro'zga yetkazaman.",
@@ -24,9 +24,9 @@ const TXT = {
     unknown: "Menyudan tanlang yoki savolingizni yozing 👇"
   },
   en: {
-    hi: n => `Hi, <b>${n}</b>! 🚀\n\nI'm the <b>Navro'z Orbit</b> bot. Here you'll find:\n• 🪐 Navro'z's 13 projects\n• 🎓 Free mini-courses: Python, Web, AI, Pandas, Telegram bots\n• 🎮 Games you can play in the browser\n\nGot a question or an idea? Just type it here — it goes straight to Navro'z. ✉️`,
+    hi: n => `Hi, <b>${n}</b>! 🚀\n\nI'm the <b>Navro'z Orbit</b> bot. Here you'll find:\n• 🪐 Navro'z's 13 projects\n• 🎓 Orbit Academy: 12 courses with video lessons, quizzes and certificates\n• 🎮 Games you can play in the browser\n\nGot a question or an idea? Just type it here — it goes straight to Navro'z. ✉️`,
     site: '🌐 Open the site', ac: '🎓 Academy', pr: '🪐 Projects', gm: '🎮 Games', wr: '✉️ Message Navro\'z', cr: '📚 Course list',
-    courses: '🎓 <b>Orbit Academy</b> — free mini-courses.\nEach track: 3 lessons with explanation, code, output and a quiz.\n\n',
+    courses: '🎓 <b>Orbit Academy</b> — 12 courses, 6 lessons each: video, explanation, hands-on task and a quiz.\nPython is free, and the first lesson of every paid course is free. Finish with a certificate.\n\n',
     projects: '🪐 <b>Projects</b> (tap to open):\n\n',
     games: '🎮 <b>Games</b> — play in the browser, nothing to install:\n\n',
     write: "✍️ Type your message here — I'll pass it to Navro'z right away.",
@@ -36,28 +36,23 @@ const TXT = {
     unknown: 'Pick from the menu or type your question 👇'
   }
 };
-const TRACKS = [
-  ['🐍', 'Python: noldan birinchi dasturgacha', 'Python: from zero to your first program'],
-  ['🌐', 'Web: HTML, CSS va JavaScript', 'Web: HTML, CSS and JavaScript'],
-  ['🧠', 'AI va prompt muhandisligi', 'AI and prompt engineering'],
-  ['📊', "Ma'lumot tahlili: Pandas", 'Data analysis with Pandas'],
-  ['🤖', 'Telegram bot yaratish', 'Building a Telegram bot']
-];
+const { CATALOG } = require('./_lib/catalog');
 const PROJECTS = [
-  ['✍️ YozAI', 'https://claude.ai/artifact/8FBqdvWQikbSaWaD3E5LEG'],
-  ["🧭 Yo'lchi", 'https://claude.ai/artifact/8zMnySHrDV91cCVsphx7cr'],
-  ['🌊 Oqim', 'https://claude.ai/artifact/DwVT1kkDfyyqEStYNdkRL4'],
-  ['⏱ Kun Ritmi', SITE + '/#demo'],
-  ['🧠 Business Memory', SITE + '/#loyihalar'],
-  ['✨ Navruz Universal AI', SITE + '/#loyihalar'],
-  ['☀️ KUNIM', SITE + '/#loyihalar'],
-  ['📈 Sales Insight Lab', SITE + '/#loyihalar']
+  ['☀️ KUNIM', 'https://navruz-kunim.vercel.app'],
+  ['⏱ Kun Ritmi', 'https://kun-ritmi.vercel.app'],
+  ['✍️ YozAI', 'https://navruz-yozai.vercel.app'],
+  ["🧭 Yo'lchi", 'https://navruz-yolchi.vercel.app'],
+  ['🌊 Oqim', 'https://navruz-oqim.vercel.app'],
+  ['📈 Sales Insight Lab', 'https://navruz-sales-insight.vercel.app'],
+  ['🧠 Business Memory', 'https://navruz-business-memory.vercel.app'],
+  ['✨ Navruz Universal AI', 'https://navruz-universal-ai.vercel.app']
 ];
 const GAMES = [
-  ['🏙 CITY RUSH 3D', 'https://claude.ai/artifact/BeWANnmN36rLd5NUsqZv6Z'],
-  ['⚡ NEON RUSH', 'https://claude.ai/artifact/Y2Li52VAixRgSvtUdyt25o'],
-  ['🎯 Chaqqon!', 'https://claude.ai/artifact/5iwXZeGpfuY3MAxp88wkpn'],
-  ["🐫 Karvon — Ipak yo'li", 'https://claude.ai/artifact/6bBer5Q7Y3ApJ3vabuej1Y']
+  ['🏙 CITY RUSH 3D', 'https://navruz-city-rush.vercel.app'],
+  ['⚡ NEON RUSH', 'https://navruz-neon-rush.vercel.app'],
+  ['🎯 Chaqqon!', 'https://navruz-chaqqon.vercel.app'],
+  ["🐫 Karvon — Ipak yo'li", 'https://navruz-karvon.vercel.app'],
+  ["🎮 3D o'yin (Godot 4)", 'https://navruz-3d-game.vercel.app']
 ];
 
 const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
@@ -79,14 +74,14 @@ module.exports = async function handler(req, res) {
     if (!req.query || req.query.setup !== secret) return res.status(404).end();
     const hook = await api('setWebhook', { url: SITE + '/api/bot', secret_token: secret, allowed_updates: ['message', 'callback_query'], drop_pending_updates: true });
     await api('setMyCommands', { commands: [
-      { command: 'start', description: 'Bosh menyu' }, { command: 'kurslar', description: 'Bepul mini-kurslar' },
+      { command: 'start', description: 'Bosh menyu' }, { command: 'kurslar', description: 'Akademiya kurslari' },
       { command: 'loyihalar', description: "Navro'zning loyihalari" }, { command: 'oyinlar', description: "Brauzer o'yinlari" },
       { command: 'aloqa', description: "Navro'zga yozish" }] });
     await api('setMyCommands', { language_code: 'en', commands: [
-      { command: 'start', description: 'Main menu' }, { command: 'kurslar', description: 'Free mini-courses' },
+      { command: 'start', description: 'Main menu' }, { command: 'kurslar', description: 'Academy courses' },
       { command: 'loyihalar', description: "Navro'z's projects" }, { command: 'oyinlar', description: 'Browser games' },
       { command: 'aloqa', description: "Message Navro'z" }] });
-    await api('setMyDescription', { description: "🚀 Navro'z Orbitasi — loyihalar, bepul mini-kurslar va o'yinlar. Savolingizni yozing — Navro'zga yetadi." });
+    await api('setMyDescription', { description: "🚀 Navro'z Orbitasi — loyihalar, Orbita Akademiya kurslari va o'yinlar. Savolingizni yozing — Navro'zga yetadi." });
     await api('setMyShortDescription', { short_description: "Navro'z Orbitasi: loyihalar, kurslar, o'yinlar 🚀" });
     return res.status(200).json({ ok: !!hook.ok, webhook: hook.description || null });
   }
@@ -100,18 +95,18 @@ module.exports = async function handler(req, res) {
 
   const menu = L => ({ inline_keyboard: [
     [{ text: TXT[L].site, url: SITE }],
-    [{ text: TXT[L].ac, url: SITE + '/#akademiya' }, { text: TXT[L].pr, callback_data: 'pr' }],
+    [{ text: TXT[L].ac, url: SITE + '/akademiya/' }, { text: TXT[L].pr, callback_data: 'pr' }],
     [{ text: TXT[L].gm, callback_data: 'gm' }, { text: TXT[L].cr, callback_data: 'cr' }],
     [{ text: TXT[L].wr, callback_data: 'wr' }]
   ] });
   const listKb = (arr, L) => ({ inline_keyboard: [...arr.map(([n, url]) => [{ text: n, url }]), [{ text: '⬅️ ' + (L === 'en' ? 'Menu' : 'Menyu'), callback_data: 'menu' }]] });
-  const courses = L => TXT[L].courses + TRACKS.map(([e, uz, en]) => `${e} ${L === 'en' ? en : uz}`).join('\n');
+  const courses = L => TXT[L].courses + CATALOG.map(c => `${c.icon} ${esc(c.title)} — ${c.price ? c.price.toLocaleString('ru') + (L === 'en' ? ' UZS' : ' so‘m') : (L === 'en' ? 'free' : 'bepul')}`).join('\n');
   const send = (chat, text, kb) => api('sendMessage', { chat_id: chat, text, parse_mode: 'HTML', disable_web_page_preview: true, reply_markup: kb });
 
   async function screen(chat, what, L, from) {
     if (what === 'pr') return send(chat, TXT[L].projects + '👇', listKb(PROJECTS, L));
     if (what === 'gm') return send(chat, TXT[L].games + '👇', listKb(GAMES, L));
-    if (what === 'cr') return send(chat, courses(L), { inline_keyboard: [[{ text: TXT[L].ac, url: SITE + '/#akademiya' }], [{ text: '⬅️ ' + (L === 'en' ? 'Menu' : 'Menyu'), callback_data: 'menu' }]] });
+    if (what === 'cr') return send(chat, courses(L), { inline_keyboard: [[{ text: TXT[L].ac, url: SITE + '/akademiya/' }], [{ text: '⬅️ ' + (L === 'en' ? 'Menu' : 'Menyu'), callback_data: 'menu' }]] });
     if (what === 'wr') return send(chat, TXT[L].write);
     const isOwner = String(chat) === owner;
     return send(chat, TXT[L].hi(esc(from && from.first_name || (L === 'en' ? 'friend' : "do'st"))) + (isOwner ? TXT[L].owner : ''), menu(L));

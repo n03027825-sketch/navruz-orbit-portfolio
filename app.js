@@ -138,11 +138,13 @@ $('#hchip').addEventListener('click',()=>{const i=NV.Space.pos.i;const n=(i+1)%N
 let arT;
 NV.Space.onSector((i,prev)=>{
   if(prev<0)return;
+  if(!jumping)NV.Space.warp(450);
+  // foydalanuvchi forma to'ldirayotgan bo'lsa, xabar chiqarib chalg'itmaymiz
+  if(document.activeElement&&document.activeElement.matches('input,textarea,select'))return;
   const s=NV.SECTORS[i],a=$('#arrive');a.style.setProperty('--c',s.c);
   $('#arSmall').textContent=`${t('arrive')} · ${L==='uz'?'Sektor':'Sector'} ${String(i+1).padStart(2,'0')} · ${fmtAU(s.au)} AU`;
   $('#arName').textContent=tx(s.name);$('#arFact').textContent=tx(s.fact);
-  a.classList.remove('on');void a.offsetWidth;a.classList.add('on');clearTimeout(arT);arT=setTimeout(()=>a.classList.remove('on'),MOBILE()?2400:3400);
-  if(!jumping)NV.Space.warp(450);
+  a.classList.remove('on');void a.offsetWidth;a.classList.add('on');clearTimeout(arT);arT=setTimeout(()=>a.classList.remove('on'),MOBILE()?2000:2600);
 });
 
 /* ================= HERO ================= */

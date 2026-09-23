@@ -454,9 +454,9 @@ async function examPage(c) {
     const g = await api('grade', { course: c.id, answers: pick.map(v => new DOMParser().parseFromString(v, 'text/html').documentElement.textContent) });
     if (!g.ok) { toast(g.data.error || 'Xatolik'); $('#eSend').disabled = false; return; }
     app.dataset.sent = 1; $('#eSend').remove();
-    g.data.review.forEach((rv, i) => { $$(`.opt[data-q="${i}"]`).forEach(x => { const v = x.textContent; x.classList.toggle('ok', v === rv.right); x.classList.toggle('no', !rv.hit && v === pick[i]); }); });
+    (g.data.review || []).forEach((rv, i) => { $$(`.opt[data-q="${i}"]`).forEach(x => { const v = x.textContent; x.classList.toggle('ok', v === rv.right); x.classList.toggle('no', !rv.hit && v === pick[i]); }); });
     const d = g.data;
-    $('#eRes').innerHTML = `<div class="result"><div class="sc" style="color:${d.passed ? 'var(--ok)' : 'var(--sun)'}">${d.score}%</div><p class="sub" style="margin:0 auto 16px">${d.ok} / ${d.total} to‘g‘ri. ${d.passed ? 'Tabriklaymiz — imtihondan o‘tdingiz! 🎉' : `O‘tish uchun ${Math.round(PASS * 100)}% kerak. Darslarni takrorlab, qayta urinib ko‘ring.`}</p>
+    $('#eRes').innerHTML = `<div class="result"><div class="sc" style="color:${d.passed ? 'var(--ok)' : 'var(--sun)'}">${d.score}%</div><p class="sub" style="margin:0 auto 16px">${d.ok} / ${d.total} to‘g‘ri. ${d.passed ? 'Tabriklaymiz — imtihondan o‘tdingiz! 🎉' : `O‘tish uchun ${Math.round(PASS * 100)}% kerak. Darslarni takrorlab, ${Math.ceil((d.retryIn || 0) / 60000) || 'bir necha'} daqiqadan so‘ng qayta urinib ko‘ring.`}</p>
       ${d.passed && d.cert ? `<a class="btn pri" href="#/sertifikat/${d.cert.id}">🏅 Sertifikatni ko‘rish</a>` : `<button class="btn ghost" id="eAgain" type="button">Qayta topshirish</button>`}</div>`;
     $('#eAgain') && $('#eAgain').addEventListener('click', () => examPage(c));
     if (d.cert) { await loadMe(); burst(); }
@@ -525,8 +525,9 @@ function cabinet() {
 async function payStatus(oid) {
   app.innerHTML = `<div class="center"><div class="result"><div class="spin"></div><h2>To‘lov tekshirilmoqda…</h2><p class="sub" style="margin:0 auto">To‘lov tizimidan tasdiq kutilmoqda. Bu odatda bir necha soniya oladi.</p></div></div>`;
   for (let k = 0; k < 40; k++) {
-    const r = await api('status', { id: oid }, 'GET');
+    const r = await api('status', { id: oid });
     if (location.hash.indexOf(oid) < 0) return;
+    if (r.status === 401 || r.status === 404) break;
     if (r.ok && r.data.status === 'paid') { await loadMe(); burst(); app.innerHTML = `<div class="center"><div class="result"><div style="font-size:52px">✅</div><h2>To‘lov qabul qilindi!</h2><p class="sub" style="margin:0 auto 18px">“${esc(r.data.title)}” kursi hisobingizda ochildi. Omad!</p><a class="btn pri" href="#/kurs/${r.data.course}">Kursga o‘tish ${IC.arrow}</a></div></div>`; return; }
     if (r.ok && r.data.status === 'cancelled') { app.innerHTML = `<div class="center"><div class="result"><div style="font-size:52px">⚠️</div><h2>To‘lov bekor qilindi</h2><p class="sub" style="margin:0 auto 18px">Hisobingizdan pul yechilmagan bo‘lsa, qayta urinib ko‘rishingiz mumkin.</p><a class="btn ghost" href="#/kurs/${r.data.course}">Kursga qaytish</a></div></div>`; return; }
     await new Promise(z => setTimeout(z, 3000));
