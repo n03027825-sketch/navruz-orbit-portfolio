@@ -454,9 +454,9 @@ async function examPage(c) {
     const g = await api('grade', { course: c.id, answers: pick.map(v => new DOMParser().parseFromString(v, 'text/html').documentElement.textContent) });
     if (!g.ok) { toast(g.data.error || 'Xatolik'); $('#eSend').disabled = false; return; }
     app.dataset.sent = 1; $('#eSend').remove();
-    g.data.review.forEach((rv, i) => { $$(`.opt[data-q="${i}"]`).forEach(x => { const v = x.textContent; x.classList.toggle('ok', v === rv.right); x.classList.toggle('no', !rv.hit && v === pick[i]); }); });
+    (g.data.review || []).forEach((rv, i) => { $$(`.opt[data-q="${i}"]`).forEach(x => { const v = x.textContent; x.classList.toggle('ok', v === rv.right); x.classList.toggle('no', !rv.hit && v === pick[i]); }); });
     const d = g.data;
-    $('#eRes').innerHTML = `<div class="result"><div class="sc" style="color:${d.passed ? 'var(--ok)' : 'var(--sun)'}">${d.score}%</div><p class="sub" style="margin:0 auto 16px">${d.ok} / ${d.total} to‘g‘ri. ${d.passed ? 'Tabriklaymiz — imtihondan o‘tdingiz! 🎉' : `O‘tish uchun ${Math.round(PASS * 100)}% kerak. Darslarni takrorlab, qayta urinib ko‘ring.`}</p>
+    $('#eRes').innerHTML = `<div class="result"><div class="sc" style="color:${d.passed ? 'var(--ok)' : 'var(--sun)'}">${d.score}%</div><p class="sub" style="margin:0 auto 16px">${d.ok} / ${d.total} to‘g‘ri. ${d.passed ? 'Tabriklaymiz — imtihondan o‘tdingiz! 🎉' : `O‘tish uchun ${Math.round(PASS * 100)}% kerak. Darslarni takrorlab, ${Math.ceil((d.retryIn || 0) / 60000) || 'bir necha'} daqiqadan so‘ng qayta urinib ko‘ring.`}</p>
       ${d.passed && d.cert ? `<a class="btn pri" href="#/sertifikat/${d.cert.id}">🏅 Sertifikatni ko‘rish</a>` : `<button class="btn ghost" id="eAgain" type="button">Qayta topshirish</button>`}</div>`;
     $('#eAgain') && $('#eAgain').addEventListener('click', () => examPage(c));
     if (d.cert) { await loadMe(); burst(); }

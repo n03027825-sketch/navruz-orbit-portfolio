@@ -6,6 +6,7 @@ const C = require('./_lib/core');
 const S = require('./_lib/store');
 const COURSES = {};
 const course = id => (COURSES[id] ||= require('./_courses/' + id + '.js'));
+const RETRY_MS = 3 * 60 * 1000; // imtihondan yiqilgandan keyin qayta topshirish oralig'i
 const shuffle = (a, seed) => { const r = a.slice(); let s = seed; for (let i = r.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor(s / 233280 * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
 
 module.exports = async (req, res) => {
@@ -67,6 +68,11 @@ module.exports = async (req, res) => {
       if (op === 'exam') {
         return C.send(res, 200, { questions: E.map((q, i) => ({ i, q: q[0], o: shuffle(q[1], seed + i * 7) })), pass: C.PASS });
       }
+      const last = (st.exams || {})[cid];
+      if (last && last.last < C.PASS && C.now() - last.at < RETRY_MS) {
+        const min = Math.ceil((RETRY_MS - (C.now() - last.at)) / 60000);
+        return C.send(res, 429, { error: `Qayta topshirish ${min} daqiqadan so‘ng. Bu vaqtda darslarni takrorlab oling.` });
+      }
       const ans = Array.isArray(b.answers) ? b.answers : [];
       let ok = 0; const review = E.map((q, i) => { const right = q[1][q[2]]; const hit = ans[i] === right; if (hit) ok++; return { hit, right }; });
       const score = ok / E.length;
@@ -84,7 +90,8 @@ module.exports = async (req, res) => {
         }
       }
       await C.saveStudent(st);
-      return C.send(res, 200, { score: Math.round(score * 100), ok, total: E.length, passed: score >= C.PASS, review, cert });
+      // To'g'ri javoblar faqat o'tgandan keyin ko'rsatiladi — aks holda ularni bilib olib qayta yuborish mumkin edi.
+      return C.send(res, 200, { score: Math.round(score * 100), ok, total: E.length, passed: score >= C.PASS, review: score >= C.PASS ? review : null, retryIn: score >= C.PASS ? 0 : RETRY_MS, cert });
     }
 
     if (op === 'order') {

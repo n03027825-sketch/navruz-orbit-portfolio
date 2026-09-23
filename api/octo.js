@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
     const o = await C.getOrder(n.shop_transaction_id);
     if (!o) return C.send(res, 404, { error: 'order not found' });
     if (n.status === 'succeeded') {
+      if (o.status === 'cancelled') return C.send(res, 409, { error: 'order cancelled' });
       if (Math.abs(+n.total_sum - o.amount) > 1) return C.send(res, 400, { error: 'amount mismatch' });
       await C.markPaid(o, 'Karta (OCTO)');
     } else if (n.status === 'canceled' || n.status === 'cancelled') {
