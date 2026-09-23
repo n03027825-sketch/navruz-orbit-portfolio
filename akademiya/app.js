@@ -525,8 +525,9 @@ function cabinet() {
 async function payStatus(oid) {
   app.innerHTML = `<div class="center"><div class="result"><div class="spin"></div><h2>To‘lov tekshirilmoqda…</h2><p class="sub" style="margin:0 auto">To‘lov tizimidan tasdiq kutilmoqda. Bu odatda bir necha soniya oladi.</p></div></div>`;
   for (let k = 0; k < 40; k++) {
-    const r = await api('status', { id: oid }, 'GET');
+    const r = await api('status', { id: oid });
     if (location.hash.indexOf(oid) < 0) return;
+    if (r.status === 401 || r.status === 404) break;
     if (r.ok && r.data.status === 'paid') { await loadMe(); burst(); app.innerHTML = `<div class="center"><div class="result"><div style="font-size:52px">✅</div><h2>To‘lov qabul qilindi!</h2><p class="sub" style="margin:0 auto 18px">“${esc(r.data.title)}” kursi hisobingizda ochildi. Omad!</p><a class="btn pri" href="#/kurs/${r.data.course}">Kursga o‘tish ${IC.arrow}</a></div></div>`; return; }
     if (r.ok && r.data.status === 'cancelled') { app.innerHTML = `<div class="center"><div class="result"><div style="font-size:52px">⚠️</div><h2>To‘lov bekor qilindi</h2><p class="sub" style="margin:0 auto 18px">Hisobingizdan pul yechilmagan bo‘lsa, qayta urinib ko‘rishingiz mumkin.</p><a class="btn ghost" href="#/kurs/${r.data.course}">Kursga qaytish</a></div></div>`; return; }
     await new Promise(z => setTimeout(z, 3000));

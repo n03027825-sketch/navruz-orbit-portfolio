@@ -1,6 +1,6 @@
 /* =========================================================
    api/akademiya.js — Orbita Akademiya backendi (bitta funksiya, ?op=...)
-   catalog · register · me · lesson · progress · exam · grade · cert · order · status
+   catalog · cert · status · register · me · lesson · progress · exam · grade · order
    ========================================================= */
 const C = require('./_lib/core');
 const S = require('./_lib/store');
@@ -22,10 +22,6 @@ module.exports = async (req, res) => {
       const cert = await S.getJSON(`certs/${id}.json`);
       return cert ? C.send(res, 200, { cert }) : C.send(res, 404, { error: 'Bunday sertifikat topilmadi.' });
     }
-    if (op === 'status') {
-      const o = await C.getOrder(url.searchParams.get('id'));
-      return o ? C.send(res, 200, { status: o.status, course: o.course, title: o.title, amount: o.amount }) : C.send(res, 404, { error: 'Buyurtma topilmadi.' });
-    }
     if (req.method !== 'POST') return C.send(res, 405, { error: 'POST kerak' });
     if (!S.enabled()) return C.send(res, 503, { error: 'Ma’lumotlar ombori hali ulanmagan.' });
     const b = await C.readBody(req);
@@ -35,6 +31,12 @@ module.exports = async (req, res) => {
       return C.send(res, 200, r);
     }
     const st = await C.auth(b);
+
+    if (op === 'status') { // faqat buyurtma egasiga
+      const o = await C.getOrder(String(b.id || ''));
+      if (!o || o.sid !== st.sid) return C.send(res, 404, { error: 'Buyurtma topilmadi.' });
+      return C.send(res, 200, { status: o.status, course: o.course, title: o.title, amount: o.amount });
+    }
 
     if (op === 'me') return C.send(res, 200, { student: C.pub(st), methods: C.methods() });
 
