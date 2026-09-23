@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Kompyuteringizda index.html yarating va ichiga sarlavha, 2 ta xatboshi va bitta rasm joylang.', v: [
   ['Sayt qanday ochiladi?', 'Brauzer serverdan HTML faylni so‘raydi, server uni yuboradi va brauzer uni sahifaga aylantiradi. Har bir sayt — aslida matnli fayllar.'],
   ['Uchta til', 'HTML — sahifaning suyagi, CSS — kiyimi va dizayni, JavaScript esa harakati. Bu kursda birinchi ikkitasini o‘rganamiz.'],
   ['HTML skeleti', 'Har bir sahifa doctype, html, head va body teglaridan iborat. Ko‘rinadigan hamma narsa body ichida bo‘ladi.', '<!DOCTYPE html>\n<html lang="uz">\n  <head><title>Mening saytim</title></head>\n  <body>Salom!</body>\n</html>'],
@@ -12,7 +12,7 @@ lessons: [
    ['Sahifada ko‘rinadigan kontent qaysi teg ichida?', ['<head>','<body>','<title>','<meta>'], 1, 'Ko‘rinadigan hamma narsa body ichida.'],
    ['Yopuvchi teg qanday yoziladi?', ['<p>','<\\p>','</p>','<p/>'], 2, 'Yopuvchi tegda / bo‘ladi: </p>.'],
    ['Sahifa dizayni uchun qaysi til ishlatiladi?', ['HTML','CSS','SQL','Python'], 1, 'CSS — ko‘rinish va dizayn.']] },
-{ v: [
+{ task:'O‘zingiz haqingizda sahifa qiling: rasm, 3 punktli ro‘yxat va Telegram’ingizga havola bo‘lsin.', v: [
   ['Sarlavha va paragraf', 'h1 dan h6 gacha sarlavhalar bor, h1 eng kattasi. Oddiy matn p tegida yoziladi.'],
   ['Havola', 'a tegi boshqa sahifaga olib boradi. Manzil href atributida yoziladi.', '<a href="https://navruz-orbit.vercel.app">Portfolio</a>'],
   ['Rasm', 'img tegi yopilmaydi. src — rasm manzili, alt esa rasm ko‘rinmasa yoki ko‘zi ojiz foydalanuvchi uchun tavsif.', '<img src="men.jpg" alt="Mening rasmim">'],
@@ -24,7 +24,7 @@ lessons: [
    ['Havola manzili qaysi atributda?', ['src','href','link','url'], 1, 'a tegida manzil href da.'],
    ['Rasm uchun tavsif atributi?', ['title','desc','alt','name'], 2, 'alt — alternativ matn.'],
    ['Raqamli ro‘yxat tegi?', ['<ul>','<ol>','<li>','<dl>'], 1, 'ol — ordered list.']] },
-{ v: [
+{ task:'Sahifaga style.css ulang: sarlavha rangini, shrift va fon rangini o‘zgartiring.', v: [
   ['CSS — sahifa kiyimi', 'CSS bilan rang, shrift, o‘lcham va joylashuvni boshqaramiz. Uni alohida style.css faylida yozib, link bilan ulaymiz.', '<link rel="stylesheet" href="style.css">'],
   ['Qoida tuzilishi', 'Selektor qaysi elementni tanlaydi, jingalak qavs ichida esa xususiyat va qiymat yoziladi.', 'h1 {\n  color: #6CE4F0;\n  font-size: 40px;\n}'],
   ['Klass va id', 'Nuqta bilan klass, panjara bilan id tanlanadi. Klass ko‘p elementga, id esa bittasiga beriladi.', '.karta { background: #111; }\n#asosiy { padding: 20px; }'],
@@ -36,7 +36,7 @@ lessons: [
    ['Klass selektori qaysi belgi bilan?', ['#','.','*','@'], 1, '.karta — klass.'],
    ['Matn rangini o‘zgartiruvchi xususiyat?', ['background','font','color','text-color'], 2, 'color — matn rangi.'],
    ['CSS faylni HTML’ga ulash tegi?', ['<script>','<link>','<css>','<a>'], 1, '<link rel="stylesheet">.']] },
-{ v: [
+{ task:'3 ta kartani padding 16px, margin 12px va 1px border bilan bezang — farqni ko‘rish uchun fon rang bering.', v: [
   ['Har bir element — quti', 'Brauzer har bir elementni to‘rtburchak quti deb ko‘radi. Bu box model deyiladi.'],
   ['To‘rt qatlam', 'Ichkarida kontent, keyin padding — ichki bo‘shliq, border — chegara va margin — tashqi bo‘shliq.', '.quti {\n  padding: 16px;\n  border: 2px solid #6CE4F0;\n  margin: 24px;\n}'],
   ['box-sizing', 'border-box qiymati bersak, width ichiga padding va border ham kiradi. O‘lchamni hisoblash osonlashadi.', '* { box-sizing: border-box; }'],
@@ -48,7 +48,7 @@ lessons: [
    ['Chegara va kontent orasidagi bo‘shliq?', ['margin','padding','border','gap'], 1, 'padding — ichki bo‘shliq.'],
    ['Blokni markazga qo‘yish?', ['align: center','margin: 0 auto','padding: auto','center: true'], 1, 'margin: 0 auto.'],
    ['Elementni yashirish?', ['display: none','hide: true','visible: 0','opacity: none'], 0, 'display: none.']] },
-{ v: [
+{ task:'Flexbox bilan 3 ta kartani bir qatorga joylang va ular orasida 16px bo‘shliq qoldiring.', v: [
   ['Flexbox — oson joylashtirish', 'display flex bersak, ichidagi elementlar bir qatorga tiziladi va ularni oson tekislash mumkin.', '.menu { display: flex; gap: 12px; }'],
   ['Asosiy o‘q bo‘yicha', 'justify-content elementlarni gorizontal taqsimlaydi: boshiga, markazga, oxiriga yoki orasini teng bo‘lib.'],
   ['Kesishgan o‘q', 'align-items vertikal tekislaydi. Ikkalasini center qilsak, element aniq markazda bo‘ladi.', '.markaz {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}'],
@@ -60,7 +60,7 @@ lessons: [
    ['Flexbox’ni yoqish?', ['display: flex','flex: on','position: flex','float: flex'], 0, 'display: flex.'],
    ['Elementlarni gorizontal markazlash?', ['align-items: center','justify-content: center','text-align: middle','margin: center'], 1, 'Asosiy o‘q — justify-content.'],
    ['Elementlar orasidagi masofa?', ['space','gap','margin-all','between'], 1, 'gap — oraliq.']] },
-{ v: [
+{ task:'@media (max-width:640px) qo‘shib, telefonda kartalar ustma-ust tushadigan qiling.', v: [
   ['Telefon birinchi', 'Foydalanuvchilarning ko‘pchiligi saytni telefonda ochadi. Responsive dizayn sahifani har qanday ekranga moslaydi.'],
   ['viewport meta', 'Bu teg bo‘lmasa, telefon sahifani kichraytirib ko‘rsatadi. U head ichiga albatta qo‘yiladi.', '<meta name="viewport" content="width=device-width, initial-scale=1">'],
   ['Media so‘rovlar', 'media query ekran kengligiga qarab boshqa CSS qo‘llaydi. Masalan, 700 pikseldan tor ekranda ustunlar bitta bo‘ladi.', '@media (max-width: 700px) {\n  .kartalar { flex-direction: column; }\n}'],

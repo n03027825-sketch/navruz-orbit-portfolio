@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Excel yoki Google Sheets’dagi kichik jadvalni CSV qilib saqlang — keyingi darslarda shu bilan ishlaymiz.', v: [
   ['Raqamlar gapiradi', 'Ma’lumot tahlili — xom raqamlardan foydali xulosa chiqarish: qaysi mahsulot ko‘p sotildi, qaysi oy tushum tushdi va nega.'],
   ['Pandas nima?', 'Pandas — Python’ning jadval bilan ishlash kutubxonasi. U Excel’ning dasturchi versiyasi, lekin millionlab qatorni soniyalarda ishlaydi.'],
   ['Jarayon', 'Tahlil besh bosqichdan iborat: savol qo‘yish, ma’lumot yig‘ish, tozalash, tahlil va xulosa.'],
@@ -12,7 +12,7 @@ lessons: [
    ['Pandas’da jadval nima deyiladi?', ['Series','DataFrame','Array','Sheet'], 1, 'DataFrame — jadval.'],
    ['Tahlil nimadan boshlanadi?', ['Aniq savoldan','Grafikdan','Rangdan','Kutubxonadan'], 0, 'Savol yo‘nalish beradi.'],
    ['pandas odatda qanday import qilinadi?', ['import pandas as pd','import pd','from pandas import all','use pandas'], 0, 'pd — umumiy qabul qilingan nom.']] },
-{ v: [
+{ task:'CSV’ni o‘qib, head(), shape va info() natijalarini ko‘ring.', v: [
   ['CSV o‘qish', 'read_csv fayldan DataFrame yaratadi. Excel uchun read_excel bor.', 'df = pd.read_csv("savdo.csv")'],
   ['Birinchi qarash', 'head birinchi qatorlarni, shape o‘lchamni, info esa ustun turlari va bo‘sh qiymatlarni ko‘rsatadi.', 'df.head()\ndf.shape\ndf.info()'],
   ['Statistika', 'describe sonli ustunlar uchun o‘rtacha, minimum, maksimum va kvartillarni bir zumda beradi.', 'df.describe()'],
@@ -24,7 +24,7 @@ lessons: [
    ['CSV fayldan o‘qish?', ['pd.open_csv','pd.read_csv','pd.load','pd.csv()'], 1, 'read_csv.'],
    ['Birinchi 5 qator?', ['df.top()','df.head()','df.first5()','df[:5:]'], 1, 'head().'],
    ['Qatorlar va ustunlar soni?', ['df.size()','df.shape','df.len','df.count'], 1, 'shape — (qator, ustun).']] },
-{ v: [
+{ task:'Faqat kerakli 3 ustunni tanlang va bitta shart bo‘yicha filtrlang.', v: [
   ['Shart bo‘yicha filtr', 'Qavs ichida shart yozilsa, faqat mos qatorlar qoladi.', 'df[df["summa"] > 100000]'],
   ['Bir nechta shart', 'Va uchun ampersand, yoki uchun vertikal chiziq. Har bir shart qavsga olinadi.', 'df[(df["shahar"] == "Toshkent") & (df["soni"] > 10)]'],
   ['loc va iloc', 'loc nom bo‘yicha, iloc esa tartib raqami bo‘yicha tanlaydi.', 'df.loc[0:4, ["mahsulot", "summa"]]\ndf.iloc[0, 2]'],
@@ -36,7 +36,7 @@ lessons: [
    ['Pandas’da “va” operatori?', ['and','&&','&','+'], 2, '& — element bo‘yicha va.'],
    ['Tartib raqami bo‘yicha tanlash?', ['loc','iloc','at_name','pos'], 1, 'iloc — integer location.'],
    ['Kamayish bo‘yicha saralash?', ['sort_values(..., ascending=False)','sort(desc)','order_by()','reverse()'], 0, 'ascending=False.']] },
-{ v: [
+{ task:'Bo‘sh qiymatlarni sanang, takrorlangan qatorlarni o‘chiring.', v: [
   ['Xom ma’lumot iflos', 'Real hayotda ma’lumot to‘liq emas: bo‘sh kataklar, takror qatorlar, noto‘g‘ri formatlar. Tahlilning yarmi — tozalash.'],
   ['Bo‘sh qiymatlar', 'isna bo‘shlarni topadi. dropna o‘chiradi, fillna esa to‘ldiradi.', 'df.isna().sum()\ndf["narx"] = df["narx"].fillna(df["narx"].median())'],
   ['Takrorlar', 'duplicated takror qatorlarni ko‘rsatadi, drop_duplicates ularni o‘chiradi.', 'df = df.drop_duplicates()'],
@@ -48,7 +48,7 @@ lessons: [
    ['Bo‘sh qiymatlarni topish?', ['df.isna()','df.empty()','df.null()','df.blank()'], 0, 'isna / isnull.'],
    ['Takror qatorlarni o‘chirish?', ['drop_duplicates()','remove_same()','unique()','dedupe()'], 0, 'drop_duplicates.'],
    ['Matnni sanaga aylantirish?', ['pd.to_datetime','pd.date()','astype(date)','str.date'], 0, 'to_datetime.']] },
-{ v: [
+{ task:'groupby bilan oylar (yoki kategoriya) bo‘yicha yig‘indi va o‘rtachani chiqaring.', v: [
   ['groupby — biznes savollari', 'groupby qatorlarni guruhlab, har guruh uchun hisoblaydi: har mahsulot bo‘yicha jami savdo.', 'df.groupby("mahsulot")["summa"].sum()'],
   ['Bir nechta hisob', 'agg bilan bir nechta funksiya birdan: jami, o‘rtacha va soni.', 'df.groupby("shahar")["summa"].agg(["sum", "mean", "count"])'],
   ['Vaqt bo‘yicha', 'Sanadan oyni ajratib, oylik tushumni hisoblaymiz.', 'df.groupby(df["sana"].dt.to_period("M"))["summa"].sum()'],
@@ -60,7 +60,7 @@ lessons: [
    ['Guruhlash metodi?', ['group()','groupby()','split()','cluster()'], 1, 'groupby.'],
    ['Bir nechta agregat birdan?', ['agg()','multi()','all()','calc()'], 0, 'agg([...]).'],
    ['Oylik o‘sish foizi?', ['pct_change()','growth()','diff_percent()','rate()'], 0, 'pct_change.']] },
-{ v: [
+{ task:'Natijani grafikda chizing va 3 jumlalik xulosa yozing.', v: [
   ['Grafik — tez tushunish', 'Odam jadvaldan ko‘ra grafikni tezroq tushunadi. Pandas matplotlib bilan bir qatorda grafik chizadi.', 'oylik.plot(kind="line")'],
   ['To‘g‘ri grafikni tanlash', 'Vaqt bo‘yicha o‘zgarish — chiziq, toifalarni solishtirish — ustun, ulush — gorizontal ustun. Doira diagrammadan ehtiyot bo‘ling.'],
   ['Sarlavha va birlik', 'Har bir grafikda sarlavha, o‘q nomlari va birlik bo‘lsin: tushum, million so‘m.'],

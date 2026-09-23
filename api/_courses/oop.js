@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Uchta argument oladigan va natijani return qiladigan funksiya yozing, standart qiymat ham qo‘shing.', v: [
   ['Funksiyalar — ikkinchi bosqich', 'Asoslar kursida oddiy funksiya yozdingiz. Endi ko‘p parametrli, nomli argumentli va bir nechta qiymat qaytaradigan funksiyalarni o‘rganamiz.'],
   ['Nomli argumentlar', 'Chaqirishda parametr nomini yozsangiz, tartib muhim bo‘lmaydi va kod tushunarliroq bo‘ladi.', 'narx(soni=3, bir_dona=5000)'],
   ['*args va **kwargs', 'Yulduzcha bilan istalgancha argument qabul qilinadi: args — kortej, kwargs — lug‘at.', 'def jami(*sonlar):\n    return sum(sonlar)'],
@@ -12,7 +12,7 @@ lessons: [
    ['*args qanday turda keladi?', ['list','tuple (kortej)','dict','set'], 1, 'args — kortej.'],
    ['**kwargs nima?', ['Nomli argumentlar lug‘ati','Xato turi','Modul','Sikl'], 0, 'kwargs — dict.'],
    ['return a, b nimani qaytaradi?', ['Faqat a','Kortej (a, b)','Xato','b'], 1, 'Vergul kortej yaratadi.']] },
-{ v: [
+{ task:'Ma’lumotni faylga yozib, keyin o‘qib chiqadigan dastur yozing.', v: [
   ['Modul — tayyor kod to‘plami', 'Python’da minglab tayyor modul bor: math, random, datetime. import bilan ulanadi.', 'import random\nprint(random.randint(1, 6))'],
   ['O‘z modulingiz', 'Har bir .py fayl — modul. Funksiyalarni alohida faylga yozib, boshqa faylda import qilasiz.', 'from yordamchi import ortacha'],
   ['Fayl yozish', 'with open fayl bilan xavfsiz ishlaydi — ish tugagach fayl avtomatik yopiladi.', 'with open("eslatma.txt", "w", encoding="utf-8") as f:\n    f.write("Salom!")'],
@@ -24,7 +24,7 @@ lessons: [
    ['Faylga oxiridan qo‘shish rejimi?', ['"r"','"w"','"a"','"x"'], 2, '"a" — append.'],
    ['with open afzalligi?', ['Fayl avtomatik yopiladi','Tezroq yozadi','Faylni shifrlaydi','Hech biri'], 0, 'Kontekst menejeri faylni yopadi.'],
    ['Tashqi paket o‘rnatish?', ['python get','pip install','import install','npm add'], 1, 'pip install.']] },
-{ v: [
+{ task:'Talaba klassini yarating: ism, ball va o‘rtacha hisoblash metodi bo‘lsin.', v: [
   ['OOP — dunyoni obyektlarda ko‘rish', 'Obyektga yo‘naltirilgan dasturlashda ma’lumot va u bilan ishlaydigan funksiyalar bitta obyektga jamlanadi.'],
   ['Klass — chizma', 'Klass — uy chizmasi, obyekt esa shu chizma bo‘yicha qurilgan uy. Bitta klassdan ko‘p obyekt yaratiladi.', 'class Talaba:\n    pass\n\nali = Talaba()'],
   ['Atributlar', 'Obyektning xususiyatlari — atributlar: ism, yosh, ball.', 'ali.ism = "Ali"\nali.ball = 88'],
@@ -36,7 +36,7 @@ lessons: [
    ['Klass nima?', ['Obyekt yaratish uchun chizma','Fayl','Sikl','Xato'], 0, 'Klass — shablon.'],
    ['Klass nomi qanday yoziladi?', ['kichik_harf','CamelCase','KATTA_HARF','raqam bilan'], 1, 'Masalan, Talaba.'],
    ['Bitta klassdan nechta obyekt yaratish mumkin?', ['Faqat bitta','Ikkita','Istalgancha','Hech bitta'], 2, 'Istalgancha.']] },
-{ v: [
+{ task:'__init__ va __str__ metodlarini qo‘shing — print(obyekt) chiroyli matn chiqarsin.', v: [
   ['__init__ — konstruktor', 'Obyekt yaratilganda __init__ metodi avtomatik chaqiriladi va atributlarni o‘rnatadi.', 'class Talaba:\n    def __init__(self, ism, ball):\n        self.ism = ism\n        self.ball = ball'],
   ['self nima?', 'self — joriy obyektning o‘zi. U orqali obyekt o‘z atributlariga murojaat qiladi.'],
   ['Metodlar', 'Metod — klass ichidagi funksiya. U obyekt ustida amal bajaradi.', 'def otdimi(self):\n    return self.ball >= 60'],
@@ -48,7 +48,7 @@ lessons: [
    ['Obyekt yaratilganda qaysi metod ishlaydi?', ['__str__','__init__','__main__','start()'], 1, '__init__ — konstruktor.'],
    ['self nimani bildiradi?', ['Joriy obyektni','Klass nomini','Modulni','Global o‘zgaruvchini'], 0, 'self — obyektning o‘zi.'],
    ['print(obj) matnini belgilovchi metod?', ['__print__','__str__','__text__','show()'], 1, '__str__.']] },
-{ v: [
+{ task:'Talaba klassidan meros oluvchi Bitiruvchi klassini yozing va bitta metodni qayta yozing.', v: [
   ['Vorislik', 'Yangi klass mavjud klassdan meros oladi: barcha atribut va metodlarni qayta yozmasdan ishlatadi.', 'class Odam:\n    ...\nclass Oqituvchi(Odam):\n    ...'],
   ['super()', 'super bilan ota klass metodini chaqiramiz va unga yangi narsa qo‘shamiz.', 'def __init__(self, ism, fan):\n    super().__init__(ism)\n    self.fan = fan'],
   ['Polimorfizm', 'Har xil klasslar bir xil nomdagi metodni o‘zicha bajaradi. Masalan, har bir to‘lov turi tolash metodini o‘z usulida bajaradi.'],
@@ -60,7 +60,7 @@ lessons: [
    ['Ota klass metodini chaqirish?', ['parent()','super()','base()','this()'], 1, 'super().'],
    ['Polimorfizm nima?', ['Bir nomdagi metodning turli klasslarda turlicha ishlashi','Ko‘p fayl','Xato turi','Sikl'], 0, 'Bir interfeys — ko‘p shakl.'],
    ['class B(A) nima degani?', ['B A’dan meros oladi','A B’dan meros oladi','Ikkalasi bir xil','Xato'], 0, 'B — bola klass.']] },
-{ v: [
+{ task:'Nolga bo‘lish xatosini try/except bilan ushlab, foydalanuvchiga tushunarli xabar chiqaring.', v: [
   ['Xatolar muqarrar', 'Foydalanuvchi son o‘rniga harf yozadi, fayl topilmaydi, internet uziladi. Yaxshi dastur bunda qulamaydi.'],
   ['try va except', 'Xavfli kod try ichida, xato bo‘lganda bajariladigan kod except ichida.', 'try:\n    yosh = int(input("Yosh: "))\nexcept ValueError:\n    print("Iltimos, son kiriting")'],
   ['finally', 'finally bloki xato bo‘lsa ham, bo‘lmasa ham bajariladi — masalan, ulanishni yopish uchun.'],

@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Brauzer devtools’da Network bo‘limini oching va bitta saytga ketayotgan so‘rovlarni ko‘ring.', v: [
   ['Backend — saytning ko‘rinmas qismi', 'Foydalanuvchi ko‘radigan qism frontend. Ma’lumotni saqlash, to‘lovni tekshirish va hisob-kitob esa serverda — backendda bajariladi.'],
   ['HTTP — so‘rov va javob', 'Brauzer serverga so‘rov yuboradi: metod, manzil va ma’lumot. Server javob qaytaradi: status kodi va natija.'],
   ['Metodlar', 'GET — olish, POST — yaratish, PUT yoki PATCH — yangilash, DELETE — o‘chirish.'],
@@ -12,7 +12,7 @@ lessons: [
    ['Ma’lumot yaratish uchun HTTP metodi?', ['GET','POST','DELETE','HEAD'], 1, 'POST — yaratish.'],
    ['404 status nimani bildiradi?', ['Muvaffaqiyat','Topilmadi','Server xatosi','Ruxsat yo‘q'], 1, 'Not Found.'],
    ['Narxni qayerda hisoblash xavfsiz?', ['Serverda','Brauzerda','URL’da','Cookie’da'], 0, 'Brauzerni foydalanuvchi o‘zgartira oladi.']] },
-{ v: [
+{ task:'FastAPI o‘rnatib, / manzilida “Salom” qaytaruvchi API yozing va /docs’ni oching.', v: [
   ['FastAPI — tez va zamonaviy', 'FastAPI — Python’ning eng tez rivojlanayotgan backend freymvorki. Hujjatlarni avtomatik yaratadi va turlarni tekshiradi.'],
   ['O‘rnatish', 'fastapi va uvicorn serveri o‘rnatiladi.', 'pip install fastapi uvicorn'],
   ['Birinchi endpoint', 'Dekorator yo‘lni va metodni belgilaydi, funksiya esa javob qaytaradi. Lug‘at avtomatik JSON bo‘ladi.', '@app.get("/")\ndef bosh():\n    return {"xabar": "Salom!"}'],
@@ -24,7 +24,7 @@ lessons: [
    ['FastAPI serverini ishga tushirish?', ['uvicorn main:app','python fastapi','npm start','run app'], 0, 'uvicorn.'],
    ['Avtomatik hujjat manzili?', ['/docs','/help','/api-info','/readme'], 0, '/docs — Swagger.'],
    ['Lug‘at qaytarilsa, klient nimani oladi?', ['JSON','HTML','Rasm','Hech narsa'], 0, 'Avtomatik JSON.']] },
-{ v: [
+{ task:'/kurslar/{id} va ?limit= parametrlarini qabul qiluvchi endpoint yozing.', v: [
   ['Path parametr', 'URL ichidagi o‘zgaruvchi qism: /kurslar/python. Figurali qavsda yoziladi.', '@app.get("/kurslar/{kurs_id}")\ndef kurs(kurs_id: str): ...'],
   ['Query parametr', 'Savol belgisidan keyingi qism: /kurslar?daraja=2. Funksiya parametri sifatida yoziladi.', '@app.get("/kurslar")\ndef royxat(daraja: int | None = None): ...'],
   ['Tur tekshiruvi', 'Parametr turini int deb yozsangiz, FastAPI matn kelganda avtomatik 422 xato qaytaradi.'],
@@ -36,7 +36,7 @@ lessons: [
    ['/kurslar?daraja=2 dagi daraja?', ['Path parametr','Query parametr','Header','Body'], 1, 'Savol belgisidan keyin — query.'],
    ['Topilmadi xatosini qaytarish?', ['raise HTTPException(404)','return 404','print("404")','exit(404)'], 0, 'HTTPException.'],
    ['Noto‘g‘ri tur kelsa FastAPI qaytaradi?', ['200','422','301','500'], 1, 'Validatsiya xatosi — 422.']] },
-{ v: [
+{ task:'Pydantic model qiling: ism (majburiy), email va yosh (18 dan katta) tekshirilsin.', v: [
   ['Pydantic — ma’lumot shakli', 'POST so‘rovda keladigan JSON’ni Pydantic modeli tasvirlaydi va avtomatik tekshiradi.', 'class Royxat(BaseModel):\n    ism: str\n    telefon: str'],
   ['Validatsiya', 'Maydon cheklovlari: uzunlik, raqam oralig‘i, email formati. Noto‘g‘ri bo‘lsa, so‘rov serverga yetib bormaydi.'],
   ['Javob modeli', 'response_model qaytariladigan ma’lumot shaklini belgilaydi — ortiqcha maydonlar, masalan parol, chiqib ketmaydi.'],
@@ -48,7 +48,7 @@ lessons: [
    ['Pydantic nima qiladi?', ['Kiruvchi ma’lumotni tasvirlab tekshiradi','Rasm chizadi','Serverni ishga tushiradi','CSS yozadi'], 0, 'Validatsiya.'],
    ['Qaytariladigan shaklni belgilash?', ['response_model','return_type','output_schema','view'], 0, 'response_model.'],
    ['Brauzerdagi tekshiruv yetarlimi?', ['Yo‘q, serverda ham tekshirish kerak','Ha, yetarli','Faqat CSS kerak','Tekshiruv keraksiz'], 0, 'Server tekshiruvi majburiy.']] },
-{ v: [
+{ task:'Kurslar ro‘yxatini bazaga (yoki JSON faylga) yozib, CRUD 4 ta endpointini yozing.', v: [
   ['CRUD', 'Deyarli har bir backend to‘rt amalni bajaradi: Create, Read, Update, Delete — yaratish, o‘qish, yangilash, o‘chirish.'],
   ['Bazaga ulanish', 'SQLAlchemy yoki oddiy sqlite3 bilan ulanamiz. Har so‘rovda sessiya ochib yopamiz.'],
   ['Endpointlar xaritasi', 'POST /kurslar — yaratish, GET /kurslar — ro‘yxat, PATCH /kurslar/{id} — yangilash, DELETE /kurslar/{id} — o‘chirish.'],
@@ -60,7 +60,7 @@ lessons: [
    ['CRUD’dagi U harfi?', ['Upload','Update','Undo','Unit'], 1, 'Update — yangilash.'],
    ['Katta ro‘yxatni bo‘lib berish?', ['Pagination','Compression','Cache','Merge'], 0, 'limit/offset.'],
    ['Jadvallarni Python klassi sifatida ishlatish?', ['ORM','CSS','DOM','CDN'], 0, 'Object-Relational Mapping.']] },
-{ v: [
+{ task:'API’ni bepul hostingga joylang va havolani do‘stingizga yuboring.', v: [
   ['Kim so‘rov yubordi?', 'Autentifikatsiya foydalanuvchi kimligini tasdiqlaydi, avtorizatsiya esa unga nima ruxsat etilganini hal qiladi.'],
   ['Parollar', 'Parol hech qachon ochiq saqlanmaydi — faqat bcrypt kabi hash ko‘rinishida.'],
   ['Token', 'Kirgandan so‘ng server token beradi. Klient uni har so‘rovda Authorization sarlavhasida yuboradi.', 'Authorization: Bearer eyJhbGciOi...'],

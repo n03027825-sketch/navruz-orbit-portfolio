@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'O‘zingiz uchun “akademiya” bazasining 3 ta jadvalini qog‘ozda chizing: talaba, kurs, to‘lov.', v: [
   ['Ma’lumot — biznesning boyligi', 'Har bir ilova ma’lumot saqlaydi: foydalanuvchilar, buyurtmalar, to‘lovlar. Buning uchun ma’lumotlar bazasi ishlatiladi.'],
   ['Jadval, qator, ustun', 'Relyatsion baza jadvallardan iborat. Ustun — xususiyat, masalan ism; qator — bitta yozuv, masalan bitta o‘quvchi.'],
   ['SQL — baza tili', 'SQL bilan bazaga savol beramiz: qaysi o‘quvchilar 90 dan yuqori ball oldi? Bu til 50 yildan beri ishlatiladi.'],
@@ -12,7 +12,7 @@ lessons: [
    ['Jadvaldagi bitta yozuv nima deyiladi?', ['Ustun','Qator','Baza','Kalit'], 1, 'Qator (row) — bitta yozuv.'],
    ['Ma’lumot so‘rash buyrug‘i?', ['GET','SELECT','FIND','SHOW ME'], 1, 'SELECT.'],
    ['Eng oson o‘rganiladigan baza?', ['SQLite','Oracle','Cassandra','Redis'], 0, 'SQLite — bitta faylli baza.']] },
-{ v: [
+{ task:'talabalar jadvalini yarating va 5 ta qator INSERT qiling.', v: [
   ['Jadval yaratish', 'CREATE TABLE bilan jadval va uning ustunlarini turi bilan e’lon qilamiz.', 'CREATE TABLE talabalar (\n  id INTEGER PRIMARY KEY,\n  ism TEXT NOT NULL,\n  ball INTEGER\n);'],
   ['Asosiy kalit', 'PRIMARY KEY har bir qatorni noyob belgilaydi — ikki talabaning id si bir xil bo‘lmaydi.'],
   ['Ma’lumot qo‘shish', 'INSERT INTO yangi qator qo‘shadi.', 'INSERT INTO talabalar (ism, ball) VALUES ("Ali", 88);'],
@@ -24,7 +24,7 @@ lessons: [
    ['Jadval yaratish buyrug‘i?', ['NEW TABLE','CREATE TABLE','MAKE TABLE','ADD TABLE'], 1, 'CREATE TABLE.'],
    ['Har qatorni noyob belgilovchi?', ['FOREIGN KEY','PRIMARY KEY','INDEX','NULL'], 1, 'PRIMARY KEY.'],
    ['Bo‘sh qiymatni taqiqlash?', ['NOT NULL','NO EMPTY','REQUIRED','FULL'], 0, 'NOT NULL.']] },
-{ v: [
+{ task:'Ball 70 dan yuqori talabalarni chiqaruvchi so‘rov yozing.', v: [
   ['SELECT — savol berish', 'SELECT dan keyin qaysi ustunlar, FROM dan keyin qaysi jadval.', 'SELECT ism, ball FROM talabalar;'],
   ['Hammasi', 'Yulduzcha barcha ustunlarni tanlaydi. Katta jadvallarda faqat kerakli ustunlarni yozgan ma’qul.', 'SELECT * FROM talabalar;'],
   ['WHERE — filtr', 'WHERE shartga mos qatorlarni qoldiradi.', 'SELECT ism FROM talabalar WHERE ball >= 80;'],
@@ -36,7 +36,7 @@ lessons: [
    ['Qatorlarni shart bilan filtrlash?', ['FILTER','WHERE','IF','WHEN'], 1, 'WHERE.'],
    ['"A" bilan boshlanadigan ismlar?', ['LIKE "A%"','LIKE "%A"','= "A*"','IN ("A")'], 0, '% — istalgan davom.'],
    ['Takroriy qiymatlarni olib tashlash?', ['UNIQUE','DISTINCT','ONLY','SINGLE'], 1, 'SELECT DISTINCT.']] },
-{ v: [
+{ task:'Har bir kurs bo‘yicha talabalar sonini va o‘rtacha ballni chiqaring.', v: [
   ['Tartiblash', 'ORDER BY natijani tartiblaydi. DESC kamayish tartibida.', 'SELECT ism, ball FROM talabalar ORDER BY ball DESC;'],
   ['LIMIT', 'Faqat birinchi bir nechta qatorni olish — top-3 kabi hisobotlar uchun.', 'SELECT ism FROM talabalar ORDER BY ball DESC LIMIT 3;'],
   ['Agregat funksiyalar', 'COUNT, SUM, AVG, MIN, MAX ko‘p qatordan bitta natija chiqaradi.', 'SELECT AVG(ball) FROM talabalar;'],
@@ -48,7 +48,7 @@ lessons: [
    ['Kamayish tartibi?', ['ASC','DESC','DOWN','REVERSE'], 1, 'DESC.'],
    ['Qatorlar sonini hisoblash?', ['SUM(*)','COUNT(*)','TOTAL()','NUM()'], 1, 'COUNT(*).'],
    ['Guruhlardan keyingi filtr?', ['WHERE','HAVING','FILTER','LIMIT'], 1, 'HAVING.']] },
-{ v: [
+{ task:'talaba va kurs jadvallarini JOIN qilib, kim qaysi kursda ekanini chiqaring.', v: [
   ['Nega bir nechta jadval?', 'Talaba ma’lumotini har bir to‘lovda takrorlamaslik uchun ularni alohida jadvallarda saqlab, id orqali bog‘laymiz.'],
   ['Tashqi kalit', 'FOREIGN KEY boshqa jadvaldagi qatorga ishora qiladi: tolovlar.talaba_id → talabalar.id.'],
   ['INNER JOIN', 'INNER JOIN ikkala jadvalda mos kelgan qatorlarni birlashtiradi.', 'SELECT t.ism, p.summa\nFROM tolovlar p\nJOIN talabalar t ON t.id = p.talaba_id;'],
@@ -60,7 +60,7 @@ lessons: [
    ['Boshqa jadvalga ishora qiluvchi kalit?', ['PRIMARY KEY','FOREIGN KEY','UNIQUE','INDEX'], 1, 'FOREIGN KEY.'],
    ['Faqat mos qatorlarni birlashtiradi?', ['LEFT JOIN','INNER JOIN','FULL JOIN','CROSS'], 1, 'INNER JOIN.'],
    ['Chap jadvalning hammasini qoldiradi?', ['LEFT JOIN','INNER JOIN','RIGHT JOIN','SELF JOIN'], 0, 'LEFT JOIN.']] },
-{ v: [
+{ task:'Bitta talabaning ballini UPDATE qiling, keyin sinov qatorini DELETE qiling — WHERE’ni unutmang.', v: [
   ['Yangilash', 'UPDATE qatorlarni o‘zgartiradi. WHERE ni unutmang — aks holda butun jadval o‘zgaradi!', 'UPDATE talabalar SET ball = 95 WHERE id = 3;'],
   ['O‘chirish', 'DELETE ham WHERE bilan ishlatiladi. Avval SELECT bilan nima o‘chishini tekshiring.', 'DELETE FROM tolovlar WHERE holat = "bekor";'],
   ['Tranzaksiya', 'Bir nechta o‘zgarish yoki hammasi bajarilsin, yoki hech biri — pul o‘tkazmalarida bu juda muhim.', 'BEGIN;\n-- ...\nCOMMIT;'],

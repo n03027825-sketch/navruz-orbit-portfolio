@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'BotFather’dan yangi bot oching va tokenni xavfsiz joyga saqlang (kodga yozmang).', v: [
   ['Bot — Telegram ichidagi dastur', 'Telegram bot — foydalanuvchi xabarlariga avtomatik javob beradigan dastur. Do‘konlar, kurslar va xizmatlar botlardan keng foydalanadi.'],
   ['Qanday ishlaydi?', 'Foydalanuvchi xabar yozadi, Telegram uni sizning dasturingizga yetkazadi, dastur javob tayyorlab qaytaradi.'],
   ['BotFather', 'Yangi bot BotFather orqali yaratiladi: newbot buyrug‘ini yozasiz, nom berasiz va token olasiz.', '/newbot\nNom: Orbita yordamchi\nUsername: orbita_help_bot'],
@@ -12,7 +12,7 @@ lessons: [
    ['Bot kim orqali yaratiladi?', ['@BotFather','@Telegram','@Admin','@Creator'], 0, 'BotFather.'],
    ['Token qayerda saqlanadi?', ['.env faylida','Kod ichida ochiq','GitHub README’da','Bot tavsifida'], 0, '.env va .gitignore.'],
    ['Xabarni serverga Telegram o‘zi yuboradigan usul?', ['polling','webhook','cron','ftp'], 1, 'Webhook.']] },
-{ v: [
+{ task:'/start buyrug‘iga salomlashib javob beradigan bot yozing.', v: [
   ['Birinchi bot', 'aiogram’da Bot — Telegram bilan aloqa, Dispatcher — xabarlarni tarqatuvchi.', 'from aiogram import Bot, Dispatcher\nbot = Bot(TOKEN)\ndp = Dispatcher()'],
   ['/start buyrug‘i', 'CommandStart filtri /start xabarini tutadi va handler funksiya javob beradi.', '@dp.message(CommandStart())\nasync def start(msg):\n    await msg.answer("Salom!")'],
   ['Echo', 'Filtrsiz handler istalgan xabarni tutadi. Oddiy misol — xabarni qaytarib yuborish.'],
@@ -24,7 +24,7 @@ lessons: [
    ['Xabarlarni handlerlarga tarqatuvchi?', ['Bot','Dispatcher','Router emas','Token'], 1, 'Dispatcher.'],
    ['Javob yuborish metodi?', ['msg.send()','msg.answer()','msg.reply_all()','bot.print()'], 1, 'message.answer.'],
    ['Foydalanuvchi ismi?', ['msg.name','msg.from_user.first_name','msg.user','msg.chat.title'], 1, 'from_user.first_name.']] },
-{ v: [
+{ task:'Botga 3 ta tugma qo‘shing: “Darslar”, “Narxlar”, “Aloqa”.', v: [
   ['Klaviatura tugmalari', 'Reply tugmalar yozish maydoni o‘rnida chiqadi va bosilganda matn yuboradi.', 'ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="📚 Kurslar")]])'],
   ['Inline tugmalar', 'Inline tugmalar xabar ostida turadi. Ular havola ochishi yoki callback yuborishi mumkin.'],
   ['Callback', 'Inline tugma bosilganda callback_query keladi. Uning data qiymatiga qarab javob beramiz.', '@dp.callback_query(F.data == "narx")\nasync def narx(cb):\n    await cb.message.answer("Narxlar...")'],
@@ -36,7 +36,7 @@ lessons: [
    ['Xabar ostidagi tugmalar?', ['Reply','Inline','Footer','Menu'], 1, 'Inline klaviatura.'],
    ['Inline tugma bosilganda keladi?', ['message','callback_query','update_text','click'], 1, 'callback_query.'],
    ['Callbackdan keyin chaqirish kerak?', ['cb.answer()','cb.close()','bot.stop()','hech narsa'], 0, 'Yuklanish belgisi yo‘qoladi.']] },
-{ v: [
+{ task:'Foydalanuvchi ismini saqlab, keyingi murojaatda ism bilan salomlashing.', v: [
   ['Ma’lumot saqlash', 'Bot qayta ishga tushsa, xotiradagi o‘zgaruvchilar yo‘qoladi. Foydalanuvchilarni bazada saqlash kerak.'],
   ['SQLite bilan', 'Kichik bot uchun SQLite yetarli — bitta fayl, o‘rnatish shart emas.', 'CREATE TABLE users (id INTEGER PRIMARY KEY, ism TEXT, qoshilgan TEXT)'],
   ['Foydalanuvchini yozish', '/start da foydalanuvchi id sini bazaga qo‘shamiz. INSERT OR IGNORE takror yozuvni oldini oladi.'],
@@ -48,7 +48,7 @@ lessons: [
    ['Bot o‘chsa, oddiy o‘zgaruvchidagi ma’lumot?', ['Saqlanadi','Yo‘qoladi','Telegram saqlaydi','Faylga o‘tadi'], 1, 'Doimiy saqlash uchun baza kerak.'],
    ['Takroriy yozuvni oldini olish?', ['INSERT OR IGNORE','INSERT TWICE','UPDATE ALL','DROP'], 0, 'INSERT OR IGNORE.'],
    ['Foydalanuvchining noyob belgisi?', ['Ism','Telegram id','Familiya','Rasm'], 1, 'from_user.id.']] },
-{ v: [
+{ task:'Ism, telefon va kursni so‘raydigan kichik anketa (FSM) yasang.', v: [
   ['Anketa muammosi', 'Ro‘yxatdan o‘tishda ism, telefon va kursni ketma-ket so‘rash kerak. Bot qaysi savolda turganini eslab qolishi lozim.'],
   ['FSM — holatlar mashinasi', 'FSM har bir foydalanuvchining joriy bosqichini saqlaydi: ism kutilmoqda, telefon kutilmoqda.', 'class Royxat(StatesGroup):\n    ism = State()\n    telefon = State()'],
   ['Holatni o‘tkazish', 'Javob kelgach, uni saqlaymiz va keyingi holatga o‘tamiz.', 'await state.update_data(ism=msg.text)\nawait state.set_state(Royxat.telefon)'],
@@ -60,7 +60,7 @@ lessons: [
    ['FSM nima uchun?', ['Foydalanuvchi bosqichini eslab qolish','Rasm yuborish','To‘lov','Tezlik'], 0, 'Holatlar mashinasi.'],
    ['Holat ma’lumotini saqlash?', ['state.update_data()','state.save_all()','msg.store()','bot.keep()'], 0, 'update_data.'],
    ['Anketa tugagach?', ['state.clear()','state.delete_bot()','bot.close()','Hech narsa'], 0, 'Holat tozalanadi.']] },
-{ v: [
+{ task:'Botni bepul serverga (masalan Render) joylab, telefoningizdan sinab ko‘ring.', v: [
   ['Bot 24/7 ishlashi kerak', 'Kompyuteringiz o‘chsa, bot ham to‘xtaydi. Shuning uchun uni serverga joylaymiz.'],
   ['Variantlar', 'VPS server (DigitalOcean, Hetzner), PaaS (Railway, Render) yoki serverless webhook (Vercel). Har birining narxi va qulayligi har xil.'],
   ['Webhook', 'Serverless muhitda bot webhook bilan ishlaydi: Telegram har bir xabarni sizning URL manzilingizga yuboradi.', 'https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://sayt.uz/api/bot'],

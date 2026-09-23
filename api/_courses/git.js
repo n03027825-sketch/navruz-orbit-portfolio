@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Kompyuteringizda “orbita-mashq” papkasini yarating va unda git init qiling.', v: [
   ['Kodning “vaqt mashinasi”', 'Git — kodingizning har bir o‘zgarishini saqlaydigan tizim. Xato qilsangiz, istalgan oldingi holatga qaytasiz.'],
   ['Nega hamma ishlatadi?', 'Dunyodagi deyarli barcha dasturchilar jamoasi Git bilan ishlaydi. Bir loyihada o‘nlab odam bir vaqtda kod yozadi va hech kimning ishi yo‘qolmaydi.'],
   ['Git va GitHub farqi', 'Git — kompyuteringizdagi dastur. GitHub esa internetdagi xizmat: u Git omborlarini saqlaydi va boshqalar bilan ulashishga imkon beradi.'],
@@ -12,7 +12,7 @@ lessons: [
    ['Git nima?', ['Dasturlash tili','Versiya nazorati tizimi','Brauzer','Sayt'], 1, 'Git — o‘zgarishlar tarixini saqlaydi.'],
    ['GitHub nima?', ['Git omborlarini internetda saqlaydigan xizmat','Kod muharriri','Antivirus','Git’ning boshqa nomi'], 0, 'GitHub — onlayn xizmat.'],
    ['Saqlangan holat nima deb ataladi?', ['save','commit','push','branch'], 1, 'Commit — loyiha surati.']] },
-{ v: [
+{ task:'README.md yarating, git add va commit qiling — keyin git log bilan tarixni ko‘ring.', v: [
   ['Ombor yaratish', 'git init buyrug‘i joriy papkani Git ombori, ya’ni repository qiladi.', 'mkdir sayt && cd sayt\ngit init'],
   ['Uch bosqich', 'Fayl avval ishchi papkada o‘zgaradi, keyin git add bilan tayyorlov hududiga qo‘yiladi va git commit bilan tarixga yoziladi.'],
   ['Holatni ko‘rish', 'git status nima o‘zgargani va nima commit uchun tayyorligini ko‘rsatadi. Uni tez-tez ishlating.', 'git status'],
@@ -24,7 +24,7 @@ lessons: [
    ['Papkani Git omboriga aylantirish?', ['git start','git init','git new','git create'], 1, 'git init.'],
    ['Faylni commit uchun tayyorlash?', ['git add','git push','git save','git ready'], 0, 'git add.'],
    ['Maxfiy .env faylni qayerga yozish kerak?', ['README.md','.gitignore','commit izohiga','index.html'], 1, '.gitignore uni kuzatuvdan chiqaradi.']] },
-{ v: [
+{ task:'Faylni o‘zgartiring, git diff bilan farqni ko‘ring va o‘zgarishni bekor qiling.', v: [
   ['Tarixni ko‘rish', 'git log barcha commitlarni ko‘rsatadi. oneline bayrog‘i bilan ixcham ko‘rinadi.', 'git log --oneline'],
   ['Nima o‘zgardi?', 'git diff hali commit qilinmagan o‘zgarishlarni qatorma-qator ko‘rsatadi: qo‘shilgani yashil, o‘chirilgani qizil.', 'git diff'],
   ['Faylni qaytarish', 'Faylni oxirgi commit holatiga qaytarish uchun git restore ishlatiladi.', 'git restore index.html'],
@@ -36,7 +36,7 @@ lessons: [
    ['Commitlar ro‘yxatini ko‘rish?', ['git list','git log','git history','git show-all'], 1, 'git log.'],
    ['Commit qilinmagan o‘zgarishlarni ko‘rish?', ['git diff','git status -v','git compare','git check'], 0, 'git diff.'],
    ['Tarixni buzmasdan commitni bekor qilish?', ['git reset --hard','git delete','git revert','git undo'], 2, 'git revert — xavfsiz.']] },
-{ v: [
+{ task:'yangi-dizayn nomli branch oching, unda o‘zgarish qiling va main’ga merge qiling.', v: [
   ['Branch — parallel olam', 'Branch — asosiy koddan ajralgan alohida yo‘l. Unda yangi funksiyani xotirjam sinaysiz, asosiy kod buzilmaydi.'],
   ['Branch yaratish', 'git switch -c yangi branch yaratib, unga o‘tadi.', 'git switch -c tolov-bolimi'],
   ['Birlashtirish', 'Ish tugagach, asosiy branchga qaytib merge qilamiz — o‘zgarishlar qo‘shiladi.', 'git switch main\ngit merge tolov-bolimi'],
@@ -48,7 +48,7 @@ lessons: [
    ['Yangi branch yaratib unga o‘tish?', ['git switch -c nom','git new nom','git branch --go nom','git open nom'], 0, 'git switch -c.'],
    ['Branchni asosiyga qo‘shish?', ['git add','git merge','git join','git push'], 1, 'git merge.'],
    ['Konflikt nima?', ['Bir qator ikki xil o‘zgargan holat','Internet uzilishi','Parol xatosi','Fayl o‘chishi'], 0, 'Git qaysi variantni olishni bilmaydi.']] },
-{ v: [
+{ task:'GitHub’da yangi repo oching va lokal papkangizni push qiling.', v: [
   ['Kodni internetga yuborish', 'GitHub’da yangi repository yaratamiz va lokal omborni unga ulaymiz.', 'git remote add origin https://github.com/siz/sayt.git'],
   ['push', 'git push commitlaringizni GitHub’ga yuboradi. Birinchi marta u bayrog‘i bilan branchni bog‘laymiz.', 'git push -u origin main'],
   ['pull', 'Boshqalar yoki boshqa kompyuterda qilingan o‘zgarishlarni git pull tortib oladi.', 'git pull'],
@@ -60,7 +60,7 @@ lessons: [
    ['Commitlarni GitHub’ga yuborish?', ['git send','git push','git upload','git pull'], 1, 'git push.'],
    ['GitHub’dagi yangiliklarni olish?', ['git pull','git get','git fetch-all','git down'], 0, 'git pull.'],
    ['Loyihani to‘liq nusxalash?', ['git copy','git clone','git fork','git download'], 1, 'git clone.']] },
-{ v: [
+{ task:'Repoingizga README yozing va uni portfolio sifatida do‘stingizga yuboring.', v: [
   ['Pull request', 'Pull request — “mening o‘zgarishlarimni ko‘rib, qo‘shib qo‘ying” degan so‘rov. Jamoada kod shu orqali tekshiriladi.'],
   ['Fork', 'Birovning loyihasiga hissa qo‘shish uchun uni fork qilasiz — o‘z hisobingizda nusxasi paydo bo‘ladi. So‘ng o‘zgartirib, pull request yuborasiz.'],
   ['Kod ko‘rib chiqish', 'Jamoadoshlar izoh qoldiradi, siz tuzatasiz. Bu xatolarni erta topadi va hammani o‘rgatadi.'],

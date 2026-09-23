@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'ChatGPT yoki boshqa AI’ga bitta savolni 2 xil usulda bering va javoblar farqini yozing.', v: [
   ['Sun’iy intellekt nima?', 'Sun’iy intellekt — odam aql bilan bajaradigan ishlarni qila oladigan dasturlar: matn yozish, rasmni tanish, tarjima qilish.'],
   ['LLM — katta til modeli', 'ChatGPT, Claude va Gemini — katta til modellari. Ular milliardlab matnlarda o‘qitilgan va keyingi so‘zni bashorat qilish orqali javob tuzadi.'],
   ['U “biladimi”?', 'Model odamdek tushunmaydi — u ehtimollik bilan eng mos matnni tanlaydi. Shuning uchun ba’zan ishonch bilan xato gapiradi.'],
@@ -12,7 +12,7 @@ lessons: [
    ['LLM nima?', ['Katta til modeli','Kompyuter virusi','Ma’lumotlar bazasi','Dasturlash tili'], 0, 'Large Language Model.'],
    ['“Gallyutsinatsiya” nima?', ['AI’ning ishonch bilan noto‘g‘ri ma’lumot to‘qishi','Rasm chizishi','Tez ishlashi','Internet uzilishi'], 0, 'Model yo‘q narsani to‘qishi mumkin.'],
    ['AI javobini nima qilish kerak?', ['Tekshirish','Ko‘r-ko‘rona qabul qilish','Darhol o‘chirish','Yodlash'], 0, 'Muhim ma’lumotni tekshiring.']] },
-{ v: [
+{ task:'Rol + vazifa + format + cheklov formulasi bo‘yicha o‘zingizga kerakli bitta prompt yozing.', v: [
   ['Prompt — AI’ga topshiriq', 'Prompt — AI’ga yozgan xabaringiz. Topshiriq qanchalik aniq bo‘lsa, javob shunchalik foydali.'],
   ['Besh element', 'Yaxshi prompt: rol, vazifa, kontekst, format va cheklov. Masalan: sen o‘qituvchisan, mavzuni tushuntir, men 8-sinfman, jadval ko‘rinishida, 150 so‘zdan oshmasin.'],
   ['Format so‘rang', 'Javobni qanday ko‘rinishda xohlasangiz, aniq ayting: ro‘yxat, jadval, kod, qadamlar yoki JSON.'],
@@ -24,7 +24,7 @@ lessons: [
    ['Yaxshi prompt elementlaridan biri emas?', ['Rol','Format','Tasodifiy belgilar','Kontekst'], 2, 'Tasodifiy belgilar yordam bermaydi.'],
    ['Javob jadval bo‘lishi uchun nima qilish kerak?', ['Formatni aniq so‘rash','Kutish','Qayta yuklash','Hech narsa'], 0, 'Formatni ayting.'],
    ['Birinchi javob yoqmasa?', ['Aniqlashtirib qayta so‘rash','AI’ni tashlash','Xuddi shu promptni yuborish','Kompyuterni o‘chirish'], 0, 'Iteratsiya — normal jarayon.']] },
-{ v: [
+{ task:'AI’ga 2 ta misol berib (few-shot), uchinchisini shu uslubda yozdirib ko‘ring.', v: [
   ['Misol bilan o‘rgatish', 'Few-shot usulida AI’ga bir-ikkita namuna ko‘rsatasiz, u shu uslubda davom etadi.'],
   ['Namuna qanday beriladi', 'Kirish va chiqish juftligini yozasiz, so‘ng yangi kirishni berib, chiqishni AI’dan kutasiz.', 'Matn: "Zo‘r xizmat!" → Kayfiyat: ijobiy\nMatn: "Juda kech keldi" → Kayfiyat: salbiy\nMatn: "Narxi o‘rtacha" → Kayfiyat:'],
   ['Bosqichma-bosqich fikrlash', 'Murakkab masalada “qadamma-qadam yech” desangiz, model xatoni kamroq qiladi.'],
@@ -36,7 +36,7 @@ lessons: [
    ['Few-shot nima?', ['Bir nechta namuna bilan o‘rgatish','Bitta so‘zli prompt','Rasm yuklash','Tezkor rejim'], 0, 'Namunalar orqali uslubni ko‘rsatish.'],
    ['Murakkab masalada nima so‘rash foydali?', ['Qadamma-qadam yechish','Faqat javobni','Emoji bilan','Ingliz tilida majburan'], 0, 'Fikr zanjiri xatoni kamaytiradi.'],
    ['Namunalar qanday bo‘lishi kerak?', ['Xilma-xil','Bir xil','Uzun va chalkash','Faqat bitta'], 0, 'Turli holatlarni ko‘rsating.']] },
-{ v: [
+{ task:'AI’dan o‘zingiz o‘rganayotgan mavzu bo‘yicha 5 savollik test so‘rang va yechib ko‘ring.', v: [
   ['AI — shaxsiy ustoz', 'Tushunmagan mavzuni AI’dan oddiyroq tilda so‘rang, misol va mashq bering deb so‘rang.'],
   ['Test tuzdiring', 'Mavzu bo‘yicha test so‘rang, javob bering va AI’dan tekshirishni so‘rang. Bu eng samarali takrorlash usuli.'],
   ['Kod yozishda', 'AI kodni tushuntiradi, xatoni topadi va variant taklif qiladi. Lekin kodni o‘zingiz tushunib, sinab ko‘ring.', 'Mana kodim va xato xabari. Xato nimada va nega?\nTuzatilgan kodni izoh bilan ber.'],
@@ -48,7 +48,7 @@ lessons: [
    ['AI bilan eng samarali takrorlash usuli?', ['Test tuzdirib, javob berish','Faqat o‘qish','Javobni ko‘chirish','Hech narsa qilmaslik'], 0, 'Faol takrorlash eng samarali.'],
    ['Kod xatosini so‘rashda nima beriladi?', ['Kod va to‘liq xato xabari','Faqat “ishlamayapti”','Kompyuter modeli','Hech narsa'], 0, 'Kontekst qanchalik to‘liq bo‘lsa, shuncha yaxshi.'],
    ['Uy vazifasini AI’ga yozdirish?', ['O‘zini aldash','Eng yaxshi usul','Majburiy','Tavsiya etiladi'], 0, 'AI — o‘rganish vositasi.']] },
-{ v: [
+{ task:'AI bergan faktlardan bittasini internetdan tekshiring — to‘g‘ri chiqdimi, yozib qo‘ying.', v: [
   ['AI ham xato qiladi', 'Model yangi voqealarni bilmasligi, raqamda adashishi yoki mavjud bo‘lmagan manbani o‘ylab topishi mumkin.'],
   ['Qanday tekshiramiz?', 'Muhim faktni ishonchli saytdan tekshiring, raqamlarni kalkulyatorda qayta hisoblang, manba havolasini ochib ko‘ring.'],
   ['Maxfiylik', 'AI’ga parol, karta raqami, pasport ma’lumoti yoki boshqalarning shaxsiy ma’lumotini yozmang.'],
@@ -60,7 +60,7 @@ lessons: [
    ['AI’ga nimani yozmaslik kerak?', ['Parol va karta raqamini','Matematik savolni','She’r mavzusini','Tarjima so‘rovini'], 0, 'Maxfiy ma’lumot yozilmaydi.'],
    ['AI keltirgan manbani nima qilish kerak?', ['Ochib, mavjudligini tekshirish','Ishonish','E’tibor bermaslik','O‘chirish'], 0, 'Manba to‘qilgan bo‘lishi mumkin.'],
    ['Raqamli javobni qanday tekshiramiz?', ['O‘zimiz qayta hisoblaymiz','Ishonamiz','So‘ramaymiz','Yaxlitlaymiz'], 0, 'Hisobni tekshiring.']] },
-{ v: [
+{ task:'AI javobini dasturga qanday ulashni rejalashtiring: qaysi vazifa, qanday kirish va chiqish bo‘ladi?', v: [
   ['AI’ni dasturga ulash', 'Ko‘p AI xizmatlarining API’si bor: dasturingiz so‘rov yuboradi va javobni matn ko‘rinishida oladi.'],
   ['API kaliti', 'API kaliti — parol kabi. U faqat serverda saqlanadi, hech qachon brauzer kodiga yoki GitHub’ga yozilmaydi.'],
   ['So‘rov tuzilishi', 'So‘rovda model nomi va xabarlar ro‘yxati beriladi: tizim ko‘rsatmasi va foydalanuvchi savoli.', 'messages = [\n  {"role": "system", "content": "Sen yordamchisan."},\n  {"role": "user", "content": "Salom!"}\n]'],

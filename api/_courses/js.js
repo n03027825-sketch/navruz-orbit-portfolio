@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Sahifaga script yozing va konsolda “Salom, JS!” chiqaring.', v: [
   ['JavaScript — saytning harakati', 'HTML skelet, CSS kiyim bo‘lsa, JavaScript saytga jon beradi: tugma bosilganda nimadir sodir bo‘ladi, ma’lumot yangilanadi.'],
   ['Hamma joyda ishlaydi', 'JavaScript har bir brauzerda o‘rnatilgan. Node.js bilan esa serverda ham ishlatiladi.'],
   ['Konsol', 'Brauzerda F12 bosing va Console oynasini oching. Bu yerda JavaScript’ni darhol sinab ko‘rish mumkin.', 'console.log("Salom, dunyo!");'],
@@ -12,7 +12,7 @@ lessons: [
    ['Konsolga chiqarish buyrug‘i?', ['print()','console.log()','echo()','write()'], 1, 'console.log.'],
    ['Brauzer konsoli qaysi tugma bilan ochiladi?', ['F1','F5','F12','Esc'], 2, 'F12 — dasturchi vositalari.'],
    ['JS faylni ulash tegi?', ['<link>','<js>','<script>','<code>'], 2, '<script src="...">.']] },
-{ v: [
+{ task:'3 ta o‘zgaruvchi (ism, yosh, talabami) e’lon qiling va turlarini typeof bilan chiqaring.', v: [
   ['let va const', 'O‘zgaruvchi let bilan yaratiladi. Qiymati o‘zgarmaydiganlari const bilan. Eski var ishlatmang.', 'const ism = "Malika";\nlet ball = 80;\nball = ball + 5;'],
   ['Turlar', 'string, number, boolean, null, undefined, object va array. typeof turni ko‘rsatadi.', 'console.log(typeof 42); // number'],
   ['Shablon satr', 'Teskari tirnoqli satrda dollar va jingalak qavs bilan o‘zgaruvchini joylash mumkin.', 'console.log(`Salom, ${ism}! Ball: ${ball}`);'],
@@ -24,7 +24,7 @@ lessons: [
    ['Qayta qiymat berilmaydigan o‘zgaruvchi?', ['let','var','const','fix'], 2, 'const — o‘zgarmas.'],
    ['"5" + 3 natijasi?', ['8','"53"','Xato','NaN'], 1, 'Matn bilan + birlashtiradi.'],
    ['Qat’iy tenglik operatori?', ['=','==','===','=>'], 2, '=== tur va qiymatni tekshiradi.']] },
-{ v: [
+{ task:'1 dan 20 gacha sonlarni chiqaring, juftlarini “juft” deb belgilang.', v: [
   ['if va else', 'Shart qavs ichida, bajariladigan kod jingalak qavs ichida yoziladi.', 'if (yosh >= 16) {\n  console.log("Ruxsat");\n} else {\n  console.log("Hali erta");\n}'],
   ['Ternar operator', 'Qisqa shart: savol belgisi va ikki nuqta bilan bir qatorda yoziladi.', 'const holat = ball >= 60 ? "o‘tdi" : "yiqildi";'],
   ['for sikli', 'Klassik for: boshlanish, shart va qadam.', 'for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}'],
@@ -36,7 +36,7 @@ lessons: [
    ['JS’da “va” operatori?', ['and','&&','&','||'], 1, '&& — mantiqiy va.'],
    ['Qaysi qiymat falsy?', ['"0"','[]','0','"salom"'], 2, '0 falsy, "0" esa truthy.'],
    ['Massivni aylanishning qulay usuli?', ['for...of','goto','repeat','loop()'], 0, 'for...of.']] },
-{ v: [
+{ task:'Massivdagi ballarning o‘rtachasini hisoblaydigan funksiya yozing.', v: [
   ['Funksiya e’lon qilish', 'function so‘zi yoki strelka sintaksisi bilan.', 'function kvadrat(x) { return x * x; }\nconst kub = x => x * x * x;'],
   ['Massiv', 'Massiv kvadrat qavsda, indeks noldan. push qo‘shadi, length uzunlikni beradi.', 'const sonlar = [3, 7, 1];\nsonlar.push(9);'],
   ['map va filter', 'map har elementni o‘zgartiradi, filter esa shartga mosini qoldiradi.', 'const ikki = sonlar.map(n => n * 2);\nconst katta = sonlar.filter(n => n > 5);'],
@@ -48,7 +48,7 @@ lessons: [
    ['Har elementni o‘zgartirib yangi massiv qaytaradi?', ['filter','map','find','push'], 1, 'map.'],
    ['Obyekt xususiyatiga murojaat?', ['talaba->ism','talaba.ism','talaba::ism','talaba#ism'], 1, 'Nuqta orqali.'],
    ['const f = x => x + 1; f(4) = ?', ['4','5','x+1','Xato'], 1, '4 + 1 = 5.']] },
-{ v: [
+{ task:'Tugma bosilganda sahifadagi matn rangini o‘zgartiradigan kod yozing.', v: [
   ['DOM — sahifa daraxti', 'Brauzer HTML’ni DOM deb ataladigan obyektlar daraxtiga aylantiradi. JavaScript shu daraxtni o‘zgartiradi.'],
   ['Elementni topish', 'querySelector CSS selektori bilan birinchi mos elementni topadi.', 'const sarlavha = document.querySelector("h1");'],
   ['Matn va stilni o‘zgartirish', 'textContent matnni, classList esa klasslarni boshqaradi.', 'sarlavha.textContent = "Yangi sarlavha";\nsarlavha.classList.add("faol");'],
@@ -60,7 +60,7 @@ lessons: [
    ['CSS selektori bilan element topish?', ['getElement()','querySelector()','find()','select()'], 1, 'document.querySelector.'],
    ['Foydalanuvchi matnini xavfsiz qo‘yish?', ['innerHTML','textContent','outerHTML','write'], 1, 'textContent HTML’ni talqin qilmaydi.'],
    ['Klassni almashtirish?', ['classList.toggle()','class.switch()','style.class()','toggleClass()'], 0, 'classList.toggle.']] },
-{ v: [
+{ task:'Mini-loyiha: tugma bosilganda tasodifiy maslahat chiqaradigan sahifa qiling.', v: [
   ['Hodisa — foydalanuvchi harakati', 'Bosish, yozish, sichqonchani yurgizish — bularning hammasi hodisa. addEventListener ularni tinglaydi.'],
   ['Tugma bosilganda', 'Birinchi parametr hodisa nomi, ikkinchisi bajariladigan funksiya.', 'tugma.addEventListener("click", () => {\n  hisob++;\n  natija.textContent = hisob;\n});'],
   ['Forma', 'submit hodisasida preventDefault sahifa qayta yuklanishini to‘xtatadi.', 'forma.addEventListener("submit", e => {\n  e.preventDefault();\n});'],

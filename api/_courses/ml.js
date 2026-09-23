@@ -1,6 +1,6 @@
 module.exports = {
 lessons: [
-{ v: [
+{ task:'Atrofingizdagi 3 ta muammoni yozing va ularning qaysi biri ML bilan yechiladi — izohlang.', v: [
   ['Kompyuter qanday o‘rganadi?', 'Oddiy dasturda qoidalarni biz yozamiz. Machine Learning’da esa kompyuterga misollar beramiz va u qoidani o‘zi topadi.'],
   ['Kundalik misollar', 'Spam filtri, YouTube tavsiyalari, yuzni tanish, narxni bashorat qilish — bularning hammasi ML.'],
   ['Uch turi', 'O‘qituvchili o‘rganish — javoblari bor misollardan; o‘qituvchisiz — guruhlarni o‘zi topadi; mustahkamlash — mukofot va jazo orqali.'],
@@ -12,7 +12,7 @@ lessons: [
    ['Son bashorat qilish qaysi masala?', ['Regressiya','Klassifikatsiya','Klasterlash','Saralash'], 0, 'Regressiya — son.'],
    ['Spam yoki spam emas — qaysi masala?', ['Regressiya','Klassifikatsiya','SQL','Rekursiya'], 1, 'Toifa — klassifikatsiya.'],
    ['Belgilar (features) nima?', ['Kiruvchi ma’lumot ustunlari','Javob','Grafik','Xato'], 0, 'X — belgilar.']] },
-{ v: [
+{ task:'Kichik CSV oling, ustunlarni raqamga aylantiring va train/test ga ajrating.', v: [
   ['Ma’lumot — 80 foiz ish', 'ML loyihada vaqtning ko‘p qismi ma’lumotni tayyorlashga ketadi: tozalash, tushunish va o‘zgartirish.'],
   ['Toifali belgilar', 'Model faqat son tushunadi. Shahar nomi kabi matnlarni get_dummies bilan son ustunlarga aylantiramiz.', 'X = pd.get_dummies(df[["maydon", "shahar"]])'],
   ['O‘qitish va test', 'Ma’lumotni ikkiga bo‘lamiz: model o‘qiydigan qism va hech qachon ko‘rmagan test qismi.', 'from sklearn.model_selection import train_test_split'],
@@ -24,7 +24,7 @@ lessons: [
    ['Matnli toifani songa aylantirish?', ['pd.get_dummies','df.to_text','str.number','astype(str)'], 0, 'One-hot kodlash.'],
    ['Test qismi nima uchun?', ['Model ko‘rmagan ma’lumotda baholash','Tezlik','Chiroyli grafik','Xotira'], 0, 'Haqiqiy sifatni o‘lchash.'],
    ['Eng xavfli xato?', ['Ma’lumot sizib ketishi','Grafik rangi','Uzun nom','Izoh yozmaslik'], 0, 'Data leakage.']] },
-{ v: [
+{ task:'scikit-learn bilan chiziqli regressiya o‘rgating va bashorat chiqaring.', v: [
   ['Chiziqli regressiya', 'Eng oddiy model: ma’lumot orqali eng mos to‘g‘ri chiziq o‘tkazadi. Narx = a × maydon + b.'],
   ['O‘rgatish', 'fit metodi a va b koeffitsientlarini shunday tanlaydiki, xatolar kvadratlari yig‘indisi eng kichik bo‘lsin.', 'from sklearn.linear_model import LinearRegression\nmodel = LinearRegression().fit(X_train, y_train)'],
   ['Bashorat', 'predict yangi ma’lumot uchun natija beradi.', 'model.predict([[75]])'],
@@ -36,7 +36,7 @@ lessons: [
    ['Modelni o‘rgatish metodi?', ['fit()','train_now()','learn()','go()'], 0, 'fit.'],
    ['Bashorat metodi?', ['guess()','predict()','forecast()','answer()'], 1, 'predict.'],
    ['Baseline nima?', ['Oddiy boshlang‘ich model','Eng murakkab model','Ma’lumot fayli','Grafik'], 0, 'Solishtirish nuqtasi.']] },
-{ v: [
+{ task:'Qaror daraxti bilan klassifikatsiya modelini o‘rgating (masalan: o‘tdi/yiqildi).', v: [
   ['Qaror daraxti', 'Daraxt savollar zanjiri kabi ishlaydi: ball 80 dan yuqorimi? Davomati 90 foizdanmi? Oxirida javob chiqadi.'],
   ['Klassifikatsiya', 'DecisionTreeClassifier toifani bashorat qiladi — masalan, o‘quvchi kursni tugatadimi yoki yo‘q.', 'from sklearn.tree import DecisionTreeClassifier'],
   ['Chuqurlik', 'Juda chuqur daraxt o‘rgatish ma’lumotini yodlab oladi va yangi ma’lumotda yomon ishlaydi — bu overfitting.'],
@@ -48,7 +48,7 @@ lessons: [
    ['Train’da yaxshi, test’da yomon holat?', ['Overfitting','Underfitting','Baseline','Scaling'], 0, 'Yodlab olish.'],
    ['Ko‘p daraxtli model?', ['Random Forest','Linear Regression','K-means','Stek'], 0, 'Tasodifiy o‘rmon.'],
    ['Ehtimollikni olish?', ['predict_proba()','chance()','prob()','percent()'], 0, 'predict_proba.']] },
-{ v: [
+{ task:'Modelni aniqlik (accuracy) va xato (MAE/RMSE) bilan baholang, natijani yozing.', v: [
   ['Model qanchalik yaxshi?', 'Baholashsiz model — taxmin. Har doim test ma’lumotida o‘lchaymiz.'],
   ['Aniqlik yetarli emas', 'Agar 100 bemordan 95 tasi sog‘ bo‘lsa, “hamma sog‘” deydigan model 95 foiz aniq, lekin foydasiz.'],
   ['Precision va Recall', 'Precision — “ha” deganlarimizdan qanchasi to‘g‘ri. Recall — haqiqiy “ha” lardan qanchasini topdik.'],
@@ -60,7 +60,7 @@ lessons: [
    ['Muvozanatsiz ma’lumotda accuracy?', ['Aldamchi bo‘lishi mumkin','Doim eng yaxshi','Keraksiz','Faqat regressiyada'], 0, '95% “hamma sog‘” misoli.'],
    ['Haqiqiy “ha” lardan qanchasini topdik?', ['Precision','Recall','MAE','R²'], 1, 'Recall — qamrov.'],
    ['Kross-validatsiya maqsadi?', ['Ishonchliroq baho','Tezlik','Grafik','Xotira tejash'], 0, 'Bir necha bo‘lakda sinash.']] },
-{ v: [
+{ task:'Kichik loyiha qiling: ma’lumot → model → bashorat → xulosa, hammasini bitta faylda.', v: [
   ['Birinchi loyiha', 'Keling, o‘quvchi kursni tugatish-tugatmasligini bashorat qiluvchi model quramiz — bu Orbita Akademiyasi uchun ham foydali.'],
   ['Belgilar', 'Kirishlar soni, ko‘rilgan darslar, test ballari, oxirgi faollikdan beri o‘tgan kunlar.'],
   ['Pipeline', 'Pipeline tayyorlash va modelni bitta obyektga jamlaydi — xato kamayadi va joylash osonlashadi.'],
